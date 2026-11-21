@@ -898,3 +898,10 @@ main > section.enquiry-hero { padding-top: 170px; }
   .enquiry-hero .enquiry-bg img { object-position: 45% 20%; }
   .enquiry-hero::before { background: linear-gradient(180deg, rgba(14, 12, 18, 0.45) 0%, rgba(14, 12, 18, 0) 20%, rgba(14, 12, 18, 0) 30%, #141518 50%, #141518 100%); }
 }
+
+/* Footer bottom line: copyright left, agency credit right */
+.fine { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; }
+.fine p { margin: 0; }
+.foot-wrap .credit, .credit { font-size: 14px; color: var(--ink-2); }
+.credit a { font-weight: 700; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 40px; }
+.credit a:hover { text-decoration: underline; }

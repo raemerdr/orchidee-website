@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { credit, site } from "@/lib/site";
 import StickyBar from "./StickyBar";
 
 // Footer column titles are h2 (styled small) so the heading order stays h1 → h2 → h3 on every page.
@@ -30,7 +30,12 @@ export default function Footer() {
               <Link href="/datenschutz">Datenschutz</Link>
             </div>
           </div>
-          <p className="fine">© {new Date().getFullYear()} {site.company}</p>
+          <div className="fine">
+            <p>© {new Date().getFullYear()} {site.company}</p>
+            <p className="credit">
+              {credit.label} <a href={credit.url} target="_blank" rel="noopener">{credit.name}</a>
+            </p>
+          </div>
         </div>
       </footer>
 

@@ -34,3 +34,10 @@ export const googleReviews = {
   count: 6,
   url: "https://www.google.com/maps/search/?api=1&query=Pflegedienst+Orchidee+Hohenzollernstr.+19+Koblenz",
 };
+
+/** Agency credit in the footer (kept in English, like the other nüll sites). */
+export const credit = {
+  label: "Site made by",
+  name: "nüll.",
+  url: "https://xn--nll-hoa.com/",
+};
