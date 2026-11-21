@@ -17,7 +17,7 @@
   --chip: #e9eaec;
   --radius: 20px;
   --radius-lg: 28px;
-  --max: 1240px;
+  --max: 1440px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -905,3 +905,9 @@ main > section.enquiry-hero { padding-top: 170px; }
 .foot-wrap .credit, .credit { font-size: 14px; color: var(--ink-2); }
 .credit a { font-weight: 700; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 40px; }
 .credit a:hover { text-decoration: underline; }
+
+/* Header sits in the same column as the page content (logo lines up with the headline) */
+@media (min-width: 721px) {
+  .header { left: max(24px, calc((100vw - var(--max)) / 2 + 24px)); right: max(24px, calc((100vw - var(--max)) / 2 + 24px)); }
+}
+@media (max-width: 720px) { .header { left: 16px; right: 16px; } }
