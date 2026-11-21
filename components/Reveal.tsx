@@ -18,7 +18,8 @@ const TARGETS = [
 export default function Reveal() {
   const pathname = usePathname();
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // No fade-ins for reduced-motion users or on phones (older visitors: calm and simple).
+    if (window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 720px)").matches) return;
 
     const els = Array.from(document.querySelectorAll<HTMLElement>(TARGETS));
     els.forEach((el) => {

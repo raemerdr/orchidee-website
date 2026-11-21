@@ -46,13 +46,13 @@ export default function PageHero({
         <Image src={image} alt={imageAlt} fill priority sizes="100vw" quality={70} />
       </div>
       <div className="wrap">
-        <div className="kicker"><b>#</b> {label}</div>
+        <div className="kicker"><b aria-hidden>#</b> {label}</div>
         <h1>{title}</h1>
         {lead && <p className="page-hero-lead">{lead}</p>}
         {cta === "contact" && (
           <div className="hero-ctas">
-            <Link className="btn btn-primary" href="/kontakt">Rückruf anfordern <ArrowIcon /></Link>
-            <a className="btn btn-ghost" href={site.phoneHref} aria-label={`${site.phone} anrufen`}><PhoneIcon /> {site.phone}</a>
+            <Link className="btn btn-primary" href="/kontakt" data-callback>Rückruf anfordern <span className="d-only"><ArrowIcon /></span></Link>
+            <a className="btn btn-ghost" href={site.phoneHref} aria-label={`${site.phone} anrufen`}><PhoneIcon /> <span className="m-only">Jetzt anrufen:&nbsp;</span>{site.phone}</a>
           </div>
         )}
         {cta === "apply" && (

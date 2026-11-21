@@ -46,6 +46,7 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
         onClick={() => setOpen((o) => !o)}
       >
         <span className={`burger${open ? " is-open" : ""}`} aria-hidden><i /><i /><i /></span>
+        <span className="menu-word" aria-hidden>{open ? "Schließen" : "Menü"}</span>
       </button>
 
       {mounted && createPortal(
@@ -60,7 +61,7 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
         </nav>
         <div className="mobile-menu-actions">
           <a className="btn btn-light" href={site.phoneHref}><PhoneIcon /> {site.phone}</a>
-          <Link className="btn btn-primary" href="/kontakt" onClick={() => setOpen(false)}>Rückruf anfordern</Link>
+          <Link className="btn btn-primary" href="/kontakt" data-callback onClick={() => setOpen(false)}>Rückruf anfordern</Link>
         </div>
       </div>,
       document.body,

@@ -6,12 +6,13 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <ForWhom />
+      {/* Order follows the visitor's questions: what, for whom, cost, how it starts. */}
       <Services />
+      <ForWhom />
+      <Costs />
       <Steps />
       <Why />
-      <Costs />
-      <Faq />
+      <Faq short />
       <CareerTeaser />
       <EnquiryForm />
     </>

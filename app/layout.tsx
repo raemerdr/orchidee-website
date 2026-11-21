@@ -3,6 +3,7 @@ import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CallbackModal from "@/components/CallbackModal";
 import Reveal from "@/components/Reveal";
 
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="top">{children}</main>
         <Footer />
+        <CallbackModal />
         <Reveal />
       </body>
     </html>

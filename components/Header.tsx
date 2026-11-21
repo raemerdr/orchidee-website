@@ -25,7 +25,7 @@ export default function Header() {
         <a className="nav-phone" href={site.phoneHref}>
           <PhoneIcon /> {site.phone}
         </a>
-        <Link className="btn btn-dark" href="/kontakt">Rückruf anfordern</Link>
+        <Link className="btn btn-dark" href="/kontakt" data-callback>Rückruf anfordern</Link>
         <MobileMenu links={navLinks} />
       </div>
       <HeaderHeroState />
