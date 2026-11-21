@@ -19,7 +19,8 @@ export default function CallbackModal() {
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const el = (e.target as HTMLElement | null)?.closest<HTMLElement>("[data-callback]");
-      if (!el || e.metaKey || e.ctrlKey) return;
+      // Phones only: on desktop these links keep their normal behaviour.
+      if (!el || e.metaKey || e.ctrlKey || !window.matchMedia("(max-width: 720px)").matches) return;
       e.preventDefault();
       opener.current = el;
       setOpen(true);

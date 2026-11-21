@@ -6,12 +6,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-      {/* Order follows the visitor's questions: what, for whom, cost, how it starts. */}
-      <Services />
+      {/* Desktop order. On phones CSS reorders these to: Leistungen, Für wen, Kosten, Ablauf, Fragen. */}
       <ForWhom />
-      <Costs />
+      <Services />
       <Steps />
       <Why />
+      <Costs />
       <Faq short />
       <CareerTeaser />
       <EnquiryForm />

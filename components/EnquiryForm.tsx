@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { photos, site } from "@/lib/site";
 import CallbackForm from "./CallbackForm";
+import T from "./T";
 
 export default function EnquiryForm({ hero = false }: { hero?: boolean }) {
   const Heading = hero ? "h1" : "h2";
@@ -13,7 +14,7 @@ export default function EnquiryForm({ hero = false }: { hero?: boolean }) {
       <div className="wrap contact">
         <div>
           <span className="label">{hero ? "Kontakt" : "Anfrage"}</span>
-          <Heading>{hero ? "Wir sind für Sie da." : "Rufen Sie uns an."}</Heading>
+          <Heading>{hero ? "Wir sind für Sie da." : <T d="Sprechen Sie mit uns." m="Rufen Sie uns an." />}</Heading>
           <p className="lead">
             {hero
               ? "Rufen Sie uns an oder hinterlassen Sie Ihre Nummer. Wir melden uns und beraten Sie persönlich – gern auch bei Ihnen zu Hause."

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import T from "./T";
 
 // The callback form itself, used in the page section and in the popup.
 // `idPrefix` keeps field ids unique when both are on the same page.
@@ -30,7 +31,7 @@ export default function CallbackForm({ idPrefix = "", title }: { idPrefix?: stri
         </select>
       </div>
       <fieldset className="field">
-        <legend>Hat ein Arzt Pflege verordnet? (z. B. Insulin, Verbände)</legend>
+        <legend><T d="Hat ein Arzt Behandlungspflege verordnet?" m="Hat ein Arzt Pflege verordnet? (z. B. Insulin, Verbände)" /></legend>
         <div className="choice">
           <label><input type="radio" name="verordnung" value="ja" required /> Ja</label>
           <label><input type="radio" name="verordnung" value="nein" /> Nein</label>

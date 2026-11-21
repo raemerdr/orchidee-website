@@ -1126,8 +1126,10 @@ main > section.enquiry-hero { padding-top: 170px; }
   .cb-panel .form { border: 0; }
 }
 
+@media (max-width: 720px) {
 /* Dropdown arrow: own clear chevron with room from the edge (the browser's tiny arrow sat on the border) */
 .form select { appearance: none; -webkit-appearance: none; padding-right: 52px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23121316' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 9 7 7 7-7'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; background-size: 20px 20px; }
+}
 @media (max-width: 720px) {
   /* Smaller hero photo on phones: headline and "Jetzt anrufen" lead, the photo supports */
   .hero .hero-bg, .page-hero.has-img .page-hero-bg { height: 30svh; min-height: 220px; }
@@ -1188,3 +1190,29 @@ main > section.enquiry-hero { padding-top: 170px; }
   .fit-criteria .fit-img { display: block; position: relative; height: 150px; margin: 0 0 14px; border-radius: 14px; overflow: hidden; background: var(--chip); }
   .fit-criteria .fit-img img { object-fit: cover; object-position: 50% 30%; }
 }
+
+
+/* =====================================================================
+   Desktop stays as designed; phones (≤ 720px) get their own wording and order
+   ===================================================================== */
+.only-m, .only-m-block { display: none !important; }
+@media (max-width: 720px) {
+  .only-d, .only-d-block { display: none !important; }
+  .only-m { display: inline !important; }
+  .only-m-block { display: grid !important; }
+  .m-hide { display: none !important; }
+
+  /* Home page order on phones: what we do → is it for me → who pays → how it starts → questions → contact */
+  main:has(> .hero) { display: flex; flex-direction: column; }
+  main > .hero ~ #leistungen { order: 1; }
+  main > .hero ~ #fuer-wen { order: 2; }
+  main > .hero ~ #kosten { order: 3; }
+  main > .hero ~ #ablauf { order: 4; }
+  main > .hero ~ #fragen { order: 5; }
+  main > .hero ~ #anfrage { order: 6; }
+  main > .hero ~ section { border-top: 1px solid var(--line); }
+  main > .hero ~ #leistungen, main > .hero ~ #anfrage { border-top: 0; }
+}
+
+/* Desktop: the phone-only photo in the Für wen points must not take a grid slot */
+@media (min-width: 721px) { .fit-criteria .fit-img { display: none; } }

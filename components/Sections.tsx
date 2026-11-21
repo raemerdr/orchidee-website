@@ -1,15 +1,16 @@
 import Image from "next/image";
 import { photos, site } from "@/lib/site";
 import FaqItem from "./FaqItem";
+import T from "./T";
 import { ArrowIcon, DuoHomeIcon, DuoNurseIcon, DuoPaperIcon, DuoTeamIcon, PhoneIcon } from "./Icons";
 
 // "Für wen wir da sind": headline on the left, a short fit check on the right.
 // Internally the focus is Pflegegrad 3–5, but the site must not say so: we qualify by need
 // (prescribed Behandlungspflege) and politely rule out household-only help instead.
 const criteria = [
-  [DuoPaperIcon, photos.behandlungspflege, "Ihr Arzt hat Pflege verordnet", "z. B. Insulin, Verbände, Kompressionsstrümpfe oder Medikamente"],
-  [DuoNurseIcon, photos.grundpflege, "Sie brauchen auch Hilfe im Alltag", "z. B. beim Waschen und Anziehen"],
-  [DuoHomeIcon, photos.steps, "Sie wohnen in Koblenz oder Umgebung", "Unsere Touren fahren in Koblenz und der näheren Umgebung"],
+  [DuoPaperIcon, photos.behandlungspflege, "Ärztlich verordnete Behandlungspflege", "z. B. Insulin, Wundversorgung, Kompression oder Medikamente", "Ihr Arzt hat Pflege verordnet", "z. B. Insulin, Verbände, Kompressionsstrümpfe oder Medikamente"],
+  [DuoNurseIcon, photos.grundpflege, "Hilfe beim Waschen und Anziehen", "Grundpflege im Alltag, zusätzlich zur medizinischen Pflege", "Sie brauchen auch Hilfe im Alltag", "z. B. beim Waschen und Anziehen"],
+  [DuoHomeIcon, photos.steps, "Wohnort in Koblenz oder Umgebung", "Unsere Touren fahren in Koblenz und der näheren Umgebung", "Sie wohnen in Koblenz oder Umgebung", "Unsere Touren fahren in Koblenz und der näheren Umgebung"],
 ] as const;
 
 export function ForWhom() {
@@ -18,7 +19,7 @@ export function ForWhom() {
       <div className="wrap fit-split">
         <div className="fit-intro">
           <span className="label">Für wen wir da sind</span>
-          <h2>Ist das das Richtige für Sie?</h2>
+          <h2><T d="Medizinische Pflege bei Ihnen zu Hause." m="Ist das das Richtige für Sie?" /></h2>
           <p className="lead">
             Damit wir Ihnen wirklich helfen können, konzentrieren wir uns auf Menschen, die zu Hause medizinisch versorgt werden müssen.
           </p>
@@ -41,11 +42,11 @@ export function ForWhom() {
           </div>
 
           <ul className="fit-criteria">
-            {criteria.map(([Icon, img, title, text]) => (
+            {criteria.map(([Icon, img, title, text, mTitle, mText]) => (
               <li key={title}>
                 <span className="fit-img"><Image src={img} alt="" fill sizes="(max-width: 720px) 100vw, 1px" quality={70} /></span>
                 <span className="fit-ic"><Icon /></span>
-                <div><strong>{title}</strong><span>{text}</span></div>
+                <div><strong><T d={title} m={mTitle} /></strong><span><T d={text} m={mText} /></span></div>
               </li>
             ))}
           </ul>
@@ -70,7 +71,7 @@ export function Services() {
         <div className="row-head">
           <div>
             <span className="label">Leistungen</span>
-            <h2>Was machen wir für Sie?</h2>
+            <h2><T d="Was unsere Pflegekräfte für Sie tun." m="Was machen wir für Sie?" /></h2>
           </div>
           <a className="btn btn-dark" href="/kontakt">Beratung anfragen</a>
         </div>
@@ -93,6 +94,15 @@ export function Services() {
 }
 
 const steps = [
+  ["Anrufen oder anfragen", "Telefonisch oder über das kurze Formular."],
+  ["Wir rufen zurück", "Wir klären, welche Pflege gebraucht wird."],
+  ["Gespräch zu Hause", "Wir lernen Sie und Ihre Situation kennen."],
+  ["Kosten klären", "Wir sprechen mit Kranken- und Pflegekasse."],
+  ["Pflege beginnt", "Ihr festes Team kommt zu Ihnen nach Hause."],
+];
+
+// Phones show a shorter three-step version.
+const stepsMobile = [
   ["Sie rufen uns an", "Oder Sie fordern einen Rückruf an."],
   ["Wir besuchen Sie zu Hause", "Wir lernen Sie kennen und klären die Kosten mit den Kassen."],
   ["Die Pflege beginnt", "Ihr festes Team kommt zu Ihnen nach Hause."],
@@ -107,18 +117,20 @@ export function Steps() {
         </div>
         <div>
           <span className="label">So läuft es ab</span>
-          <h2>Wie fängt es an?</h2>
-          <ol className="steps-list">
-            {steps.map(([title, text], i) => (
-              <li key={title}>
-                <span className="step-num" aria-hidden>{i + 1}</span>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <h2><T d="In fünf Schritten zur Pflege zu Hause." m="Wie fängt es an?" /></h2>
+          {[{ list: steps, cls: "only-d-block" }, { list: stepsMobile, cls: "only-m-block" }].map(({ list, cls }) => (
+            <ol className={`steps-list ${cls}`} key={cls}>
+              {list.map(([title, text], i) => (
+                <li key={title}>
+                  <span className="step-num" aria-hidden>{i + 1}</span>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          ))}
         </div>
       </div>
     </section>
@@ -169,16 +181,20 @@ const payers = [
   {
     Icon: DuoPaperIcon,
     who: "Krankenkasse",
-    title: "Medizinische Pflege",
-    text: "Was Ihr Arzt verordnet hat (Behandlungspflege), bezahlt in der Regel Ihre Krankenkasse.",
+    title: "Behandlungspflege",
+    mTitle: "Medizinische Pflege",
+    text: "Medizinische Pflege, die Ihr Arzt verordnet hat, übernimmt in der Regel Ihre Krankenkasse.",
+    mText: "Was Ihr Arzt verordnet hat (Behandlungspflege), bezahlt in der Regel Ihre Krankenkasse.",
     items: ["Insulin & Medikamente", "Wundversorgung", "Kompression", "Katheter & Sonde"],
     needs: "Ärztliche Verordnung",
   },
   {
     Icon: DuoNurseIcon,
     who: "Pflegekasse",
-    title: "Hilfe bei der Körperpflege",
-    text: "Hilfe beim Waschen und Anziehen (Grundpflege): Mit einem Pflegegrad zahlt die Pflegekasse dazu.",
+    title: "Grundpflege",
+    mTitle: "Hilfe bei der Körperpflege",
+    text: "Mit einem Pflegegrad beteiligt sich die Pflegekasse an der Hilfe beim Waschen, Anziehen und im Alltag.",
+    mText: "Hilfe beim Waschen und Anziehen (Grundpflege): Mit einem Pflegegrad zahlt die Pflegekasse dazu.",
     items: ["Waschen & Körperpflege", "An- und Ausziehen", "Mobilität im Alltag"],
     needs: "Pflegegrad",
   },
@@ -196,14 +212,14 @@ export function Costs() {
           <p className="lead">Den größten Teil tragen in der Regel die Kassen. Welche Kasse was übernimmt, hängt von der Art der Pflege ab.</p>
         </div>
         <div className="costs">
-          {payers.map(({ Icon, who, title, text, items, needs }) => (
+          {payers.map(({ Icon, who, title, mTitle, text, mText, items, needs }) => (
             <div className="cost" key={who}>
               <div className="cost-top">
                 <span className="fit-ic cost-ic"><Icon /></span>
                 <span className="who">{who}</span>
               </div>
-              <h3>{title}</h3>
-              <p>{text}</p>
+              <h3><T d={title} m={mTitle} /></h3>
+              <p><T d={text} m={mText} /></p>
               <ul className="cost-list">
                 {items.map((i) => <li key={i}>{i}</li>)}
               </ul>
@@ -238,17 +254,18 @@ const faqs = [
 const repeatedOnHome = ["Muss ich etwas bezahlen?", "Bieten Sie auch Haushaltshilfe an?"];
 
 export function Faq({ short = false }: { short?: boolean }) {
-  const list = short ? faqs.filter(([q]) => !repeatedOnHome.includes(q)) : faqs;
+  // On phones only: the home page hides the two questions its own sections already answer.
+  const hideOnPhone = (q: string) => short && repeatedOnHome.includes(q);
   return (
-    <section className="section-tight">
+    <section className="section-tight" id="fragen">
       <div className="wrap faq">
         <div>
-          <span className="label">Gut zu wissen</span>
-          <h2>Noch Fragen?</h2>
+          <span className="label"><T d="Häufige Fragen" m="Gut zu wissen" /></span>
+          <h2><T d="Gut zu wissen." m="Noch Fragen?" /></h2>
         </div>
         <div>
-          {list.map(([q, a], i) => (
-            <FaqItem key={q} q={q} a={a} defaultOpen={i === 0} />
+          {faqs.map(([q, a], i) => (
+            <FaqItem key={q} q={q} a={a} defaultOpen={i === 0} className={hideOnPhone(q) ? "m-hide" : undefined} />
           ))}
         </div>
       </div>
