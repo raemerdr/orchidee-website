@@ -1,0 +1,47 @@
+"use client";
+
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+
+// Gentle fade-up for content below the hero as it scrolls into view.
+// Content is fully visible without JS (the hiding class is only added here),
+// and nothing moves for visitors who ask for reduced motion.
+const TARGETS = [
+  "section:not(.hero) .label",
+  "section:not(.hero) h2",
+  "section:not(.hero) .lead",
+  ".fit-card", ".fit-photo", ".pg-head", ".fit-criteria li", ".fit-not", ".svc", ".step", ".steps-photo", ".why-photo", ".steps-list li", ".why-item", ".why-feature", ".cost", ".cost-cta", ".note",
+  ".faq-item", ".feature-photo", ".feature-grid li", ".feature-rows li", ".mini-steps li", ".job", ".career", ".call-box", ".form",
+  ".page-hero:not(.has-img) .label", ".page-hero:not(.has-img) h1", ".page-hero:not(.has-img) .lead", ".detail-card", ".role-card", ".cta-band", ".prose",
+].join(",");
+
+export default function Reveal() {
+  const pathname = usePathname();
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const els = Array.from(document.querySelectorAll<HTMLElement>(TARGETS));
+    els.forEach((el) => {
+      // Stagger siblings in grids (cards, steps) by their position.
+      const i = el.parentElement ? Array.from(el.parentElement.children).indexOf(el) : 0;
+      el.style.setProperty("--reveal-delay", `${Math.min(i, 5) * 70}ms`);
+      el.classList.add("reveal");
+    });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [pathname]);
+
+  return null;
+}

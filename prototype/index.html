@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ambulante Pflege in Koblenz | Pflegedienst Orchidee</title>
+<meta name="description" content="Ärztlich verordnete Behandlungspflege und Grundpflege zu Hause in Koblenz. Für Menschen mit Pflegegrad 3 bis 5. Rufen Sie an oder fordern Sie einen Rückruf an.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --magenta:#E5007D; --magenta-dark:#B80064; --magenta-soft:#FCE6F2;
+    --violet:#8A7BBF; --violet-soft:#EEEBF7;
+    --ink:#121316; --ink-2:#4A4D55; --line:#E4E5E8;
+    --bg:#F4F5F5; --card:#FFFFFF;
+    --radius:20px; --radius-lg:28px;
+    --max:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;font-size:18px;line-height:1.6;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;line-height:1.08;letter-spacing:-.02em}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  section{padding:112px 0}
+  .label{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--magenta-soft);color:var(--magenta-dark);padding:6px 14px;border-radius:99px;margin-bottom:20px}
+  h2{font-size:clamp(34px,4.4vw,56px);font-weight:600;max-width:16ch}
+  .lead{font-size:20px;color:var(--ink-2);max-width:56ch;margin-top:18px}
+  .btn{display:inline-flex;align-items:center;gap:10px;font:600 18px/1 Inter,sans-serif;text-decoration:none;border:0;cursor:pointer;padding:18px 26px;border-radius:99px;transition:background .2s,transform .2s}
+  .btn-primary{background:var(--magenta);color:#fff}
+  .btn-primary:hover{background:var(--magenta-dark)}
+  .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+  .btn-ghost:hover{background:rgba(255,255,255,.24)}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn svg{width:18px;height:18px}
+
+  /* ---------- Header (Vitalex-style floating pills) ---------- */
+  .header{position:fixed;inset:16px 16px auto 16px;z-index:50;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+  .header > *{pointer-events:auto}
+  .logo-pill{background:#fff;border-radius:99px;padding:10px 20px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+  .logo-pill img{height:34px;width:auto}
+  .nav-pill{display:flex;align-items:center;gap:6px;background:#fff;border-radius:99px;padding:6px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+  .nav-pill nav{display:flex;gap:2px;padding:0 8px}
+  .nav-pill nav a{font-size:16px;font-weight:500;text-decoration:none;padding:10px 14px;border-radius:99px}
+  .nav-pill nav a:hover{background:var(--bg)}
+  .nav-phone{display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px;text-decoration:none;padding:10px 16px;border-left:1px solid var(--line)}
+  .nav-phone svg{width:18px;height:18px;color:var(--magenta)}
+  .nav-pill .btn{padding:14px 22px;font-size:16px}
+
+  /* ---------- Hero (Vitalex layout, no slow intro animation) ---------- */
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:#fff;padding:140px 0 56px;overflow:hidden;background:#2a2430}
+  .hero-bg{position:absolute;inset:0;background:url("https://www.orchidee-pflegedienst.de/files/op/img/slider-1.jpg") center/cover no-repeat}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,12,18,.86) 0%,rgba(14,12,18,.62) 45%,rgba(14,12,18,.12) 100%),linear-gradient(0deg,rgba(14,12,18,.55),transparent 45%)}
+  .hero .wrap{position:relative;z-index:1;width:100%}
+  .kicker{font-size:18px;font-weight:500;display:flex;align-items:center;gap:8px;margin-bottom:22px;opacity:.95}
+  .kicker b{color:var(--magenta);font-size:22px}
+  .hero h1{font-size:clamp(46px,7.6vw,112px);font-weight:700;text-transform:none;max-width:12ch;letter-spacing:-.03em}
+  .hero h1 span{font-weight:400}
+  .hero h1 em{font-style:normal;color:var(--magenta)}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin:36px 0 48px}
+  .hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+  .hero-bottom p{max-width:40ch;font-size:19px;opacity:.92}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;max-width:440px}
+  .tags span{font-size:15px;font-weight:500;padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px)}
+  .hero-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:20px 22px;max-width:300px;display:flex;gap:14px;align-items:flex-start}
+  .hero-card .dot{flex:none;width:44px;height:44px;border-radius:50%;background:var(--magenta-soft);display:grid;place-items:center;color:var(--magenta)}
+  .hero-card strong{display:block;font-size:17px;line-height:1.3}
+  .hero-card small{font-size:15px;color:var(--ink-2)}
+
+  /* ---------- Für wen (qualifier) ---------- */
+  .fit{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:56px}
+  .fit-card{background:var(--card);border-radius:var(--radius-lg);padding:40px}
+  .fit-card h3{font-size:26px;font-weight:600;margin-bottom:22px}
+  .fit-card ul{list-style:none;display:grid;gap:14px}
+  .fit-card li{display:flex;gap:12px;align-items:flex-start}
+  .fit-card li i{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:15px;margin-top:2px}
+  .fit-yes li i{background:var(--magenta);color:#fff}
+  .fit-no{background:transparent;border:1.5px solid var(--line)}
+  .fit-no li i{background:var(--line);color:var(--ink-2)}
+  .fit-no p{margin-top:22px;color:var(--ink-2);font-size:17px}
+
+  /* ---------- Leistungen (Kead numbered photo cards) ---------- */
+  .row-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+  .svc{position:relative;border-radius:var(--radius-lg);overflow:hidden;min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;background:#3a3340 center/cover}
+  .svc::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,8,14,.88) 0%,rgba(10,8,14,.35) 55%,rgba(10,8,14,.05) 100%)}
+  .svc > *{position:relative}
+  .svc .num{position:absolute;top:20px;left:20px;background:#fff;color:var(--ink);font-size:14px;font-weight:600;padding:4px 12px;border-radius:99px}
+  .svc-body{padding:28px}
+  .svc h3{font-size:28px;font-weight:600;margin-bottom:10px}
+  .svc p{font-size:17px;opacity:.92}
+  .svc ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .svc li{font-size:14px;padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.16)}
+
+  /* ---------- Ablauf (Kead journey) ---------- */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:56px;counter-reset:s}
+  .step{background:var(--card);border-radius:var(--radius);padding:28px 24px;position:relative}
+  .step .when{display:inline-block;font-size:14px;font-weight:600;color:var(--magenta-dark);background:var(--magenta-soft);padding:4px 12px;border-radius:99px;margin-bottom:18px}
+  .step h3{font-size:21px;font-weight:600;margin-bottom:8px}
+  .step p{font-size:16px;color:var(--ink-2)}
+
+  /* ---------- Warum Orchidee ---------- */
+  .why{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .why-item{background:var(--card);border-radius:var(--radius);padding:28px}
+  .why-item .ic{width:48px;height:48px;border-radius:14px;background:var(--violet-soft);color:var(--violet);display:grid;place-items:center;margin-bottom:18px}
+  .why-item h3{font-size:21px;font-weight:600;margin-bottom:8px}
+  .why-item p{font-size:16px;color:var(--ink-2)}
+
+  /* ---------- Kosten ---------- */
+  .costs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:56px}
+  .cost{background:var(--card);border-radius:var(--radius-lg);padding:40px}
+  .cost .who{font-size:15px;font-weight:600;color:var(--violet);margin-bottom:12px}
+  .cost h3{font-size:28px;font-weight:600;margin-bottom:12px}
+  .cost p{color:var(--ink-2)}
+  .note{margin-top:20px;font-size:17px;color:var(--ink-2)}
+
+  /* ---------- FAQ ---------- */
+  .faq{display:grid;grid-template-columns:1fr 1.4fr;gap:64px}
+  details{background:var(--card);border-radius:var(--radius);padding:24px 28px;margin-bottom:12px}
+  summary{font-weight:600;font-size:19px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:26px;line-height:1;color:var(--magenta)}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:14px;color:var(--ink-2)}
+
+  /* ---------- Karriere band ---------- */
+  .career{background:var(--ink);color:#fff;border-radius:var(--radius-lg);padding:64px;display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+  .career .label{background:rgba(229,0,125,.18);color:#ff7cc0}
+  .career h2{color:#fff}
+  .career p{color:rgba(255,255,255,.75);margin-top:16px;max-width:48ch}
+  .roles{display:grid;gap:12px}
+  .role{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 24px;border-radius:var(--radius);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);text-decoration:none}
+  .role:hover{background:rgba(255,255,255,.12)}
+  .role strong{display:block;font-size:19px}
+  .role small{color:rgba(255,255,255,.65);font-size:15px}
+  .role .arrow{flex:none;width:44px;height:44px;border-radius:50%;background:var(--magenta);display:grid;place-items:center}
+
+  /* ---------- Anfrage ---------- */
+  .contact{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start}
+  .call-box{margin-top:32px;background:var(--card);border-radius:var(--radius-lg);padding:32px}
+  .call-box small{color:var(--ink-2);font-size:16px}
+  .call-box a.big{display:block;font-family:"Inter Tight";font-size:clamp(30px,3.4vw,42px);font-weight:700;text-decoration:none;color:var(--magenta);margin:6px 0}
+  form{background:var(--card);border-radius:var(--radius-lg);padding:40px;display:grid;gap:18px}
+  form h3{font-size:26px;font-weight:600}
+  .field{display:grid;gap:8px}
+  .field label,.field legend{font-size:16px;font-weight:600}
+  input,select,textarea{font:inherit;font-size:18px;padding:15px 18px;border:1.5px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);width:100%}
+  input:focus,select:focus,textarea:focus{outline:3px solid var(--magenta-soft);border-color:var(--magenta)}
+  fieldset{border:0;display:grid;gap:8px}
+  .choice{display:flex;gap:10px;flex-wrap:wrap}
+  .choice label{display:flex;align-items:center;gap:8px;font-weight:500;padding:12px 18px;border:1.5px solid var(--line);border-radius:99px;cursor:pointer}
+  .choice input{width:auto;accent-color:var(--magenta)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .small{font-size:14px;color:var(--ink-2)}
+  form .btn{justify-content:center}
+
+  /* ---------- Footer ---------- */
+  footer{padding:64px 0 120px;border-top:1px solid var(--line)}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  .foot img{height:44px;width:auto;margin-bottom:16px}
+  .foot h4{font-size:15px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-2);margin-bottom:14px}
+  .foot p,.foot a{font-size:16px;color:var(--ink-2);text-decoration:none;display:block;line-height:1.9}
+  .foot a:hover{color:var(--magenta)}
+  .fine{margin-top:40px;font-size:14px;color:var(--ink-2)}
+
+  /* ---------- Mobile sticky call bar ---------- */
+  .sticky{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;gap:8px;background:#fff;padding:8px;border-radius:99px;box-shadow:0 8px 32px rgba(0,0,0,.18)}
+  .sticky a{flex:1;justify-content:center;padding:16px 12px;font-size:17px}
+  .sticky .call{background:var(--bg);color:var(--ink)}
+
+  .proto-note{position:fixed;left:16px;bottom:16px;z-index:70;font-size:12px;background:var(--ink);color:#fff;padding:6px 12px;border-radius:99px;opacity:.8}
+
+  @media (max-width:1080px){
+    .nav-pill nav{display:none}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .services{grid-template-columns:1fr 1fr}
+    .why,.faq,.contact,.career{grid-template-columns:1fr;gap:40px}
+  }
+  @media (max-width:720px){
+    body{font-size:18px}
+    section{padding:80px 0}
+    .wrap{padding:0 16px}
+    .header{inset:12px 12px auto 12px}
+    .logo-pill{padding:8px 14px}.logo-pill img{height:28px}
+    .nav-phone,.nav-pill .btn-primary{display:none}
+    .nav-pill{padding:0;background:transparent;box-shadow:none}
+    .hero{padding:120px 0 120px}
+    .hero-card{display:none}
+    .fit,.services,.costs,.why-grid,.two{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .svc{min-height:420px}
+    .fit-card,.cost,form{padding:28px 22px}
+    .career{padding:36px 22px}
+    .sticky{display:flex}
+    .proto-note{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- Header: floating pills (Vitalex), phone + callback always visible -->
+<header class="header">
+  <a href="#top" class="logo-pill" aria-label="Pflegedienst Orchidee – Startseite">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYYAAABYCAYAAADxw1AOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyVpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDAzRDNFMDMwMjBGMTFFQTk2RTJDOEY0NjY5QjhGMDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDAzRDNFMDQwMjBGMTFFQTk2RTJDOEY0NjY5QjhGMDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMDNEM0UwMTAyMEYxMUVBOTZFMkM4RjQ2NjlCOEYwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMDNEM0UwMjAyMEYxMUVBOTZFMkM4RjQ2NjlCOEYwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuAezs4AACs3SURBVHja7F0JuFbT+l9ySimpe4l0XYnKFCpR4ipdNCCFjFEZQhGSoX9ljq4pU2aKuJShqMw0EJmHykySMlzRIA3K//fre3dnnX3W2tO3v3O+75z1Ps96vnP2sPbaa6/1zsNGqsBgoRrWBj9d0Vqh1UP7E+0LtKlo47ZRV/xPOXDgwIGDxLBRARGExvi5B+2AgMtWoF2NNgIEYq37vA4cOHBQQQkDiEIrkQg2jXjLC2jdQBxWuE/swIEDBxWMMIAo1MDPB2hNYt76KlpHEIfV7jM7cODAQXQoymOCQKLVFO3SBESB0B7tZrQz3Wd24MCBgwKWGEAQuuOnL9o+aJun0GU7SA3T3Kd24MCBgwIkDCAKp+Hn7pS7fQ+tFYjDOve5HThw4CAcquQRUaiJn//koOsWaAe7T+3AgQMHBUYYAF3Q6uSo714BBGlPtNfQjnPLwYEDBw7yizC0zGHfhwPx2wztVF+1RTtPCEUNtM3d0nDgwIEjDOUPufSQosvrHpZzk+X3exAEejItQpuPv//mlocDBw4qI+STu+r7Oe5/N7R3vX+A+I/Bz9EqEyOxO9o8tIdVxhNqdZ4RzZzCkAET9sbPLgGXLEP7kXN01c1HLIjZd0f8bJ1gWMvxrMd9ff0TPwfKvx/g/AcJ31fvJwnMxbPfymK+t8FPazRG828la20N2ncqk95lJvpfksPvGQav4PnzDf0ehZ9aAfcxPc1ytJ/QuE4WoJ91Wa7NHfGzn/w7H/29YriGYzoqi8f8gH6fM/TLOdxbOzQD132Vxbvo6+4t9DU3wj3VVSbbAzUq9WSdEFe9hPs/y9H3n5hPhOExtH6yYZIC02BsbDnnlwBuRdsS7Qi0m7dRVywDsfg/fjC0SZUs59LxaAMiLu7fuEHQnuY3w+JcFnLLxSo4jYkNvkV73HeMjgQPyN+XC1FPAno/SeBmWSdxkMIW+DkF7QS0ZiGXr8P1b+D3QbRHMMfLc/U9LdCNSNhw/Hq07WL0swLv8aHKBJtOwnu8kWAs+2nfaiKJluGaLbL8nnRnf85wnE4rN2n/f4j32QfvsSqFdUfV9dyA9UJnnMEqE4dV13LNJOJMAxHP9vvvkTdcMRAxKeFBaI9m0c2EgHN+u8EglUmdQalhBxAFLq62wnmcKAF2DkoDHQQOU5m8Vd9hcV6OVsNNi3WD10IbLlzetRGIghIJgmvxLrSvcf8AtKICfH2msGkjCG4m3uETtF4F+i7rESbaFWWwZvYUojFYIwqL0T5B0yXJQ6kFIbGqyKokEgdyRscBKZOC34JW1cZRWVQ9D6HtLyKXH37zPWsMfsbgWaTIT6qMrWGhfHy2e9E+rYS47FLhFjn3NbXjmwln1lw2e5EQ22FoXbE4Dwbn8lNI35QIo+avWl5G7/tfYRBiqZIibnCqDbjO/uE79SbayyqjPuVcL0WrjbatcJUdVbEzBqXakWi90d9JmOOPYo51RIJ1/F7Ieaq8qH6tLk1fI1Vl/zVEI4JrpzIZDAg7CcfcH+9yIt4lF/vrfcEdsVRJMa4dhLFPxtin54goUM34ouw1wkciXbyKZ/6F8xsLQbgRrZFc97xIMp5q6RK0ywIkca612YIrTbAsLyk3kPadQNifiLqitgV5tRQ1kA4/oz2hzGkwbLrBk+V3lUgR1JPWCri+osPTYbp7LMK/4+dstAtVsWH/cRw/gIs34FaqRX7Ls/elrnd0Djb4BSoTl+NJnivRRqHdhud9Y7ntbWFShuD+XfF7EaVX6YNz/AaOH2bSswfAc7h+asqvty7Od8SYdxPVRm+VUfVy787C8SPQz6spj21+Lr6nSHwN5Vs8iLHvjucszcFzhmlEgXNzKJ6zgZnC31SXT8Tzpwl+3F8YtLFCHPht/sD/f1i+hbc/1wZ9wyohH3QjtOZojcqBOPDFD7a84EloR6Kdb/h4poXGySih39RcUklZ7yRRwDOXoJ2FdpKotnIpLlZDa4NWr9AoBxbUL2icN+p/PRvD/gZCXVnVR2RcrtOIAtfkLpizgQFEwT/Hc9C4zveVde2pZiah/5YFtl5mo9EtfC+VMa4rYfgmi6G0EID46H75e7sEUklU6OYhbjKtOlHwzelvggN/kUOc2+5pDaKKzgWSy0HrrJ0/Q8TKL3H8vHIgDrPwc7rhFL05DsV5Gob6y7EF+H+hiEh+mKobk0EUuBi7yjOeQzsT7esyRBzUG76DNpNiPv7f1DuONhDt8ALZ8O/5RNYTHFGY0N03J0zxclBUgmCYY6qd9tbWNSW0p2QNFRpDQUmUtpM52rs8KYb5QoDzRI22XtMg3zrNtcP58BjFdzFf34XMJzUkIw1EJR3CgAFtIlzNdULFj5Xzh8gvOZ8RaUoOQM77oFFlNBXtZbQH0c5D29VHHMaKyOSHAXL+dvn7Njlu0nPfqD23mWzW8ZZxVUM7FO0WGdeXaPPQPpOx3orWA612Fq8/VBUbIbnBW2BuqZudojKeHxQVTyuQzUIuynNJ3LeSEwUa5u/RDnHdniHifzYIlQiAjhk/yiHaIoYX4hzJu3TVJM0GKmOUL4SxU3V0qk708c3rp/gI3Ynj84j30MV+ibTUAnM9iaG/KuktcZP4zzbWjlUVFU4aRGGQqHaYRZWujDTS9RQEPhvnPxci4XFFlxi6aY/zjYQ43II2QhPBdHgW5ybJcxvi5yW0O3DsD9+YNpFxUWx/RmV06BzXDiI6NpGxcq7oWvsjrr8brUFM5EG7Tm+DBERuW3fVvR7Xbl4Am4UirWePqS9MRmUF2gQ8t2iK+H1CbC5x5vkHkRzaS6NKqSA95yQW4GLtUB+8S5MCGTsdFUbJv7S13ZfWd0Dfi7V/60a85xu0OtIOTes9PeOznztlQFIHVTp30QFJHyTuoNRDMyfSKSGXNxYicRnuY6nOm0Wiaa9dw4/RS2WMNTroiGm+h4TFpjBJjo/xjY3In0a/3WO8UnWZt2Nxf08QmokR79vDMK+eC6gOlEjoSntvAewXvRhSNZUx5Fc2aaGabx/dTltMykhpvjLHFxQiUGo/XxivjYThOqeAGACq3MlodlIZlfsdKfVNzyJ6cbWmB1K20mZiiUE4vKaGczRm1PQd21vcpeIShZrywk9GIAp+5EhJgC5bJhtAD8MxT19JrqQDEPaPEpPwCBrVVLfi2EptbDuK9LJ7wjmki954sVtEgTaGYyRaJoNihwJAiEWyQdYTiAgBbxUVOggH6cFo5SCIyP0pDJ8HRxWKBCQBh2Q4/9Kk+7Qknlc0aeSs8nrHIgPy98DkLUMj6TaYhH+pjD8yjcNn0usg5DkdVenI4zjQRJmruDWlzQCI/mPt2JZCBPrj+K8e/hIKv0Zp9R5wL91SJ8s92UBVES/38iFNLnSqpwaqjE51V1VSPefBX8rsltusAPZJB20NfaMqL+hE/KOkxuZKBuOFOHCf1Jc9/lmBEIep2N/0TBogeJHuovsKwcsGiEfocEMGfCT6JL64Bv0uKlOJwad60YGbfaXhOPN9nCDIkO6KL0iukiDYJYfv0MX3/+sgCCd4RAHIv50q9hKZgOO6cfoqlaxsqAlaimFbh74i8dQTkbmtzJ+JQJugQT5vDpEeL9MOTanESK6F9vd05SAKcv3BRwj2KLBXYGTyl/J3K2FAs50TMtn9hFkkfqatcx72GmMnDi+rLANFAUiJKhIaFrfyHd9aOF8PSOkZJHZ7wHMa5/AdKI1s8GrQ4w/Ec2i0Kjay36ud2zYHohqRgy69DPKd39Uwn0rZ40nq5OuOEBUSv7lnMF+rwu0hm+O+qI9YbfPhThmOlxQEceBaQ9SuvsZn59GnuphpKGIip15lOD66ru4kf2+fxh7E+46Oec8jYlSOi8SZC4q4b4bsYQYmTskmwaL0exf6oSr8PmEkab/qKY3PZNQ8HWTG5ypgtEgV68lM50wPrW1AbgfYCIPUQTgwhwuLbq9FIAgmEe4GVZz0i9zJy9q5M5Q95UZSqKshTn7QRgaiavI0WplHiGQbSZTnB0qWNdbT3ozK7GTf+10dIVvkvBjjoINAWSCoVtLiABGPnzDoqtcf8+h7HpLgnrIkDAt9WopsYVtVnM0gKjC+4oUkD8OaZw4oOspcIOofqpT2zJapwf0voZ+dVcYgP0AVZyim2uowaTfjGgbnDsf1qSb9DEqJsbmFMDQwqJ+CdOGX51glUl2e/76PIHGz6z7Hj4F46Bb+Y3z9kEDS7/xRkYJIVOIaw/QQ+d0M57ewLH4bYSgPgjE5wT23KXtuFgelJa39UuyS6cnfKeAp0dNyF2oyRsYlHSqST2PBHWemoFYicbkWa4axTYxj6SbPqa/NF4PuTsE1Z+P6B9MkDDZjySbKnFyquuHY1hZpgTr2wTHHRCMt8yQxEOZ/IqJtIYh2W8s9pQiD0oLaBB7XxtVQZXT+HjA1cB8Qjvdwjl5TIxIQBT9HvI1lTk32GJt7Z767fVK/eom/bkIAcC38EfHauWX0Dleq4lQHUcG0LxZr+yDI5sZzaeYHol2nS8B5lqx9M4/XkD5XaSROZAK602PeszhLBL4SiLmnzDOlhjPw/zM4norNTQzaz7KhX+JDOv/0FeZ2I9HijMG5Nbj2v2kRBpufLEXjWSEf0oM6BqLAtA6jEoyJohI5oKuAqBf5+iQyp5tYf59KpqHvuoN9XBn7mamrn7S/GTl4GgPecB+N0f+XcC4pcehZKTezIPo4iQvLI+HcMz4uTglxri0S0S+iRqGBdVbMQix35GESvcUY07wU+vlCIwzbl+H4PwkjYim9X66gkUWtlBRWlMf7UmoDYh6hMcIMfGuWtopH9ttUNvTPmjLjNSb0ViFIWRPYogCulKmCTdW6NraIyNUwoNWCmPmxH1TJqqCxfxqFe0twG6Oal2VY8CtokBmC4xTVrtU4Az937hfjnsC9OgLzjF3MM3I+zv2FPg/LgigQPkU/OtKz2RL8qqQ/lb240HflsFGHJa2MVsmBTIGXxjgoyR03bXvD8aoquo6dSfo8g/kbhTph4tWmz9VnBb4GrhBVz+7CJLCexpE5JEa0b1BqmCGHGPvAdEZZB8UWKbseu5rleF1RB9QwcPpeBOwNKvu8HeyfHPxgIO1x+L0HiHemEAi6ovbFcYpqj+jqLTF2d/T19ZjvfwbLHYx+XtSO0aNoshDERhaOPwiYUqOW1JQIeqciA/JvnEeEwUEyYKoVr2pWewaOmip9iVpgahbIlOpIL3J/XTZ95QEcqIrjd4g73i7kBcDvLV5Kb8s+706PsBylAfee+RqeQTV6czl0UBqEoYpw+asC1CN+ICW0FrYQN9CuKb47CU4vIm30XcK7SdJQ0HKvT3wDVdIOQj346777HvIRBR67HI0ZW/cU4tdWxYtebaRKVncyqYxMEtS72kf1wzzloFCA68mTGGsL55gL6K4h01fTTrtRxtBf+3uK1BEoaBBp+2rt0C1A3A1z/NiZPvyXNXiIylZJqYFBncRjP1sQOIEZNtMIbSc39JwsHqab2BJIu1SBEhybj6ZzTX7D02CqiqI8EISnqngzMedNb5Ei4ujQ9SSDJluMSWX0ToDqYa5yUDDcoiqZL+fCtFM8SHDT5dqhewpYjUQ3Wj29/G0VaDlcLQyfEs3Dg2I0DpsTBrItYTGdmDU3loQwpIkJg61c4L9VxhquA1UtpupmnuppqxTGRYNKEyD0TpJWmwjyH8xkGlSLGecYxax7QU3H/eMDrq+F1gntejQGpVAN9JZscLq67q7i2UnC4iJMktnvAfd97FBuQQHdCr00LGRm+qXcP+uPeGpHGp2fKFCiwNgi3bXyJRDWlysQk7BGtByeap22p0ERbv1Wkwb3j/FIPXtDKurnMMLQzICcyAkHia/ZBvdcCWTO5HgLpUbDckHY34j08rvUcTCllqDt4GH5m1LCAAtBaIX2nIj+tFMwl1ErZberRIXvDIRSB79rMI1tO1n6+lOFe5w4yC+EsFjW0gZEDiR4dErIlBk9+2qHzk0hL095EAUiMUr+XkDgYlU6u3NFWAuzfdId1cxhKT/0ILteUSROXEMNju6u/GKahCEohHtzjQvywFT20hNhZmUxHhp/RwNp07JOgwp9g/2eGjVkg3yB60aibSiUwehnNNbIpbtgF/z9ASUMg5TBXPCHKLs3UFKYqv29qYFo1DdIRrYqUO97Xl4OCgohMLnkaG1PjMPmZTK0RFG9DIhDY1EevZjNf5KkcMgDotBd8IPnokqbQvc8d6fNBkZo+JCMYpjXI4uSeaprEpH+IfO5iTDCniMQGd3H0iQM1HPb4hmIaMcZ1B8mAkLkzI+cNKCGlI9qKgZp+FOB++0g1UQiONHfCceA9qy2Oe9hZTbtEqbDSDufDRf5HQESA41SO/qOLTYQCw/eVA4KFci4PKP9z3X6OTZyv6gEgq6caF0EseiFqsYoc+GqfCYIzF/ErAJUfdXZILgr1QFEYVoFZhLWikrJUyFXDbmeqiQ92HKklPqtYphTMr9Uv+k1ci5DH0vSGHuRDIiJmd5T5pwxRND+QDWqaWiA1tNV67limEq3dYpzTN3tJga1CwPX7tFURFX1JHpCJNbgOPWyk/B7FP5fivazeDjNMBCgD4TqkhDNkffcVBA99X/0gmIyPKrZGI3dUGWM5EPR7xzLfBDoOaCnZuZHbR/wzq87/BoIHaWUZlR4xJLcrFsCr5Fp6OupgA2+Gn3Sf/06VazOZKwNDaxX4RwR5DRZa8z2u1LWViNZV/uKRKunqicnyfiFq2NWheuP5x0R8/3uwzOC7FubBvTJsf0i+2JnYfb8KhRGyp8lZT7ThmaU0GLe8yXGkhPjN5MtYjy0e94Q8RbmXGJkcxNh3In7TkcfjwpO4prYXzQNOqEhDrolrXHrFuyXlD2Z2MGCqNrK/0TQr6mSxad1nT8ljN5yXzZAFVYf4apHGTj0Hr6gsrFA+DfhmJ/bJqKnEftFnGfxnuVCHI4UlZU+wVzEC+T4l+LRpD+jhD0GfVTxBc954Ec23/rUS5zv4QGbq8IY43IE+6iSEexhQCRsIgz/khYXngpBCGRQzsWGflKQglerg8TsFBWvYBXXc3/0+W6CcSYJsJqqgh0ftgx7fwtQ+hmWYzVYI2WxLQYRepVbr6iRgitDc2SR48ea6SD4wWNaSSSGBdzGa49Mq4ysrkoivBCi4tFLV5Iw+PO97Kxx6USULIxzvkqe72eqIOkWBqJAVRZjDl4zLAoTsn1YCAk9RZ701ErC4d/tu5b2iEOFArP2dN8gTygTUZAyjw1949Urm82V+bL1+27aofQOyk2dMB2tlXB5ZE6iFvChmvEhtANxf5uERCEf4AtBuixi07oQbSMprIF1wuD+EfH6BYKruF7WBFxKSZO2p05pp6jXJYYZBvWQDlQNMfy+jVCwZ3yiy24+hEn92k1AqjMFMe8QcUwcA43DTNw/RpUOFKLn0dFMeGe4l2JWC6bkwPmvtbEskehpRiUeJOM+Q06To7O5FdImwLS2HXF/H60iXBiwMJFu2J6kSuaEYbT2ZUm50RwAVR6j5e+00xLQ7deL6ci27CeZkeYJ752fUj/eGo2LHF4TKZuMw1bCGJB52ELmZ51IyIuEcfgsi3q/+vdMAjbiRWavmrRNLddUEwmcNoSv8A5Ls/zmT2vfyqY/X5jl97RlK3hYFTuUZJto7wt8d6qgvYwQ34dcz3nrL44HVBvtqzLqyGqylqnBGS/FjuLA/oKbAonURj5Ol9zzaSH6r+vl7x0EwXniPF+kjkmckTQVVC0xxUU9S9+/C2dxjRAZfpTtDCJfNxuCxnN+k4l/Ctd0x/8be6m28fc+qqRBl1XeHsFxxmVE8f2dR3HNQpD8EsNpPknkKJUJ/2cOqOmyyIL0vjsbCsE4cODAQZmA39r9ZMj1PYSD9tRJeorX2srikz9qQIstgFDvEYQ/wSAOjRDuid4WfQV5+okCJZrOAURhY40ad8P/5CC2xy9TaTTGfdRv6j6+o3B8a6HcUeIFOL4puOdvgvw3QasbIF0pjUueIhziKpmzIKIw2xEFBw4c5BNhoBEjKEBtb0Gic4UIjFYlXVcPMHDPNOwtwO/9IBCrgKBphGHQzwsiHVDtc7FIHOOESFQxqAGOwHUrNEJQS35P1dRIOgzA9cyTRB/fd3Edo7h1+wOJyAgxLocZq5aKBLAXrl+Md2kn8zDZEuquGzMfkBwwNCQxSKl/yLMedsvSgQMHeUMYJJJyTMg9jOCjqqSW+Mzq1nxTGDelAHLzVCV9CER6EJDr42iHoDGP0SIx7o4VlYsJehMha0ThEOlvff/4/1wDYeghxIOZBpmvhLrKX1XJQu09cc0uklDvLt/98+Td+Kx6uKYvCBs9BuhhwshN+hHT3nKgjxBSCvHiFWg4ugHHaos0xt9dA+Z2bYT5d+DAgYOcginhEgMsLgy4h5w2w/6Plf+vE/VPHZPEoDRvJVHHvABE+aYgwIkgLoukHkIfQZ6sOMW02V6A2GQ9eZ5EOo/Vxkhke4Mq7R5KSaGTygTV0NjMXOUsrn2eRhxIkO5Cn8xpfq08l/7CjzJqWhA9iWebIWoCidZJBgK0q0haHrTT/r4N7zdf8s7TsyqszsGznA+3LO0gTATXFNV1dILw6miTqNLGtEAk2tfxDb9P0D/XUa+AS/4SBsNrfMbneNbvKb8jbWJ0vNhX3pPrl1mDqXr9VCRWGtEn+QtahfTdy7BXRvrcvsP64Dgu9h3+AX3cGXIN4VpctzJkPH5YIZqJxTLfdCNfmMX8cs2ckcKnYiDtaK3fjiqd+K0JHv7JG8IAxPQZENk0C5L3gFbyE6hKYtpfXD9MkG8D/N0Ix77WrjW5W7WWdgeuZ9T1JGDNJ3HfeqSMCaZn1Cny8UZoE7+xEAV6ctTA//Xkb2VRB3VkEj1c9zz+Pl5lsphWF5VVD7mGG48Ry0xQtj2JFMZUC4TgaNmYXWRT2mC1RY30sypOw10k4w7LxXSXQ/3Wzcx07v2Fcdg24j10FGCytvtC6mQoH/NyaczhrcOzGElPyXNs0k0tThonC+O1s+Uyrt89pXEu1uI+er0Nx3PfivCYXoa9PVrFqxZY3TBHLI97Z8g164mQKlkDplcIrrHNFYkEPXOokqYGIo53ztYJvrEJpqmS3l8dVfwYCiPBicBElp0qSYPrI9x7u7hfKeGG39YQrQ5hhcoZ+HMZ2kfoj1GCQ0cNaFEdH5ocPO0PM7Rrb9BUN0TAZ4f07am2dKTQWT7eTyK1NMUzuuKZ09EOwfMfE6Q+TiSEv4c8w19cxHv/AVoZS85ni5B+6CY62ZGAUghgczRG0n8tUuK2MW5vIYjoW/TRTxiLXO2j3QWhvy8ODzvEfE8GNZG43BtAFEzAd2L9k1no4zFmIK4kS4OSO6susrzlArz341QLux2TW8JAL5rPQ+6lH/OjzP2i5QRZYSAMj8YYT1Phsr9lxCgQdRufiK/bIKj+GRzS344i0uo+uw2Fu+BvLzzjBzyLhII5mp4VSaJ6xPFyjjYEHlHSUJmUBo97RbklNUL/CH3dmGbkYgUhCpQqGYF7jsouzzyRCO1FU8U9OddA5uMdPKtdhHesxmSQqmSka1Lg2p2N/rpUsqVC4sh99jHe/TrZ8w7SJgwSqXdNhPvpfvoIdei4h3rdE1Vx6L8HDIT7KOa4qGOl9xLL1r2C1lqS8+0iHEIYYdP72aHEPpQoahAEIu0LRGwbqcL1nCa4xofMW4uE1EeIQgtVMu+8DagjfsgtxxIIkxt9egQJ4SdZX3MiqEOYkuAtcWXONdDmNhHP2i1IGlKZCPso6ofFoq5hJPHqkOc+jb5PqKT4jHv6ZVFHO0gIQVzYWOHIG4f0wSpMtANcwMRiQIaLaLAV4rKeyOB/2gpmqGRprplo7g2qeEZl1DPn4KO/JGqgKEnUPBsEN+DxjINAXxwzw82z4R6nqdIeRERS/8YYl0me9EnKHiGqwxUVoaxhikSBqpFxAYSfRlc6ErzAnFe+e8kIkGM+U5njaui8wJxZ7XFv1EJIlP7Okr8Z1VtTvmsDUSExJ1gHw/qmYwRtZi3xrFW+cTIp5FPKnkjxL5Hc6b78qq5DZ7JIlclrRhtDb1U6NT3njbVMaBAuxJxbZNK8KGc6kWwic1tPzjFVDt3PbVXOqLV4Ce//L2Y9iPjMtyIywzpESVszVMXP5PxeeX+AwEIQQG7HqpJBbEFwdlCGQvRFb6AbsxwvvUBOw3OewEenyuZ5ZU9b7UFXQdhvQ0qoIQilR5bjoGfE3hjHQsu7khOcqjIGwjCgxNLU1V7YgPSIaN9UxTnmdaDq7nRs9mkR+uHa7ilrzmQnYrR7C/T1P9997VTpPGBjqHYMeR4lG+bb72s4fR7uH+m7PijLAFWa5+KezyO8J5ElHSeOtyAuvuN32vVcl35j7/YikUf9RnVU6RotH0q99KBrCHV1DyjLeOpG8ZLCvXQLv0gk9CqWeeziL+2L+zjO933XTsR1R2S5dkcapL/2vtLDhatK0uAxFb0uAIteW8VXIL6bElDkUosK7XF6QQm3196y+HRYwmyrIArcuG+kQBRIDA4JIAqbivpsz4j9XeiIwoaNRd3weAtRoNtxyyhEgUBkgEY1XjPLGuZ6uD+tsRP5op2hiuNrSjBNvvfsbCEK9OA7C/10jkIU5Lk/oXHfDbNIy7dX1PXCAFY0zuOBFu69k4VQO8iGMIj+vJ+ItVGkjwdETWPrj6qpi1MY9+VMLoVFQU8eus6us1z3pqihKPIzgdluWT6XycUOwHvMsRAFuqMy13zUeq0vo6/xbhluAHLcTQzHmZPrmBgupzryWCRqHhPXdhiQ9GEpI6vRBkLUCM/ZWYhCkXD4fqCqiTXO70j43CtFGja9Y+eKvGiEWWByzJWG08PFluMgRYmByJz6rlER+6Pu87EQ4kB7BDmcbHXql+A5J4mYNsJwnjmKjqWRWWVShmfrxkdpg6mDvwwhCp0i9kdE0N8twQ1cNLnb8wyn+H1P9pIhJkQc9JajmuArw+krgtKqJ4TphmOeK+XRFuJ3Rgr2AM6fKSHk9Tl01c0X4kC//0EWLYOTGtImDAIXq+h55KuLuieIOJADbG7ZQHGAsRRMZ325YdNfisXC4jjkpFpm8QwilSFo/7KluNWIQhzuc6hLllcCqCeuaZh7Ev8/U0AcSywIgiq/1im/y0+GY5t5BMBw7kU9gjaLd1wm79JcWntpA7XnV2SwZRfo47ZXDggDEBhF+JMDVDYmyYHE4fiAPplvnkYnGoeT1gBg3MBI8fjQ03iQSNwqAXgDE/a9TkTzxhjn1ZJHykQUKKY+HZMosEbFjW75lYDjDMfu0A2nKSDOl0Xy80OPlN/FlFp+qaRiMKkZh6f4jgvJPUubKu3ZOCkvClhq4J79j+FUU8x9U7fF0pcYiMjpbhonjJzE4WEgzuuYojqgXyLVZiIGJjHCHial8Oj6N1eODRMuk4skiQhN9VlLjO1Um5FZiMIegmgOidE36+Eek0URlgoH2LR1ldlYPzoHjzNlr22X8jP2MBxjbiPqwf1qK2YznuZWQWrAfGumvFVt3NREh7jRpFerjI9wpxj3MOCEqSb6CXExEQd6Y1yPayj2JjGUDSU3CARDryeqjmjnaJWwr/Vjxpg+CCAINURCoTG9Wox+ydEcL6X7HBRDM8OxX/FNZ+fgWaY1uBuNwmmorFg9UGWM3TpQ4mZgmqlS4Ey/O2U5wDcLA0sKF5TUsArvMt2Ao3YNuXUf3Dch5uOYg+uZMJ4a/cYt03tCmkkZc04Y6KUEpEiR//UIE+3f+NNxL43AN6GfaQZke34WiPwA3N9W3fwe02/QPXXtEDXhkizm5V5KIRjnPN8YqTbqLcQuiTH7/MpY8zYCmKJU5+foWV9Y9gHVPFkRbBaEEsnVv6+mkOjg/HaG275ynz91+MRAGP4Zcg+/f9eYz5ka4Zq2CcZftdAkBhIH1iToIiqU+jFv58R3xf307GH0Mn9ryUfcJ8t3YUAQPT6eQf+slZBNsAq5vtnoh9G3VE8xNoEG7H+raJHMJrgFc3ez27NGMM3pJjniKP+wcMdbBBCGahKwtdJLGS2V/OrJHqAarJ0wNqY95Xn1mfbL7+7zpw4mDr2mm5YcEgYhDkxyR736K6o45UQc2FEVF7NJC7phTP9k/QOVcQPN1gWxpjIHKyUB5kE61y03KywzHKuXiwdJOom4QFdTehpVTaBymaAF5ZniMGq5z586mFzhq7lpiQ5Vkt4IBMzIY1vEYXkAjcxnSYbTU/Nojuma29tlTg0Ek3vn3yTdQ9qwleX4qoB7aG+6MMGzGAh5ivb/CqMQU/5A1cuHMdrsPF9PmznJrBwkBp04ABEzYyXVQv/Ig/c5XWW8fmrnyfwyd9Q5jiiEgi39Az1JJqb8rO0tx8OqvVENSPfqqCpKJm3sqZekVZmaEn7YKQ/mv3MKuZLyCZoYhx0MTFgYNyNtlCBdurG/FrPfJeU9gUXZdiAV3xhUQ+t883J+H7o9Ds+DhUlCMBhzc63D+eHARHZANjTC+ovbdMkBYTC5LbK87NKQMXrlZ2lPaGi5jLECrOJ2p16OVgMTp707+t1MgtMcZAkSxb5fDObDgzU5ivVYXogxJFXS6AQI8Hv5GPmQ96eonJ9PPXI3RxRiw3OGY8dho6ct/ZmC2WZEJGDkklkgao0F6W+Fa3pYiALBFOlPFeih7vOnBvtZCPdMNzVlTBiEOKxA46ZjJsnKmi2U+tcWmIeJbmnFBlOhItqLhqbITdpy+D8VQ7ph3n6TvWG3MGkV99LD7RPDqbNTfMciusWy4iHaTkwxzcJEXhK/SiAtXG6SCJVWadFBGRIGjUBQr07X0zmVaB6pOmJd59Z4/y/csooPQJqzlFkXe34a2UHFvfQuwykW+olLyGlvMAVDDZQiQ0FgGkMb3NcrpalkdtZ5KpPbjESIdQcYyV+/Eiwjev6ZCh89IOkyHJQXYRDi8IFwZoyU/rOCzyE3HxPsDUJb6ZZUVnCRKp3inWuUhd7bJu10ITOkZHT/jQynRzC2ISYR4xj7CAL2w2g8b/uA2+8WDtYPt+O+A7Mkfkx2afLIGxug3qoo0sLJwpz5gbabm9zWygPCIMRhFRqzktJYN7UCzh3d3/h+zfGer7mllIrUQD3wrYZTTEHyotSBjoswmJ+I6p8WhtNU/d2ScKw2ewM9dsZJ6U7TfSRCZxlOMcjvWdw3MG4acNphpCLcNcbTKaqq8pAgMPiQBGG0BZ8N9lfpc1COhEEjEHPQKN5RxP68AswZuUU96+oqt4xSBSZTnGkhDpQc7pbaDWEIYxc0ViBkChJT+hIi9qOBNNZkQchs9oa90G4IuG+ChQBWE673ddpDwggEztdHI3NCN1hbRbhjK2JmVdaXQGORro+UPYMynWFud1sqPpSZBw+zqA4ZMIG+wizSzuRzWxfgfNFz5iK8y0du6eRMalgtNoVXLFw+EeDxuGasyuj532N5S/zPwDWmVm4rTEhQihX6ibNaWhr2IFt8Qz8mc8MzxlnuY1Ed1qI2paanSy1VX4vQx3OC/L4XpsR7T74fE0XaiAd16n3w/BkFuAz4fVdY3om2ItYFpyfXlgF90H2+Z4wEhUmS6M1G/0PCUF+CJHq3lLfqr0xdO6WmAesk3KsyRVMuKhAC8TzaZRj/m8pBWRCHJaJvZ53nDoZLasr66SvcY5zuaZQ9DM+Yk9JYg+Ib7sO5900EiIkece4kQfiDLN3TYJwkLQslhRMDiFK+Q7Zc/khKcjGlwSRJ9OpEuCaJbWxCeX+AKuXxUCDYP9D48RoJ57QoTxfos+TeMNaOjiiUPXFQmToX16roBaLCgKqFlmkRBW2sNnsD3W2fAAGoYblvLdqFgpB+SGk4dIbYt4CJQjYwj2sG735eNipCB+VEGAwEoqFwf/mQgpiiJ3XTNCp3dgShXIkDESfTp7MGyKwsumIJ1cMl+OzXHI3VZm9gyvlbQ+5lsSqmxqDxOGlOH6aCYTr4FujvHdMFIFBMG79fBVwqi4TB3Bnv7tLaFzph0AjEarS7ZXMcp8xBQLkGqrnGoDXBWI4NKtTjoMwJBIkC9e5MkTFFRXOB5jXU0zMV+64RCqqkAbQ3PG04fkpYnAIlJLTBKpNUj9mBpypzhLUOv4tU2xNtW9x/g5cW3AK0R2xcQZbFV7JfWVt+O7z3yJB3dxADivJpMGKDeFTqINCYx6jXPXP8WG6++9GGS8puB/lJHP4SojBFgtXaqYzxlfmVtpTvyCyt1OeTY56ZUDqghOiPQ1gedYwY27HKnMF1VcQ+mLOJOnbGNVQXiYPvuIXsV87DfEGMn9JYH+PdlipzEsG4BYpM/ayO+Cx/TirOF1VtmwcQM/0cDblf471XZLGc5ip7MsU44CdEV6iMfSNbKHf32o3yGRmAQHB81N1epUonWMsWuMGYEnsoCMI3DvU6cODAQQEQBo1A0L/7dKHIdVPokq5gA526yIEDBw4KlDBoBIIqA4a3n5CwC4porI/wX/fpHThw4KACEAaNQDDikdHHdWLcxkChXiAKP7rP7sCBAwd2qFKIgwZyf1JlkvRF9Ue/Eq2LIwoOHDhwUEElBk1yoMQwWWX83E3AwKjTQBDud5/agQMHDioBYRDiQFc21pzey3D6TBCFO91nduDAgYNKRBiEODCnDIuR6HmXbgRRGOg+sQMHDhzEgyoV4SVAABgSr2epZIDThe7zOnDgwEElJQxCHF5VmWIda9H64P+17vM6cODAQXwoqmDvw9zoK0EUPnaf1oEDBw6Swf8LMACLjde9kX3pGgAAAABJRU5ErkJggg==" alt="Pflegedienst Orchidee">
+  </a>
+  <div class="nav-pill">
+    <nav aria-label="Hauptnavigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#kosten">Kosten</a>
+      <a href="#karriere">Karriere</a>
+    </nav>
+    <a class="nav-phone" href="tel:+4926192179600">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      0261 921 79 60
+    </a>
+    <a class="btn btn-primary" href="#anfrage">Rückruf anfordern</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO: Vitalex layout. Headline visible instantly (no reveal animation) -->
+<section class="hero" aria-label="Einleitung">
+  <div class="hero-bg" role="img" aria-label="Pflegekraft bei einer Patientin zu Hause"></div>
+  <div class="wrap">
+    <div class="kicker"><b>#</b> Ambulante Pflege in Koblenz</div>
+    <h1>Pflege zu Hause. <em>Vom selben&nbsp;Team.</em></h1>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#anfrage">Anfrage senden
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <a class="btn btn-ghost" href="tel:+4926192179600">0261 921 79 60 anrufen</a>
+    </div>
+    <div class="hero-bottom">
+      <p>Unsere Pflegefachkräfte übernehmen die ärztlich verordnete Behandlungspflege und helfen bei der täglichen Grundpflege – damit Sie zu Hause bleiben können.</p>
+      <div class="tags">
+        <span>Behandlungspflege</span><span>Grundpflege</span><span>Pflegegrad 3–5</span><span>Kleines, festes Team</span>
+      </div>
+      <div class="hero-card">
+        <div class="dot"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+        <div><strong>Wir rufen Sie zurück.</strong><small>Persönliche Beratung – gern auch bei Ihnen zu Hause.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜR WEN: polite qualifier (brief requirement) -->
+<section id="fuer-wen">
+  <div class="wrap">
+    <span class="label">Für wen wir da sind</span>
+    <h2>Medizinische Pflege, die zu Ihnen nach Hause kommt.</h2>
+    <p class="lead">Damit wir Ihnen wirklich helfen können, konzentrieren wir uns auf Menschen, die zu Hause medizinisch versorgt werden müssen.</p>
+    <div class="fit">
+      <div class="fit-card fit-yes">
+        <h3>Wir sind für Sie da, wenn …</h3>
+        <ul>
+          <li><i>✓</i>ein Pflegegrad 3, 4 oder 5 vorliegt oder beantragt ist</li>
+          <li><i>✓</i>Ihr Arzt Behandlungspflege verordnet hat – z.&nbsp;B. Insulin, Wundversorgung, Kompression oder Medikamente</li>
+          <li><i>✓</i>Sie Hilfe beim Waschen und Anziehen brauchen</li>
+          <li><i>✓</i>Sie in Koblenz oder der näheren Umgebung wohnen</li>
+        </ul>
+      </div>
+      <div class="fit-card fit-no">
+        <h3>Bitte haben Sie Verständnis …</h3>
+        <ul>
+          <li><i>–</i>Reine Haushaltshilfe bieten wir nicht an.</li>
+          <li><i>–</i>Bei Pflegegrad 1 oder 2 ohne Behandlungspflege können wir leider keine neuen Patienten aufnehmen.</li>
+        </ul>
+        <p>Sie sind unsicher? Rufen Sie uns an – wir sagen Ihnen ehrlich, ob wir der richtige Dienst für Sie sind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGEN: Kead numbered photo cards -->
+<section id="leistungen" style="padding-top:0">
+  <div class="wrap">
+    <div class="row-head">
+      <div>
+        <span class="label">Leistungen</span>
+        <h2>Was unsere Pflegekräfte für Sie tun.</h2>
+      </div>
+      <a class="btn btn-dark" href="#anfrage">Beratung anfragen</a>
+    </div>
+    <div class="services">
+      <article class="svc" style="background-image:url('https://www.orchidee-pflegedienst.de/files/op/img/sc-behandlungspflege.jpg')">
+        <span class="num">01</span>
+        <div class="svc-body">
+          <h3>Behandlungspflege</h3>
+          <p>Alles, was Ihr Arzt verordnet hat – fachgerecht und zuverlässig.</p>
+          <ul><li>Insulin</li><li>Wundversorgung</li><li>Kompression</li><li>Medikamente</li><li>Katheter</li><li>Sondenernährung</li></ul>
+        </div>
+      </article>
+      <article class="svc" style="background-image:url('https://www.orchidee-pflegedienst.de/files/op/img/sc-grundpflege.jpg')">
+        <span class="num">02</span>
+        <div class="svc-body">
+          <h3>Grundpflege</h3>
+          <p>Hilfe beim Waschen, Anziehen und bei der täglichen Körperpflege – mit Ruhe und Respekt.</p>
+          <ul><li>Waschen</li><li>Anziehen</li><li>Mobilität</li></ul>
+        </div>
+      </article>
+      <article class="svc" style="background-image:url('https://www.orchidee-pflegedienst.de/files/op/img/sc-beratung.jpg')">
+        <span class="num">03</span>
+        <div class="svc-body">
+          <h3>Beratung &amp; Kostenklärung</h3>
+          <p>Wir erklären, was Kranken- und Pflegekasse übernehmen, und helfen bei den Formalitäten.</p>
+          <ul><li>Pflegegrad</li><li>Verordnung</li><li>Kassen</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABLAUF: Kead journey -->
+<section id="ablauf" style="padding-top:0">
+  <div class="wrap">
+    <span class="label">So läuft es ab</span>
+    <h2>In fünf Schritten zur Pflege zu Hause.</h2>
+    <div class="steps">
+      <div class="step"><span class="when">Schritt 1</span><h3>Anrufen oder anfragen</h3><p>Telefonisch oder über das kurze Formular.</p></div>
+      <div class="step"><span class="when">Schritt 2</span><h3>Wir rufen zurück</h3><p>Wir klären, welche Pflege gebraucht wird.</p></div>
+      <div class="step"><span class="when">Schritt 3</span><h3>Gespräch zu Hause</h3><p>Wir lernen Sie und Ihre Situation kennen.</p></div>
+      <div class="step"><span class="when">Schritt 4</span><h3>Kosten klären</h3><p>Wir sprechen mit Kranken- und Pflegekasse.</p></div>
+      <div class="step"><span class="when">Schritt 5</span><h3>Pflege beginnt</h3><p>Ihr festes Team kommt zu Ihnen nach Hause.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WARUM ORCHIDEE -->
+<section style="padding-top:0">
+  <div class="wrap why">
+    <div>
+      <span class="label">Warum Orchidee</span>
+      <h2>Vertraute Gesichter statt ständig neuer Leute.</h2>
+      <p class="lead">Ihre Familie muss die medizinische Pflege nicht mehr allein stemmen. Wir übernehmen – mit einem kleinen Team, das Sie kennt.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 1.8 6 5"/></svg></div><h3>Kleines, festes Team</h3><p>Sie wissen, wer kommt.</p></div>
+      <div class="why-item"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg></div><h3>Examinierte Pflegefachkräfte</h3><p>Medizinische Pflege in fachkundigen Händen.</p></div>
+      <div class="why-item"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 12 4l9 7v9H3z"/></svg></div><h3>Zu Hause bleiben</h3><p>Versorgt in den eigenen vier Wänden.</p></div>
+      <div class="why-item"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg></div><h3>Hilfe beim Papierkram</h3><p>Wir kümmern uns um die Kassen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KOSTEN: who pays, no prices -->
+<section id="kosten" style="padding-top:0">
+  <div class="wrap">
+    <span class="label">Kosten</span>
+    <h2>Wer bezahlt die Pflege?</h2>
+    <div class="costs">
+      <div class="cost"><div class="who">Krankenkasse</div><h3>Behandlungspflege</h3><p>Medizinische Pflege, die Ihr Arzt verordnet hat, übernimmt in der Regel Ihre Krankenkasse.</p></div>
+      <div class="cost"><div class="who">Pflegekasse</div><h3>Grundpflege</h3><p>Mit einem Pflegegrad beteiligt sich die Pflegekasse an der Hilfe beim Waschen, Anziehen und im Alltag.</p></div>
+    </div>
+    <p class="note">Wir prüfen gemeinsam mit Ihnen, was in Ihrem Fall übernommen wird – unverbindlich und kostenlos.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="wrap faq">
+    <div>
+      <span class="label">Häufige Fragen</span>
+      <h2>Gut zu wissen.</h2>
+    </div>
+    <div>
+      <details open><summary>Wie schnell kann die Pflege beginnen?</summary><p>[Vom Kunden bestätigen lassen] Sobald die Verordnung vorliegt, besprechen wir mit Ihnen den frühestmöglichen Start.</p></details>
+      <details><summary>Wer kommt zu uns nach Hause?</summary><p>Ein kleines, festes Team aus Pflegefachkräften. So haben Sie vertraute Ansprechpartner.</p></details>
+      <details><summary>Muss ich etwas bezahlen?</summary><p>Ärztlich verordnete Behandlungspflege übernimmt in der Regel die Krankenkasse, Grundpflege mit Pflegegrad die Pflegekasse. Wir klären das für Sie.</p></details>
+      <details><summary>Welche Orte betreuen Sie?</summary><p>Koblenz und die nähere Umgebung. [Ortsliste vom Kunden ergänzen]</p></details>
+      <details><summary>Bieten Sie auch Haushaltshilfe an?</summary><p>Reine Haushaltshilfe ohne medizinische Pflege bieten wir leider nicht an.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- KARRIERE teaser -->
+<section id="karriere" style="padding-top:0">
+  <div class="wrap">
+    <div class="career">
+      <div>
+        <span class="label">Karriere</span>
+        <h2>Pflegen Sie mit uns in Koblenz.</h2>
+        <p>Wir suchen examinierte Pflegefachkräfte und eine Pflegedienstleitung. Bewerbung in zwei Minuten – ohne Anschreiben.</p>
+      </div>
+      <div class="roles">
+        <a class="role" href="karriere.html"><span><strong>Pflegedienstleitung (m/w/d)</strong><small>Vollzeit · PDL-Weiterbildung</small></span><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        <a class="role" href="karriere.html"><span><strong>Pflegefachkraft (m/w/d)</strong><small>3-jährige Ausbildung mit Examen · Führerschein B</small></span><span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANFRAGE: call + short form (→ HubSpot later) -->
+<section id="anfrage" style="padding-top:0">
+  <div class="wrap contact">
+    <div>
+      <span class="label">Anfrage</span>
+      <h2>Sprechen Sie mit uns.</h2>
+      <p class="lead">Am schnellsten geht es am Telefon. Oder Sie hinterlassen Ihre Nummer – wir rufen Sie zurück.</p>
+      <div class="call-box">
+        <small>Telefon</small>
+        <a class="big" href="tel:+4926192179600">0261 921 79 60</a>
+        <small>Pflegedienst Orchidee GmbH · Hohenzollernstr. 19 · 56068 Koblenz</small>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Danke – wir melden uns!'">
+      <h3>Rückruf anfordern</h3>
+      <div class="two">
+        <div class="field"><label for="n">Ihr Name</label><input id="n" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="p">Telefonnummer</label><input id="p" name="phone" type="tel" autocomplete="tel" required></div>
+      </div>
+      <div class="field"><label for="g">Pflegegrad</label>
+        <select id="g" name="pflegegrad" required>
+          <option value="">Bitte wählen</option><option>Pflegegrad 3</option><option>Pflegegrad 4</option><option>Pflegegrad 5</option><option>Beantragt / noch keiner</option><option>Pflegegrad 1 oder 2</option>
+        </select>
+      </div>
+      <fieldset><legend>Hat ein Arzt Behandlungspflege verordnet?</legend>
+        <div class="choice"><label><input type="radio" name="verordnung" value="ja" required> Ja</label><label><input type="radio" name="verordnung" value="nein"> Nein</label><label><input type="radio" name="verordnung" value="unsicher"> Weiß nicht</label></div>
+      </fieldset>
+      <div class="field"><label for="o">Wohnort</label><input id="o" name="ort" placeholder="z. B. Koblenz-Lützel"></div>
+      <button class="btn btn-primary" type="submit">Rückruf anfordern</button>
+      <p class="small">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß unserer <a href="#">Datenschutzerklärung</a> zu.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYYAAABYCAYAAADxw1AOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyVpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ4IDc5LjE2NDAzNiwgMjAxOS8wOC8xMy0wMTowNjo1NyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDAzRDNFMDMwMjBGMTFFQTk2RTJDOEY0NjY5QjhGMDIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDAzRDNFMDQwMjBGMTFFQTk2RTJDOEY0NjY5QjhGMDIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMDNEM0UwMTAyMEYxMUVBOTZFMkM4RjQ2NjlCOEYwMiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMDNEM0UwMjAyMEYxMUVBOTZFMkM4RjQ2NjlCOEYwMiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuAezs4AACs3SURBVHja7F0J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" alt="Pflegedienst Orchidee">
+        <p>Ambulanter Pflegedienst in Koblenz.<br>Ein Unternehmen der Fidelis Unternehmensgruppe.</p>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <p>Hohenzollernstr. 19<br>56068 Koblenz</p>
+        <a href="tel:+4926192179600">Tel. 0261 921 79 60</a>
+        <a href="mailto:info@orchidee-pflegedienst.de">info@orchidee-pflegedienst.de</a>
+      </div>
+      <div>
+        <h4>Seiten</h4>
+        <a href="#leistungen">Leistungen</a><a href="#">Über uns</a><a href="#anfrage">Kontakt / Anfrage</a><a href="#karriere">Karriere</a><a href="#">Impressum</a><a href="#">Datenschutz</a>
+      </div>
+    </div>
+    <p class="fine">© 2026 Pflegedienst Orchidee GmbH</p>
+  </div>
+</footer>
+
+<!-- Mobile sticky call bar -->
+<div class="sticky" aria-label="Schnellkontakt">
+  <a class="btn call" href="tel:+4926192179600">Anrufen</a>
+  <a class="btn btn-primary" href="#anfrage">Rückruf</a>
+</div>
+
+<div class="proto-note">Prototyp · Startseite v1</div>
+</body>
+</html>

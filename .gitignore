@@ -1,0 +1,10 @@
+.DS_Store
+*.wav
+*.mp4
+node_modules/
+*.mp3
+.next/
+node_modules/
+next-env.d.ts
+*.tsbuildinfo
+.env*.local
