@@ -9,9 +9,16 @@ const GoogleG = () => (
   </svg>
 );
 
-const Star = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden>
-    <path d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
+const STAR = "m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z";
+
+// One star, filled from the left by `fill` (0–1), like Google's partial stars.
+const Star = ({ fill, id }: { fill: number; id: string }) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
+    <defs>
+      <clipPath id={id}><rect x="0" y="0" width={24 * fill} height="24" /></clipPath>
+    </defs>
+    <path d={STAR} fill="#DADCE0" />
+    <path d={STAR} fill="#FBBC04" clipPath={`url(#${id})`} />
   </svg>
 );
 
@@ -25,7 +32,7 @@ export default function GoogleReviews() {
       <span className="g-body">
         <span className="g-top">
           <strong>{ratingText}</strong>
-          <span className="g-stars">{Array.from({ length: 5 }, (_, i) => <Star key={i} />)}</span>
+          <span className="g-stars">{Array.from({ length: 5 }, (_, i) => <Star key={i} id={`g-star-${i}`} fill={Math.max(0, Math.min(1, rating - i))} />)}</span>
         </span>
         <small>{count} Google-Bewertungen</small>
       </span>

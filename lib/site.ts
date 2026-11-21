@@ -30,7 +30,7 @@ export const photos = {
 // TODO: verify on the Google Business profile before launch – these figures come from a
 // third-party directory (pflege-helfer24.de) that mirrors Google, not from Google directly.
 export const googleReviews = {
-  rating: 5.0,
-  count: 5,
+  rating: 4.7,
+  count: 6,
   url: "https://www.google.com/maps/search/?api=1&query=Pflegedienst+Orchidee+Hohenzollernstr.+19+Koblenz",
 };
