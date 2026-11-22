@@ -59,9 +59,9 @@ export function ForWhom() {
 }
 
 const services = [
-  { n: "01", title: "Behandlungspflege", img: photos.behandlungspflege, text: "Alles, was Ihr Arzt verordnet hat – fachgerecht und zuverlässig.", tags: ["Insulin", "Wundversorgung", "Kompression", "Medikamente", "Katheter", "Sondenernährung"] },
-  { n: "02", title: "Grundpflege", img: photos.grundpflege, text: "Hilfe beim Waschen, Anziehen und bei der täglichen Körperpflege – mit Ruhe und Respekt.", tags: ["Waschen", "Anziehen", "Mobilität"] },
-  { n: "03", title: "Beratung & Kostenklärung", img: photos.beratung, text: "Wir erklären, was Kranken- und Pflegekasse übernehmen, und helfen bei den Formalitäten.", tags: ["Pflegegrad", "Verordnung", "Kassen"] },
+  { n: "01", Icon: DuoNurseIcon, title: "Behandlungspflege", img: photos.behandlungspflege, text: "Alles, was Ihr Arzt verordnet hat – fachgerecht und zuverlässig.", tags: ["Insulin", "Wundversorgung", "Kompression", "Medikamente", "Katheter", "Sondenernährung"] },
+  { n: "02", Icon: DuoTeamIcon, title: "Grundpflege", img: photos.grundpflege, text: "Hilfe beim Waschen, Anziehen und bei der täglichen Körperpflege – mit Ruhe und Respekt.", tags: ["Waschen", "Anziehen", "Mobilität"] },
+  { n: "03", Icon: DuoPaperIcon, title: "Beratung & Kostenklärung", img: photos.beratung, text: "Wir erklären, was Kranken- und Pflegekasse übernehmen, und helfen bei den Formalitäten.", tags: ["Pflegegrad", "Verordnung", "Kassen"] },
 ];
 
 export function Services() {
@@ -79,6 +79,7 @@ export function Services() {
           {services.map((s) => (
             <article key={s.n} className="svc">
               <Image className="svc-img" src={s.img} alt="" fill sizes="(max-width: 720px) 100vw, (max-width: 1080px) 50vw, 33vw" quality={70} />
+              <span className="svc-ic" aria-hidden><s.Icon /></span>
               <span className="num">{s.n}</span>
               <div className="svc-body">
                 <h3>{s.title}</h3>

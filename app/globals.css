@@ -1363,3 +1363,14 @@ main > section.enquiry-hero { padding-top: 170px; }
   .mhero-bg { position: absolute; inset: 0 0 auto 0; height: 620px; z-index: -1; opacity: 0.16; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); }
   .mhero-bg img { object-fit: cover; object-position: 62% 20%; filter: saturate(0.7); }
 }
+
+/* Service cards: two-colour icon (phones only) */
+.svc-ic { display: none; }
+@media (max-width: 720px) {
+  .svc { position: relative; }
+  .svc .svc-ic { display: grid; place-items: center; width: 60px; height: 60px; margin: 20px 22px 0; border-radius: 18px; background: #fff; color: #2a1030; }
+  .svc .svc-ic .duo { width: 38px; height: 38px; }
+  .svc .num { position: absolute; top: 24px; right: 22px; padding: 0; }
+  .svc .svc-body { padding-top: 16px; }
+}
+@media (max-width: 720px) { .svc .num { left: auto; right: 22px; top: 26px; margin: 0; } }
