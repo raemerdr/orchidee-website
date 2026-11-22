@@ -1374,3 +1374,14 @@ main > section.enquiry-hero { padding-top: 170px; }
   .svc .svc-body { padding-top: 16px; }
 }
 @media (max-width: 720px) { .svc .num { left: auto; right: 22px; top: 26px; margin: 0; } }
+@media (max-width: 720px) {
+  /* Hero background photo tinted in the hero's own pink instead of its natural colours */
+  .mhero-bg { isolation: isolate; opacity: 0.2; }
+  .mhero-bg img { filter: grayscale(1) contrast(1.05); }
+  .mhero-bg::after { content: ""; position: absolute; inset: 0; background: var(--magenta); mix-blend-mode: color; }
+}
+@media (max-width: 720px) {
+  /* Keep the pink-tinted photo subtle */
+  .mhero-bg { opacity: 0.09; }
+  .mhero-bg img { filter: grayscale(1); }
+}
