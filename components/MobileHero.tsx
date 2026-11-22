@@ -2,11 +2,11 @@ import Image from "next/image";
 import { photos } from "@/lib/site";
 
 // Phone-only hero: big centred headline, one paragraph, then picture cards to choose from.
+// Two choices: for myself or for a relative. Jobs are not offered here (they live under Karriere).
 // (A <div>, not a <section>, so it does not shift the desktop light/dark section order.)
 const choices = [
   { href: "/kontakt", img: photos.cardSelf, label: "Ich brauche Pflege zu Hause", who: "selbst" },
   { href: "/kontakt", img: photos.cardRelative, label: "Ich suche Pflege für einen Angehörigen", who: "angehoerige" },
-  { href: "/karriere", img: photos.cardJobs, label: "Ich möchte bei Orchidee arbeiten", who: undefined },
 ];
 
 export default function MobileHero() {
