@@ -1216,3 +1216,144 @@ main > section.enquiry-hero { padding-top: 170px; }
 
 /* Desktop: the phone-only photo in the Für wen points must not take a grid slot */
 @media (min-width: 721px) { .fit-criteria .fit-img { display: none; } }
+
+/* =====================================================================
+   PHONES v6 – light, friendly look
+   Hero: big centred text with picture-card choices at the bottom.
+   Page: white, centred headings, soft tinted rounded cards, magenta accents.
+   Desktop is untouched.
+   ===================================================================== */
+.mhero { display: none; }
+@media (max-width: 720px) {
+  :root { --bg: #ffffff; --card: #f7f1f4; --line: #eadfe6; --plum: #2a1030; --pink-soft: #fde8f1; }
+  body { background: #fff; }
+
+  /* ---- Home hero ---- */
+  main > .hero { display: none; }
+  .mhero { display: block; padding: 104px 0 40px; text-align: center; background: linear-gradient(180deg, var(--pink-soft) 0%, #fff 46%); color: var(--plum); }
+  .mhero-kicker { font-size: 18px; font-weight: 600; margin: 0 0 14px; }
+  .mhero h1 { font-size: clamp(40px, 12.4vw, 52px); line-height: 1.06; font-weight: 700; letter-spacing: -0.03em; text-wrap: balance; }
+  .mhero-text { font-size: 19px; line-height: 1.55; margin: 22px auto 0; max-width: 32ch; color: var(--ink); }
+  .mhero-choices { list-style: none; padding: 0; margin: 34px 0 0; display: grid; gap: 16px; text-align: left; }
+  .mhero-choices a { display: block; text-decoration: none; color: var(--plum); background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.1); }
+  .mhero-img { display: block; position: relative; height: 150px; background: var(--card); }
+  .mhero-img img { object-fit: cover; object-position: 50% 28%; }
+  .mhero-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 16px 16px 20px; min-height: 84px; }
+  .mhero-label { font: 600 20px/1.3 var(--font-display), var(--font-body), sans-serif; }
+  .mhero-arrow { flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--magenta); color: #fff; display: grid; place-items: center; }
+
+  /* ---- Sections: white page, centred headings ---- */
+  main > section.section-tight:not(.enquiry), main > section#fuer-wen { background: #fff; padding: 48px 0; border-top: 0 !important; }
+  main > .hero ~ section { border-top: 0; }
+  main section:not(.hero):not(.page-hero) :is(.label, h2, .lead) { text-align: center; display: block; margin-left: auto; margin-right: auto; }
+  main section:not(.hero):not(.page-hero) h2 { color: var(--plum); font-size: 32px; line-height: 1.12; letter-spacing: -0.025em; text-wrap: balance; }
+  .label { color: var(--magenta-dark); font-size: 16px; }
+  .row-head { display: block; }
+
+  /* ---- Cards: soft tint, no outline, round ---- */
+  :is(.cost, .faq-item, .job, .detail-card, .mini-steps li, .team-card, .svc) { background: var(--card); border: 0; border-radius: 24px; }
+  .svc h3, .cost h3, .steps-list h3, .fit-criteria strong { color: var(--plum); }
+  .svc .num { display: block; position: static; background: none; padding: 0; margin: 0 0 8px; color: var(--magenta); font: 700 15px/1 var(--font-display), sans-serif; }
+  .svc-body { padding: 22px; }
+
+  /* Für wen: each point is its own photo card */
+  .fit-panel { background: none; border: 0; padding: 0; }
+  .fit-criteria { display: grid; gap: 14px; }
+  .fit-criteria li { background: var(--card); border: 0 !important; border-radius: 24px; padding: 12px 12px 20px; }
+  .fit-criteria .fit-img { height: 150px; border-radius: 16px; margin-bottom: 16px; }
+  .fit-criteria li > div { padding: 0 8px; }
+  .fit-not { background: var(--pink-soft); border-radius: 20px; color: var(--plum); margin-top: 14px; }
+  .fit-not i { background: #fff; }
+
+  /* Kosten */
+  .cost { padding: 22px; }
+  .cost-needs { border-top-color: #e2d3dc; }
+
+  /* Steps: pink numbered cards */
+  .steps-list { gap: 12px; }
+  .steps-list li, .steps-list li:last-child { display: block; background: var(--pink-soft); border: 0; border-radius: 24px; padding: 20px 22px; }
+  .step-num { display: block; width: auto; height: auto; background: none; border-radius: 0; color: var(--magenta); font: 700 15px/1 var(--font-display), sans-serif; margin-bottom: 10px; }
+  .step-num::before { content: "0"; }
+  .steps-list h3 { font-size: 21px; }
+
+  /* FAQ */
+  .faq { gap: 24px; }
+  .faq-q i { border-color: var(--magenta); color: var(--magenta); }
+
+  /* ---- Closing contact block: soft pink instead of dark ---- */
+  main > section.enquiry { background: var(--pink-soft); color: var(--ink); --line: #e4e5e8; }
+  .enquiry:not(.enquiry-hero)::before { background: none; }
+  .enquiry .label { color: var(--magenta-dark); background: none; border: 0; backdrop-filter: none; }
+  .enquiry .lead { color: var(--ink-2); }
+  .enquiry .call-box { background: #fff; border: 0; border-radius: 24px; color: var(--ink); text-align: center; }
+  .enquiry .call-box small { color: var(--ink-2); }
+  .enquiry .call-box a.big { color: var(--magenta-dark); }
+  .enquiry .form { background: #fff; border: 0; border-radius: 24px; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.08); }
+  main > section.enquiry h1, main > section.enquiry h2:not(.form-title) { color: var(--plum); text-align: center; }
+
+  /* Kontakt page: photo as a rounded card above the text */
+  .enquiry-hero::before { display: none; }
+  .enquiry-hero .enquiry-bg { inset: 88px 16px auto 16px; height: 30svh; min-height: 200px; border-radius: 24px; overflow: hidden; }
+  main > section.enquiry-hero { padding-top: calc(88px + max(30svh, 200px) + 28px); }
+
+  /* ---- Inner page heroes: light, photo as a rounded card, centred text ---- */
+  .page-hero.has-img { background: linear-gradient(180deg, var(--pink-soft) 0%, #fff 60%); color: var(--plum); padding: 88px 0 36px; text-align: center; }
+  .page-hero.has-img::after { display: none; }
+  .page-hero.has-img .page-hero-bg { margin: 0 16px; height: 30svh; min-height: 200px; border-radius: 24px; }
+  .page-hero.has-img .wrap { margin-top: 26px; }
+  .page-hero.has-img .kicker { justify-content: center; color: var(--magenta-dark); font-weight: 600; opacity: 1; }
+  .page-hero.has-img h1 { color: var(--plum); max-width: none; text-wrap: balance; }
+  .page-hero-lead { color: var(--ink); opacity: 1; margin-left: auto; margin-right: auto; }
+  .page-hero.has-img .hero-ctas .btn:not([href^="tel:"]) { background: var(--plum) !important; color: #fff !important; border-color: var(--plum) !important; }
+
+  /* Header and bottom bar on a light page */
+  .menu-btn, .on-hero .menu-btn { background: var(--plum); border-color: var(--plum); }
+  .sticky { box-shadow: 0 8px 32px rgba(42, 16, 48, 0.22); }
+  .btn-light { border-color: var(--plum); color: var(--plum); }
+  .footer { background: var(--card); }
+}
+@media (max-width: 720px) {
+  .svc .num { padding: 22px 22px 0; margin: 0; }
+  .svc .svc-body { padding-top: 8px; }
+}
+
+/* ---------- Step-by-step callback form (phones) ---------- */
+.enquiry-cb { display: none; }
+.wz { display: flex; flex-direction: column; flex: 1; min-height: 0; padding: 6px 4px 0; color: var(--ink); }
+.wz-progress { font-size: 16px; font-weight: 600; color: var(--magenta-dark); margin: 0 0 14px; }
+.wz h2 { font-size: 30px; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; color: #2a1030; }
+.wz-hint { font-size: 18px; color: var(--ink-2); margin: 12px 0 22px; }
+.wz-options { display: grid; gap: 12px; }
+.wz-option { display: flex; align-items: center; gap: 16px; min-height: 72px; padding: 14px 18px; border: 2px solid #b9bcc4; border-radius: 18px; background: #fff; font-size: 19px; font-weight: 600; cursor: pointer; }
+.wz-option input { flex: none; appearance: none; -webkit-appearance: none; width: 30px; height: 30px; margin: 0; border: 2px solid #8a8f98; border-radius: 50%; background: #fff; }
+.wz-option input:checked { border: 9px solid var(--magenta); }
+.wz-option.is-on { border-color: var(--magenta); background: #fde8f1; }
+.wz-option:focus-within { outline: 3px solid rgba(229, 0, 125, 0.35); outline-offset: 2px; }
+.wz-field { display: block; margin-bottom: 18px; }
+.wz-field span { display: block; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.wz-field input { width: 100%; min-height: 60px; padding: 14px 18px; font: inherit; font-size: 20px; border: 2px solid #8a8f98; border-radius: 16px; background: #fff; color: var(--ink); }
+.wz-field input:focus { outline: 3px solid rgba(229, 0, 125, 0.35); border-color: var(--magenta); }
+.wz-small { font-size: 16px; color: var(--ink-2); }
+.wz-small a { color: inherit; }
+.wz-foot { position: sticky; bottom: 0; margin-top: auto; padding: 16px 0 12px; display: flex; gap: 10px; background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, #fff 14px); }
+.wz-foot .btn { min-height: 60px; font-size: 19px; justify-content: center; }
+.wz-next { flex: 1; }
+.wz-next:disabled { background: #d9dbe0; border-color: #d9dbe0; color: #6b6f78; box-shadow: none; cursor: not-allowed; }
+.wz-back { background: #fff; color: var(--ink); border: 2px solid var(--ink); }
+.wz-done { align-items: center; justify-content: center; text-align: center; gap: 10px; padding: 40px 8px; }
+.wz-check { width: 72px; height: 72px; border-radius: 50%; background: var(--magenta); color: #fff; display: grid; place-items: center; font-size: 36px; font-weight: 700; margin-bottom: 8px; }
+.wz-done p { font-size: 20px; color: var(--ink-2); }
+@media (max-width: 720px) {
+  /* Page section on phones: phone number plus one button that opens the questions */
+  .enquiry .form { display: none; }
+  .enquiry-cb { display: flex; width: 100%; justify-content: center; min-height: 60px; font-size: 19px; }
+  .contact { gap: 16px; }
+  .cb-panel { min-height: 100dvh; }
+  .cb-call { margin-top: 4px; }
+}
+.wz, .wz * { box-sizing: border-box; }
+.wz-field input { max-width: 100%; }
+@media (max-width: 720px) {
+  .cb-panel { overflow-x: hidden; }
+  .cb-call { font-size: 17px; flex-wrap: wrap; text-align: center; }
+}

@@ -27,6 +27,7 @@ export default function EnquiryForm({ hero = false }: { hero?: boolean }) {
           </div>
         </div>
 
+        <a className="btn btn-primary enquiry-cb" href="/kontakt" data-callback="">Rückruf anfordern</a>
         <CallbackForm title={hero ? <h2 className="form-title">Rückruf anfordern</h2> : <h3>Rückruf anfordern</h3>} />
       </div>
     </section>

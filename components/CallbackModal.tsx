@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { site } from "@/lib/site";
-import CallbackForm from "./CallbackForm";
+import CallbackWizard from "./CallbackWizard";
 import { PhoneIcon } from "./Icons";
 
 // Popup with the callback form. Any link or button marked `data-callback` opens it
@@ -13,6 +13,7 @@ export default function CallbackModal() {
   const [mounted, setMounted] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
   const opener = useRef<HTMLElement | null>(null);
+  const [who, setWho] = useState<string | undefined>();
 
   useEffect(() => setMounted(true), []);
 
@@ -23,6 +24,7 @@ export default function CallbackModal() {
       if (!el || e.metaKey || e.ctrlKey || !window.matchMedia("(max-width: 720px)").matches) return;
       e.preventDefault();
       opener.current = el;
+      setWho(el.dataset.callback || undefined);
       setOpen(true);
     };
     // Capture phase: runs before Next's <Link> handler, which then skips navigation.
@@ -53,15 +55,7 @@ export default function CallbackModal() {
         <button ref={closeRef} type="button" className="cb-close" onClick={() => setOpen(false)}>
           <span aria-hidden>×</span> Schließen
         </button>
-        <CallbackForm
-          idPrefix="cb-"
-          title={
-            <>
-              <h2 className="form-title" id="cb-title">Rückruf anfordern</h2>
-              <p className="cb-intro">Hinterlassen Sie Ihre Nummer. Wir rufen Sie zurück.</p>
-            </>
-          }
-        />
+        <CallbackWizard who={who} titleId="cb-title" />
         <a className="cb-call" href={site.phoneHref}><PhoneIcon /> Lieber gleich anrufen: {site.phone}</a>
       </div>
     </div>,
