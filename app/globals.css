@@ -1357,3 +1357,9 @@ main > section.enquiry-hero { padding-top: 170px; }
   .cb-panel { overflow-x: hidden; }
   .cb-call { font-size: 17px; flex-wrap: wrap; text-align: center; }
 }
+@media (max-width: 720px) {
+  /* Subtle photo behind the hero text: very faint, fading out before the cards */
+  .mhero { position: relative; isolation: isolate; overflow: hidden; }
+  .mhero-bg { position: absolute; inset: 0 0 auto 0; height: 620px; z-index: -1; opacity: 0.16; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); }
+  .mhero-bg img { object-fit: cover; object-position: 62% 20%; filter: saturate(0.7); }
+}

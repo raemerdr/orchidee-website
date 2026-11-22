@@ -22,6 +22,9 @@ export const photos = {
   leistungen: "/images/leistungen.jpg",
   anfrage: "/images/anfrage-v2.jpg",
   ueberUns: "/images/ueber-uns-v2.jpg",
+  cardSelf: "/images/karte-selbst.jpg",
+  cardRelative: "/images/karte-angehoerige.jpg",
+  cardJobs: "/images/karte-arbeiten.jpg",
   why: "/images/warum-orchidee.jpg",
   career: "/images/karriere.jpg",
 };

@@ -4,14 +4,17 @@ import { photos } from "@/lib/site";
 // Phone-only hero: big centred headline, one paragraph, then picture cards to choose from.
 // (A <div>, not a <section>, so it does not shift the desktop light/dark section order.)
 const choices = [
-  { href: "/kontakt", img: photos.fuerWen, label: "Ich brauche Pflege zu Hause", who: "selbst" },
-  { href: "/kontakt", img: photos.ueberUns, label: "Ich suche Pflege für einen Angehörigen", who: "angehoerige" },
-  { href: "/karriere", img: photos.career, label: "Ich möchte bei Orchidee arbeiten", who: undefined },
+  { href: "/kontakt", img: photos.cardSelf, label: "Ich brauche Pflege zu Hause", who: "selbst" },
+  { href: "/kontakt", img: photos.cardRelative, label: "Ich suche Pflege für einen Angehörigen", who: "angehoerige" },
+  { href: "/karriere", img: photos.cardJobs, label: "Ich möchte bei Orchidee arbeiten", who: undefined },
 ];
 
 export default function MobileHero() {
   return (
     <div className="mhero">
+      <div className="mhero-bg" aria-hidden>
+        <Image src={photos.hero} alt="" fill sizes="(max-width: 720px) 100vw, 1px" quality={70} priority />
+      </div>
       <div className="wrap">
         <p className="mhero-kicker">Ambulante Pflege in Koblenz</p>
         <h1>Pflege zu Hause. Vom selben Team.</h1>
