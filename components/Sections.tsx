@@ -8,8 +8,8 @@ import { ArrowIcon, DuoHomeIcon, DuoNurseIcon, DuoPaperIcon, DuoTeamIcon, PhoneI
 // Internally the focus is Pflegegrad 3–5, but the site must not say so: we qualify by need
 // (prescribed Behandlungspflege) and politely rule out household-only help instead.
 const criteria = [
-  [DuoPaperIcon, photos.behandlungspflege, "Ärztlich verordnete Behandlungspflege", "z. B. Insulin, Wundversorgung, Kompression oder Medikamente", "Ihr Arzt hat Pflege verordnet", "z. B. Insulin, Verbände, Kompressionsstrümpfe oder Medikamente"],
-  [DuoNurseIcon, photos.grundpflege, "Hilfe beim Waschen und Anziehen", "Grundpflege im Alltag, zusätzlich zur medizinischen Pflege", "Sie brauchen auch Hilfe im Alltag", "z. B. beim Waschen und Anziehen"],
+  [DuoPaperIcon, photos.cardJobs, "Ärztlich verordnete Behandlungspflege", "z. B. Insulin, Wundversorgung, Kompression oder Medikamente", "Ihr Arzt hat Pflege verordnet", "z. B. Insulin, Verbände, Kompressionsstrümpfe oder Medikamente"],
+  [DuoNurseIcon, photos.leistungen, "Hilfe beim Waschen und Anziehen", "Grundpflege im Alltag, zusätzlich zur medizinischen Pflege", "Sie brauchen auch Hilfe im Alltag", "z. B. beim Waschen und Anziehen"],
   [DuoHomeIcon, photos.steps, "Wohnort in Koblenz oder Umgebung", "Unsere Touren fahren in Koblenz und der näheren Umgebung", "Sie wohnen in Koblenz oder Umgebung", "Unsere Touren fahren in Koblenz und der näheren Umgebung"],
 ] as const;
 
@@ -59,9 +59,9 @@ export function ForWhom() {
 }
 
 const services = [
-  { n: "01", Icon: DuoNurseIcon, title: "Behandlungspflege", img: photos.behandlungspflege, text: "Alles, was Ihr Arzt verordnet hat – fachgerecht und zuverlässig.", tags: ["Insulin", "Wundversorgung", "Kompression", "Medikamente", "Katheter", "Sondenernährung"] },
-  { n: "02", Icon: DuoTeamIcon, title: "Grundpflege", img: photos.grundpflege, text: "Hilfe beim Waschen, Anziehen und bei der täglichen Körperpflege – mit Ruhe und Respekt.", tags: ["Waschen", "Anziehen", "Mobilität"] },
-  { n: "03", Icon: DuoPaperIcon, title: "Beratung & Kostenklärung", img: photos.beratung, text: "Wir erklären, was Kranken- und Pflegekasse übernehmen, und helfen bei den Formalitäten.", tags: ["Pflegegrad", "Verordnung", "Kassen"] },
+  { n: "01", Icon: DuoNurseIcon, mHead: "Was Ihr Arzt verordnet hat", title: "Behandlungspflege", img: photos.behandlungspflege, text: "Alles, was Ihr Arzt verordnet hat – fachgerecht und zuverlässig.", tags: ["Insulin", "Wundversorgung", "Kompression", "Medikamente", "Katheter", "Sondenernährung"] },
+  { n: "02", Icon: DuoTeamIcon, mHead: "Hilfe beim Waschen und Anziehen", title: "Grundpflege", img: photos.grundpflege, text: "Hilfe beim Waschen, Anziehen und bei der täglichen Körperpflege – mit Ruhe und Respekt.", tags: ["Waschen", "Anziehen", "Mobilität"] },
+  { n: "03", Icon: DuoPaperIcon, mHead: "Wir klären, wer bezahlt", title: "Beratung & Kostenklärung", img: photos.beratung, text: "Wir erklären, was Kranken- und Pflegekasse übernehmen, und helfen bei den Formalitäten.", tags: ["Pflegegrad", "Verordnung", "Kassen"] },
 ];
 
 export function Services() {
@@ -79,11 +79,14 @@ export function Services() {
           {services.map((s) => (
             <article key={s.n} className="svc">
               <Image className="svc-img" src={s.img} alt="" fill sizes="(max-width: 720px) 100vw, (max-width: 1080px) 50vw, 33vw" quality={70} />
-              <span className="svc-ic" aria-hidden><s.Icon /></span>
+              <span className="svc-pill"><span className="svc-ic" aria-hidden><s.Icon /></span>{s.title}</span>
               <span className="num">{s.n}</span>
               <div className="svc-body">
-                <h3>{s.title}</h3>
+                <h3><T d={s.title} m={s.mHead} /></h3>
                 <p>{s.text}</p>
+                <a className="svc-go" href="/leistungen" aria-label={`Mehr zu ${s.title}`}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
                 <ul>{s.tags.map((t) => <li key={t}>{t}</li>)}</ul>
               </div>
             </article>

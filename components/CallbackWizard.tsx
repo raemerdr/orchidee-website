@@ -6,7 +6,7 @@ import { useState } from "react";
 // and a fixed "Weiter" button, so older visitors only decide one thing at a time.
 // TODO: submit to HubSpot (routing still open – see brief).
 const prescribed = ["Ja", "Nein", "Weiß nicht"];
-const levels = ["Pflegegrad 1 oder 2", "Pflegegrad 3", "Pflegegrad 4", "Pflegegrad 5", "Beantragt oder noch keiner"];
+const levels = ["Pflegegrad 3", "Pflegegrad 4", "Pflegegrad 5", "Beantragt oder noch keiner"];
 const STEPS = 4;
 
 export default function CallbackWizard({ who, titleId }: { who?: string; titleId: string }) {
@@ -17,6 +17,8 @@ export default function CallbackWizard({ who, titleId }: { who?: string; titleId
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [sent, setSent] = useState(false);
+  // The relative card asks about the person who needs care; the patient card asks about "Sie".
+  const forRelative = who === "angehoerige";
 
   if (sent) {
     return (
@@ -55,21 +57,21 @@ export default function CallbackWizard({ who, titleId }: { who?: string; titleId
 
       {step === 0 && (
         <>
-          <h2 id={titleId}>Hat ein Arzt Pflege verordnet?</h2>
+          <h2 id={titleId}>{forRelative ? "Hat ein Arzt Pflege für Ihr Familienmitglied verordnet?" : "Hat ein Arzt Pflege verordnet?"}</h2>
           <p className="wz-hint">Zum Beispiel Insulin, Verbände oder Medikamente.</p>
           {options(prescribed, verordnung, setVerordnung, "verordnung")}
         </>
       )}
       {step === 1 && (
         <>
-          <h2 id={titleId}>Gibt es einen Pflegegrad?</h2>
+          <h2 id={titleId}>{forRelative ? "Hat Ihr Familienmitglied einen Pflegegrad?" : "Gibt es einen Pflegegrad?"}</h2>
           <p className="wz-hint">Wählen Sie aus, was am besten passt.</p>
           {options(levels, pflegegrad, setPflegegrad, "pflegegrad")}
         </>
       )}
       {step === 2 && (
         <>
-          <h2 id={titleId}>Wo wohnen Sie?</h2>
+          <h2 id={titleId}>{forRelative ? "Wo wohnt Ihr Familienmitglied?" : "Wo wohnen Sie?"}</h2>
           <p className="wz-hint">Wir fahren in Koblenz und Umgebung.</p>
           <label className="wz-field">
             <span>Wohnort</span>
@@ -80,7 +82,7 @@ export default function CallbackWizard({ who, titleId }: { who?: string; titleId
       {step === 3 && (
         <>
           <h2 id={titleId}>Wie erreichen wir Sie?</h2>
-          <p className="wz-hint">Wir rufen Sie unter dieser Nummer zurück.</p>
+          <p className="wz-hint">{forRelative ? "Wir rufen Sie zurück und besprechen alles mit Ihnen." : "Wir rufen Sie unter dieser Nummer zurück."}</p>
           <label className="wz-field">
             <span>Ihr Name</span>
             <input name="name" value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" required />
@@ -95,7 +97,7 @@ export default function CallbackWizard({ who, titleId }: { who?: string; titleId
 
       <div className="wz-foot">
         {step > 0 && <button type="button" className="btn wz-back" onClick={() => setStep(step - 1)}>Zurück</button>}
-        <button type="submit" className="btn btn-primary wz-next" disabled={!canNext}>
+        <button key={step < STEPS - 1 ? "next" : "send"} type="submit" className="btn btn-primary wz-next" disabled={!canNext}>
           {step < STEPS - 1 ? "Weiter" : "Rückruf anfordern"}
         </button>
       </div>

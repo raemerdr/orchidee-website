@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import MobileHero from "@/components/MobileHero";
+import MobileRating from "@/components/MobileRating";
 import { CareerTeaser, Costs, Faq, ForWhom, Services, Steps, Why } from "@/components/Sections";
 import EnquiryForm from "@/components/EnquiryForm";
 
@@ -15,6 +16,7 @@ export default function Home() {
       <Why />
       <Costs />
       <Faq short />
+      <MobileRating />
       <CareerTeaser />
       <EnquiryForm />
     </>

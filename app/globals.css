@@ -1385,3 +1385,51 @@ main > section.enquiry-hero { padding-top: 170px; }
   .mhero-bg { opacity: 0.09; }
   .mhero-bg img { filter: grayscale(1); }
 }
+
+/* =====================================================================
+   PHONES v7 – closer to the reference look below the hero
+   Serif display headings, photo cards with a pill label and round arrow,
+   a rating card, and the contact block as a rounded pink card.
+   ===================================================================== */
+.svc-pill, .svc-go, .mrating { display: none; }
+@media (max-width: 720px) {
+  /* Headings: bold serif, centred, tight */
+  .mhero h1, main section:not(.hero):not(.page-hero) h2, .page-hero.has-img h1, main > section.enquiry h1, .mrating h2, .wz h2 { font-family: var(--font-serif), Georgia, serif; font-weight: 700; letter-spacing: -0.035em; }
+  main section:not(.hero):not(.page-hero) h2 { font-size: 36px; line-height: 1.05; }
+  .mhero h1 { font-size: clamp(42px, 12.6vw, 54px); line-height: 1.02; }
+  main > section.section-tight:not(.enquiry), main > section#fuer-wen { padding: 56px 0; }
+
+  /* Service cards: inset photo with a pill label, statement heading, text and a round arrow */
+  .svc { padding: 12px; }
+  .svc .svc-img { display: block !important; position: relative !important; height: 170px !important; width: 100% !important; border-radius: 16px; object-position: 50% 30%; }
+  .svc .svc-pill { display: inline-flex; align-items: center; gap: 8px; position: absolute; top: 24px; left: 24px; z-index: 3; padding: 6px 14px 6px 6px; border-radius: 99px; background: #fff; color: var(--plum); font-size: 15px; font-weight: 600; box-shadow: 0 2px 10px rgba(42, 16, 48, 0.12); }
+  .svc .svc-pill .svc-ic { display: grid; place-items: center; width: 30px; height: 30px; margin: 0; border-radius: 50%; background: var(--pink-soft); }
+  .svc .svc-pill .svc-ic .duo { width: 22px; height: 22px; }
+  .svc .num { display: none; }
+  .svc .svc-body { position: relative; padding: 18px 68px 12px 10px; }
+  .svc h3 { font: 700 23px/1.2 var(--font-display), var(--font-body), sans-serif; letter-spacing: -0.02em; }
+  .svc .svc-go { display: grid; place-items: center; position: absolute; right: 6px; bottom: 10px; width: 48px; height: 48px; border-radius: 50%; background: var(--magenta); color: #fff; }
+
+  /* Für wen cards share the same inset-photo look */
+  .fit-criteria li { padding: 12px 12px 18px; }
+  .fit-criteria .fit-img { height: 170px; }
+  .fit-criteria strong { font: 700 21px/1.25 var(--font-display), var(--font-body), sans-serif; letter-spacing: -0.02em; }
+
+  /* Rating card */
+  .mrating { display: block; padding: 8px 0 56px; background: #fff; }
+  .mrating-card { background: var(--card); border-radius: 28px; padding: 36px 22px; text-align: center; display: grid; justify-items: center; gap: 20px; }
+  .mrating h2 { font-size: 32px; line-height: 1.08; color: var(--plum); text-wrap: balance; }
+  .mrating .g-reviews { margin: 0; box-shadow: 0 2px 10px rgba(42, 16, 48, 0.1); }
+  main > .hero ~ .mrating { order: 6; }
+  main > .hero ~ #anfrage { order: 7; }
+
+  /* Contact block: a rounded pink card on the white page */
+  main > section.enquiry:not(.enquiry-hero) { background: #fff; padding: 0 16px 56px; }
+  main > section.enquiry:not(.enquiry-hero) > .wrap { background: var(--pink-soft); border-radius: 28px; padding: 40px 18px 22px; }
+}
+@media (max-width: 720px) {
+  /* Kosten: a soft pink curve behind the cards */
+  main > section#kosten { position: relative; isolation: isolate; overflow: hidden; }
+  main > section#kosten::before { content: ""; position: absolute; z-index: -1; left: -35%; right: -35%; top: 150px; bottom: -40px; border-radius: 50% 50% 0 0 / 150px 150px 0 0; background: linear-gradient(180deg, var(--pink-soft) 0%, rgba(253, 232, 241, 0.35) 70%, rgba(253, 232, 241, 0) 100%); }
+  #kosten .cost { background: #fff; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.07); }
+}
