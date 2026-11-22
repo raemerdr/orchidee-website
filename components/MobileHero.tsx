@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { photos } from "@/lib/site";
+import { photos, site } from "@/lib/site";
+import { PhoneIcon } from "./Icons";
 
 // Phone-only hero: big centred headline, one paragraph, then picture cards to choose from.
 // Two choices: for myself or for a relative. Jobs are not offered here (they live under Karriere).
@@ -19,9 +20,12 @@ export default function MobileHero() {
         <p className="mhero-kicker">Ambulante Pflege in Koblenz</p>
         <h1>Pflege zu Hause. Vom selben Team.</h1>
         <p className="mhero-text">
-          Unsere Pflegefachkräfte kommen zu Ihnen nach Hause. Sie übernehmen, was Ihr Arzt verordnet hat,
-          und helfen beim Waschen und Anziehen. Wählen Sie unten aus, was auf Sie zutrifft. Wir stellen Ihnen ein paar einfache Fragen und rufen Sie zurück.
+          Unsere Pflegefachkräfte kommen zu Ihnen nach Hause und übernehmen, was Ihr Arzt verordnet hat.
         </p>
+        <a className="btn btn-primary mhero-call" href={site.phoneHref} aria-label={`${site.phone} anrufen`}>
+          <PhoneIcon /> Jetzt anrufen: {site.phone}
+        </a>
+        <p className="mhero-or">oder Rückruf anfordern:</p>
         <ul className="mhero-choices">
           {choices.map((c, i) => (
             <li key={c.label}>

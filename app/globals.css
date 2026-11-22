@@ -1433,3 +1433,12 @@ main > section.enquiry-hero { padding-top: 170px; }
   main > section#kosten::before { content: ""; position: absolute; z-index: -1; left: -35%; right: -35%; top: 150px; bottom: -40px; border-radius: 50% 50% 0 0 / 150px 150px 0 0; background: linear-gradient(180deg, var(--pink-soft) 0%, rgba(253, 232, 241, 0.35) 70%, rgba(253, 232, 241, 0) 100%); }
   #kosten .cost { background: #fff; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.07); }
 }
+@media (max-width: 720px) {
+  /* Hero: short sentence, call button, then "or request a callback" with the choices */
+  .mhero-text { margin-top: 18px; }
+  .mhero-call { display: flex; width: 100%; justify-content: center; min-height: 60px; margin-top: 24px; font-size: 18px; }
+  .mhero-call svg { width: 20px; height: 20px; }
+  .mhero-or { display: flex; align-items: center; gap: 14px; margin: 26px 0 0; font-size: 18px; font-weight: 600; color: var(--plum); }
+  .mhero-or::before, .mhero-or::after { content: ""; flex: 1; height: 1px; background: #dcc9d5; }
+  .mhero-choices { margin-top: 18px; }
+}

@@ -17,7 +17,10 @@ export default function HeaderHeroState() {
     let raf = 0;
     const update = () => {
       raf = 0;
-      body.classList.toggle("on-hero", hero.getBoundingClientRect().bottom > 90);
+      // On phones the home hero is the light version: "on hero" lasts while its call button is in view.
+      const call = document.querySelector<HTMLElement>(".mhero-call");
+      const el = call && call.offsetParent ? call : hero;
+      body.classList.toggle("on-hero", el.getBoundingClientRect().bottom > 90);
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
     update();
