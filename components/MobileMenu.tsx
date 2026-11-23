@@ -9,7 +9,7 @@ import { PhoneIcon } from "./Icons";
 
 type NavLink = { href: string; label: string };
 
-// Hamburger + full-screen menu for tablet and mobile (desktop nav is hidden below 1080px).
+// "Menü" button + full-screen menu below 1080px (the header navigation is hidden there).
 export default function MobileMenu({ links }: { links: NavLink[] }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -60,8 +60,8 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
           ))}
         </nav>
         <div className="mobile-menu-actions">
-          <a className="btn btn-light" href={site.phoneHref}><PhoneIcon /> {site.phone}</a>
-          <Link className="btn btn-primary" href="/kontakt" data-callback onClick={() => setOpen(false)}>Rückruf anfordern</Link>
+          <a className="btn btn-outline" href={site.phoneHref}><PhoneIcon /> {site.phone}</a>
+          <Link className="btn btn-primary" href="/kontakt#rueckruf" onClick={() => setOpen(false)}>Rückruf anfordern</Link>
         </div>
       </div>,
       document.body,

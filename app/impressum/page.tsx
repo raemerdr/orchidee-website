@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
-import EnquiryForm from "@/components/EnquiryForm";
-import { photos, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Impressum", robots: { index: false } };
 
@@ -9,8 +8,8 @@ export const metadata: Metadata = { title: "Impressum", robots: { index: false }
 export default function ImpressumPage() {
   return (
     <>
-      <PageHero label="Rechtliches" title="Impressum" image={photos.beratung} cta="none" />
-      <section className="section-tight">
+      <PageHero label="Rechtliches" title="Impressum" />
+      <section className="section">
         <div className="wrap">
           <div className="prose">
             <h2>Angaben gemäß § 5 DDG</h2>
@@ -28,7 +27,6 @@ export default function ImpressumPage() {
           </div>
         </div>
       </section>
-      <EnquiryForm />
     </>
   );
 }

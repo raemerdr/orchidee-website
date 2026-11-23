@@ -1,10 +1,10 @@
-import { photos, site } from "@/lib/site";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { photos, site } from "@/lib/site";
 import PageHero from "@/components/PageHero";
-import EnquiryForm from "@/components/EnquiryForm";
-import { Costs, ForWhom } from "@/components/Sections";
 import FeatureSplit from "@/components/FeatureSplit";
-import { ArrowIcon, DuoHomeIcon, DuoNurseIcon, DuoTeamIcon, PhoneIcon } from "@/components/Icons";
+import { CheckList, ContactCta, Costs, ForWhom } from "@/components/Sections";
+import { PhoneIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Leistungen – Behandlungspflege & Grundpflege",
@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 const behandlung = [
-  ["Insulin & Blutzucker", "Insulingabe und Blutzuckerkontrolle nach ärztlicher Verordnung."],
-  ["Wundversorgung", "Verbandwechsel und fachgerechte Versorgung chronischer und akuter Wunden."],
-  ["Kompression", "An- und Ausziehen von Kompressionsstrümpfen, Anlegen von Kompressionsverbänden."],
-  ["Medikamente", "Richten und Verabreichen von Medikamenten, Injektionen."],
+  ["Insulin und Blutzucker", "Insulingabe und Blutzuckerkontrolle nach ärztlicher Verordnung."],
+  ["Wundversorgung", "Verbandwechsel und Versorgung chronischer und akuter Wunden."],
+  ["Kompression", "Kompressionsstrümpfe an- und ausziehen, Kompressionsverbände anlegen."],
+  ["Medikamente", "Medikamente richten und geben, Injektionen."],
   ["Katheter", "Versorgung und Wechsel von Blasenkathetern."],
   ["Sondenernährung", "Versorgung bei Ernährung über eine Magensonde (PEG)."],
 ];
@@ -25,72 +25,67 @@ export default function LeistungenPage() {
     <>
       <PageHero
         label="Leistungen"
-        title="Medizinische Pflege und Hilfe im Alltag – bei Ihnen zu Hause."
-        lead="Unsere Pflegefachkräfte übernehmen, was Ihr Arzt verordnet hat, und helfen bei der täglichen Grundpflege. So können Sie zu Hause bleiben."
+        title="Medizinische Pflege und Hilfe im Alltag"
+        lead="Unsere Pflegefachkräfte übernehmen, was Ihr Arzt verordnet hat, und helfen bei der täglichen Körperpflege. So können Sie zu Hause bleiben."
         image={photos.leistungen}
-        imageAlt="Pflegefachkraft hält die Hand eines älteren Mannes auf seinem Sofa"
-        imagePosition="60% 40%"
-        imagePositionMobile="55% 35%"
-        tags={["Behandlungspflege", "Grundpflege", "Beratung", "Koblenz & Umgebung"]}
+        imagePosition="62% 40%"
       />
 
       <FeatureSplit
-        label="01 · Behandlungspflege"
-        title="Was Ihr Arzt verordnet hat."
-        lead="Unsere examinierten Pflegefachkräfte übernehmen die medizinische Versorgung zu Hause – fachgerecht und zuverlässig."
+        id="behandlungspflege"
+        eyebrow="Behandlungspflege"
+        title="Medizinische Pflege"
+        sub="Behandlungspflege: alles, was Ihr Arzt verordnet hat – fachgerecht und zuverlässig."
         image={photos.behandlungspflege}
         imageAlt="Pflegefachkraft bei der Behandlungspflege"
-        badge={<><small>Kosten</small><strong>Übernimmt in der Regel die Krankenkasse</strong></>}
+        box={<><span>Wer bezahlt?</span><strong>In der Regel die Krankenkasse</strong></>}
       >
-        <ol className="feature-grid">
-          {behandlung.map(([t, d], i) => (
-            <li key={t}>
-              <span className="feature-num">{String(i + 1).padStart(2, "0")}</span>
-              <h3>{t}</h3>
-              <p>{d}</p>
-            </li>
-          ))}
-        </ol>
-      </FeatureSplit>
-
-      <FeatureSplit
-        reverse
-        label="02 · Grundpflege"
-        title="Hilfe beim Waschen und Anziehen."
-        lead="Mit Ruhe und Respekt unterstützen wir bei der Körperpflege, beim Anziehen und bei der Mobilität im Alltag."
-        image={photos.grundpflege}
-        imageAlt="Pflegefachkraft hilft einer älteren Dame im Alltag"
-        badge={<><small>Kosten</small><strong>Mit Pflegegrad beteiligt sich die Pflegekasse</strong></>}
-      >
-        <ul className="feature-rows">
-          <li><span className="fit-ic"><DuoNurseIcon /></span><div><strong>Waschen, Duschen, Körperpflege</strong><span>In Ihrem eigenen Bad, in Ihrem Tempo.</span></div></li>
-          <li><span className="fit-ic"><DuoTeamIcon /></span><div><strong>An- und Auskleiden</strong><span>Morgens und abends, wie es zu Ihrem Tag passt.</span></div></li>
-          <li><span className="fit-ic"><DuoHomeIcon /></span><div><strong>Hilfe beim Aufstehen und Gehen</strong><span>Damit Sie sich zu Hause sicher bewegen.</span></div></li>
+        <ul className="item-grid">
+          {behandlung.map(([t, d]) => <li key={t}><strong>{t}</strong><span>{d}</span></li>)}
         </ul>
       </FeatureSplit>
 
       <FeatureSplit
-        label="03 · Beratung"
-        title="Wir klären die Kosten mit Ihnen."
-        lead="Wir erklären, was Kranken- und Pflegekasse übernehmen, und helfen bei Anträgen und Formalitäten."
+        id="grundpflege"
+        reverse
+        grey
+        eyebrow="Grundpflege"
+        title="Hilfe im Alltag"
+        sub="Grundpflege: Hilfe beim Waschen und Anziehen – in Ruhe, mit Respekt und in Ihrem Tempo."
+        image={photos.grundpflege}
+        imageAlt="Pflegefachkraft hilft einer älteren Dame im Alltag"
+        box={<><span>Wer bezahlt?</span><strong>Mit Pflegegrad zahlt die Pflegekasse dazu</strong></>}
+      >
+        <CheckList items={[
+          ["Waschen, Duschen, Körperpflege", "In Ihrem eigenen Bad, in Ihrem Tempo."],
+          ["An- und Auskleiden", "Morgens und abends, wie es zu Ihrem Tag passt."],
+          ["Hilfe beim Aufstehen und Gehen", "Damit Sie sich zu Hause sicher bewegen."],
+        ]} />
+      </FeatureSplit>
+
+      <FeatureSplit
+        id="beratung"
+        eyebrow="Beratung"
+        title="Beratung zu den Kosten"
+        sub="Wir erklären, was Kranken- und Pflegekasse zahlen, und helfen bei Anträgen und Formularen."
         image={photos.beratung}
         imageAlt="Beratungsgespräch zu Hause"
-        badge={<><small>Beratung</small><strong>Kostenlos &amp; unverbindlich</strong></>}
+        box={<><span>Beratung</span><strong>Kostenlos und unverbindlich</strong></>}
       >
         <ol className="mini-steps">
-          <li><b>1</b><div><strong>Sie rufen an</strong><span>oder fordern einen Rückruf an.</span></div></li>
-          <li><b>2</b><div><strong>Wir klären die Kosten</strong><span>mit Kranken- und Pflegekasse.</span></div></li>
-          <li><b>3</b><div><strong>Wir helfen bei Anträgen</strong><span>damit die Pflege starten kann.</span></div></li>
+          <li><span className="tl-num">1</span><div><h3>Sie rufen an</h3><p>oder fordern einen Rückruf an.</p></div></li>
+          <li><span className="tl-num">2</span><div><h3>Wir klären die Kosten</h3><p>mit Kranken- und Pflegekasse.</p></div></li>
+          <li><span className="tl-num">3</span><div><h3>Wir helfen bei Anträgen</h3><p>damit die Pflege beginnen kann.</p></div></li>
         </ol>
-        <div className="feature-ctas">
-          <a className="btn btn-primary" href="#anfrage">Rückruf anfordern <ArrowIcon /></a>
-          <a className="btn btn-outline" href={site.phoneHref}><PhoneIcon /> {site.phone}</a>
+        <div className="btn-row">
+          <a className="btn btn-primary" href={site.phoneHref}><PhoneIcon /> {site.phone}</a>
+          <Link className="btn btn-outline" href="/kontakt#rueckruf">Rückruf anfordern</Link>
         </div>
       </FeatureSplit>
 
       <ForWhom />
       <Costs />
-      <EnquiryForm />
+      <ContactCta />
     </>
   );
 }

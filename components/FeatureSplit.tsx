@@ -1,40 +1,43 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
+import Image from "next/image";
 
-// Text + photo section used on the inner pages. `badge` floats on the photo.
+// Text beside a photo in an arched frame (inner pages). `reverse` puts the photo on the right,
+// `tint` gives the section the cream background, `box` adds a small note card on the photo.
 export default function FeatureSplit({
-  label,
   title,
-  lead,
+  sub,
+  eyebrow,
   image,
   imageAlt,
   reverse = false,
-  badge,
+  grey = false,
+  box,
   children,
   id,
 }: {
-  label: string;
   title: string;
-  lead?: string;
+  sub?: string;
+  eyebrow?: string;
   image: string;
   imageAlt: string;
   reverse?: boolean;
-  badge?: ReactNode;
+  grey?: boolean;
+  box?: ReactNode;
   children?: ReactNode;
   id?: string;
 }) {
   return (
-    <section className="section-tight" id={id}>
-      <div className={`wrap feature${reverse ? " is-reverse" : ""}`}>
-        <div className="feature-text">
-          <span className="label">{label}</span>
-          <h2>{title}</h2>
-          {lead && <p className="lead">{lead}</p>}
-          {children}
+    <section className={`section${grey ? " section-cream" : ""}`} id={id}>
+      <div className={`wrap split${reverse ? " reverse" : ""}`}>
+        <div className="split-media">
+          <div className="arch"><Image src={image} alt={imageAlt} fill sizes="(max-width: 720px) 100vw, 40vw" quality={75} /></div>
+          {box && <div className="photo-note">{box}</div>}
         </div>
-        <div className="feature-photo">
-          <Image src={image} alt={imageAlt} fill sizes="(max-width: 1080px) 100vw, 45vw" quality={75} />
-          {badge && <div className="feature-badge">{badge}</div>}
+        <div className="split-copy">
+          {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+          <h2>{title}</h2>
+          {sub && <p className="lead">{sub}</p>}
+          {children}
         </div>
       </div>
     </section>

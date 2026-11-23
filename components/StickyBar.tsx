@@ -6,14 +6,14 @@ import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 import { PhoneIcon } from "./Icons";
 
-// Mobile call bar. On the Karriere page the second button leads to the application form.
+// Bottom call bar on phones. On the Karriere page the second button leads to the application form.
 export default function StickyBar() {
   const pathname = usePathname();
   const onCareers = pathname === "/karriere";
 
-  // Hide the bar while a form is on screen, so it never covers fields or doubles the send button.
+  // Hide the bar while a form on the page is on screen, so it never covers fields or the send button.
   useEffect(() => {
-    const forms = Array.from(document.querySelectorAll("form.form"));
+    const forms = Array.from(document.querySelectorAll("main form"));
     if (!forms.length) return;
     const seen = new Set<Element>();
     const io = new IntersectionObserver((entries) => {
@@ -23,13 +23,14 @@ export default function StickyBar() {
     forms.forEach((f) => io.observe(f));
     return () => { io.disconnect(); document.body.classList.remove("on-form"); };
   }, [pathname]);
+
   return (
     <div className="sticky" aria-label="Schnellkontakt">
-      <a className="btn btn-light" href={site.phoneHref}><PhoneIcon /> Anrufen</a>
+      <a className="btn btn-outline" href={site.phoneHref}><PhoneIcon /> Anrufen</a>
       {onCareers ? (
         <a className="btn btn-primary" href="#bewerbung">Bewerben</a>
       ) : (
-        <Link className="btn btn-primary" href="/kontakt" data-callback>Rückruf anfordern</Link>
+        <Link className="btn btn-primary" href="/kontakt#rueckruf">Rückruf anfordern</Link>
       )}
     </div>
   );

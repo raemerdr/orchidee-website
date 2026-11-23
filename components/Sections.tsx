@@ -1,95 +1,124 @@
 import Image from "next/image";
-import { photos, site } from "@/lib/site";
+import Link from "next/link";
+import type { ReactNode } from "react";
+import { googleReviews, photos, site, video } from "@/lib/site";
 import FaqItem from "./FaqItem";
-import T from "./T";
-import { ArrowIcon, DuoHomeIcon, DuoNurseIcon, DuoPaperIcon, DuoTeamIcon, PhoneIcon } from "./Icons";
+import VideoFrame from "./VideoFrame";
+import { ArrowIcon, CareIcon, DuoNurseIcon, DuoPaperIcon, DuoTeamIcon, CheckIcon, ClockIcon, DocIcon, HandIcon, HomeIcon, PhoneIcon, StarIcon, TeamIcon } from "./Icons";
 
-// "Für wen wir da sind": headline on the left, a short fit check on the right.
-// Internally the focus is Pflegegrad 3–5, but the site must not say so: we qualify by need
-// (prescribed Behandlungspflege) and politely rule out household-only help instead.
-const criteria = [
-  [DuoPaperIcon, photos.cardJobs, "Ärztlich verordnete Behandlungspflege", "z. B. Insulin, Wundversorgung, Kompression oder Medikamente", "Ihr Arzt hat Pflege verordnet", "z. B. Insulin, Verbände, Kompressionsstrümpfe oder Medikamente"],
-  [DuoNurseIcon, photos.leistungen, "Hilfe beim Waschen und Anziehen", "Grundpflege im Alltag, zusätzlich zur medizinischen Pflege", "Sie brauchen auch Hilfe im Alltag", "z. B. beim Waschen und Anziehen"],
-  [DuoHomeIcon, photos.steps, "Wohnort in Koblenz oder Umgebung", "Unsere Touren fahren in Koblenz und der näheren Umgebung", "Sie wohnen in Koblenz oder Umgebung", "Unsere Touren fahren in Koblenz und der näheren Umgebung"],
-] as const;
+/* Orchidee's own look: warm cream and deep aubergine, magenta from the logo for actions,
+   photos in arched frames (the orchid petal), left-aligned headings, few but clear buttons. */
 
-export function ForWhom() {
+/* ---------- Small building blocks ---------- */
+
+export function SectionHead({ eyebrow, title, text, center = false, children }: { eyebrow?: string; title: ReactNode; text?: ReactNode; center?: boolean; children?: ReactNode }) {
   return (
-    <section id="fuer-wen">
-      <div className="wrap fit-split">
-        <div className="fit-intro">
-          <span className="label">Für wen wir da sind</span>
-          <h2><T d="Medizinische Pflege bei Ihnen zu Hause." m="Ist das das Richtige für Sie?" /></h2>
-          <p className="lead">
-            Damit wir Ihnen wirklich helfen können, konzentrieren wir uns auf Menschen, die zu Hause medizinisch versorgt werden müssen.
-          </p>
-          <div className="fit-photo">
-            <Image src={photos.fuerWen} alt="Pflegefachkraft im Gespräch mit einer älteren Dame bei ihr zu Hause" fill sizes="(max-width: 1080px) 100vw, 46vw" quality={75} />
-            <a className="fit-call" href={site.phoneHref}>
-              <span className="fit-call-ic"><PhoneIcon /></span>
-              <span>
-                <small>Sie sind unsicher? Wir sagen es Ihnen ehrlich.</small>
-                <strong>{site.phone}</strong>
-              </span>
-            </a>
+    <div className={`section-head${center ? " center" : ""}`}>
+      <div>
+        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+        <h2>{title}</h2>
+        {text && <p className="lead">{text}</p>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+export function CheckList({ items }: { items: [string, string?][] }) {
+  return (
+    <ul className="checklist">
+      {items.map(([title, text]) => (
+        <li key={title}>
+          <span className="check"><CheckIcon size={16} /></span>
+          <div><strong>{title}</strong>{text && <span>{text}</span>}</div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function RatingBadge() {
+  const rating = googleReviews.rating.toFixed(1).replace(".", ",");
+  return (
+    <a className="rating" href={googleReviews.url} target="_blank" rel="noopener noreferrer" aria-label={`${rating} von 5 Sternen bei Google, ${googleReviews.count} Bewertungen`}>
+      <svg className="rating-g" width="30" height="30" viewBox="0 0 48 48" aria-hidden>
+        <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z" />
+        <path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z" />
+        <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z" />
+        <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z" />
+      </svg>
+      <strong>{rating}</strong>
+      <span><span className="rating-stars" aria-hidden>{Array.from({ length: 5 }, (_, i) => <StarIcon key={i} size={15} />)}</span>{googleReviews.count} Bewertungen bei Google</span>
+    </a>
+  );
+}
+
+/* ---------- Home: hero ---------- */
+
+export function Hero() {
+  return (
+    <section className="hero hero-home">
+      <div className="wrap hero-grid">
+        <div className="hero-copy">
+          <p className="eyebrow">Ambulanter Pflegedienst in Koblenz</p>
+          <h1>Pflege zu Hause – <span className="hl">vom selben Team.</span></h1>
+          <p className="hero-lead">Unsere Pflegefachkräfte kommen zu Ihnen nach Hause und übernehmen, was Ihr Arzt verordnet hat.</p>
+          <RatingBadge />
+          <p className="hero-ask">Für wen suchen Sie Pflege?</p>
+          <div className="hero-ctas hero-choices">
+            <Link className="choice" href="/kontakt?fuer=selbst#rueckruf">
+              <span className="choice-img"><Image src={photos.cardSelf} alt="" fill sizes="64px" quality={70} /></span>
+              <span>Für mich</span><ArrowIcon />
+            </Link>
+            <Link className="choice" href="/kontakt?fuer=angehoerige#rueckruf">
+              <span className="choice-img"><Image src={photos.cardRelative} alt="" fill sizes="64px" quality={70} /></span>
+              <span>Für einen Angehörigen</span><ArrowIcon />
+            </Link>
           </div>
+          <a className="hero-call" href={site.phoneHref}><span className="hero-call-ic"><PhoneIcon size={20} /></span><span>Oder rufen Sie an: <strong>{site.phone}</strong></span></a>
         </div>
-
-        <div className="fit-panel">
-          <div className="pg-head">
-            <h3>Passt unsere Pflege zu Ihnen?</h3>
-            <span className="pg-tag">Kurz-Check</span>
-          </div>
-
-          <ul className="fit-criteria">
-            {criteria.map(([Icon, img, title, text, mTitle, mText]) => (
-              <li key={title}>
-                <span className="fit-img"><Image src={img} alt="" fill sizes="(max-width: 720px) 100vw, 1px" quality={70} /></span>
-                <span className="fit-ic"><Icon /></span>
-                <div><strong><T d={title} m={mTitle} /></strong><span><T d={text} m={mText} /></span></div>
-              </li>
-            ))}
-          </ul>
-
-          {/* For sons and daughters: say outright that the medical part is taken off their hands. */}
-          <p className="fit-not fit-family"><i aria-hidden>✓</i>Sie pflegen einen Angehörigen? Den medizinischen Teil übernehmen wir. Sie müssen das nicht mehr allein machen.</p>
-          <p className="fit-not"><i aria-hidden>–</i>Reine Haushaltshilfe oder Betreuung ohne ärztlich verordnete Pflege bieten wir leider nicht an.</p>
+        <div className="hero-media">
+          <div className="arch"><Image src={photos.hero} alt="Pflegefachkraft umarmt eine lachende ältere Dame" fill priority sizes="100vw" quality={75} style={{ objectPosition: "72% 35%" }} /></div>
         </div>
+      </div>
+      <div className="wrap">
+        <ul className="promises">
+          <li><span className="promise-ic"><DuoTeamIcon /></span><div><strong>Ein festes Team</strong><span>Sie wissen, wer kommt.</span></div></li>
+          <li><span className="promise-ic"><DuoNurseIcon /></span><div><strong>Examinierte Fachkräfte</strong><span>für die medizinische Pflege.</span></div></li>
+          <li><span className="promise-ic"><DuoPaperIcon /></span><div><strong>Kostenlose Beratung</strong><span>Wir klären das mit den Kassen.</span></div></li>
+        </ul>
       </div>
     </section>
   );
 }
 
+/* ---------- Services ---------- */
+
 const services = [
-  { n: "01", Icon: DuoNurseIcon, mHead: "Was Ihr Arzt verordnet hat", title: "Behandlungspflege", img: photos.behandlungspflege, text: "Alles, was Ihr Arzt verordnet hat – fachgerecht und zuverlässig.", tags: ["Insulin", "Wundversorgung", "Kompression", "Medikamente", "Katheter", "Sondenernährung"] },
-  { n: "02", Icon: DuoTeamIcon, mHead: "Hilfe beim Waschen und Anziehen", title: "Grundpflege", img: photos.grundpflege, text: "Hilfe beim Waschen, Anziehen und bei der täglichen Körperpflege – mit Ruhe und Respekt.", tags: ["Waschen", "Anziehen", "Mobilität"] },
-  { n: "03", Icon: DuoPaperIcon, mHead: "Wir klären, wer bezahlt", title: "Beratung & Kostenklärung", img: photos.beratung, text: "Wir erklären, was Kranken- und Pflegekasse übernehmen, und helfen bei den Formalitäten.", tags: ["Pflegegrad", "Verordnung", "Kassen"] },
+  { img: photos.behandlungspflege, href: "/leistungen#behandlungspflege", Icon: CareIcon, term: "Behandlungspflege", title: "Was Ihr Arzt verordnet hat", text: "Insulin, Verbände, Kompressionsstrümpfe und Medikamente – fachgerecht und pünktlich." },
+  { img: photos.grundpflege, href: "/leistungen#grundpflege", Icon: HandIcon, term: "Grundpflege", title: "Hilfe beim Waschen und Anziehen", text: "Unterstützung bei der Körperpflege und im Alltag – in Ruhe und in Ihrem Tempo." },
+  { img: photos.beratung, href: "/leistungen#beratung", Icon: DocIcon, term: "Beratung", title: "Wir klären, wer bezahlt", text: "Wir sprechen mit Kranken- und Pflegekasse und helfen bei den Anträgen." },
 ];
 
 export function Services() {
   return (
-    <section id="leistungen" className="section-tight">
+    <section id="leistungen" className="section">
       <div className="wrap">
-        <div className="row-head">
-          <div>
-            <span className="label">Leistungen</span>
-            <h2><T d="Was unsere Pflegekräfte für Sie tun." m="Was machen wir für Sie?" /></h2>
-          </div>
-          <a className="btn btn-dark" href="/kontakt">Beratung anfragen</a>
-        </div>
+        <SectionHead eyebrow="Leistungen" title="Was wir für Sie tun">
+          <Link className="link-arrow" href="/leistungen">Alle Leistungen <ArrowIcon /></Link>
+        </SectionHead>
         <div className="services">
-          {services.map((s) => (
-            <article key={s.n} className="svc">
-              <Image className="svc-img" src={s.img} alt="" fill sizes="(max-width: 720px) 100vw, (max-width: 1080px) 50vw, 33vw" quality={70} />
-              <span className="svc-pill"><span className="svc-ic" aria-hidden><s.Icon /></span>{s.title}</span>
-              <span className="num">{s.n}</span>
-              <div className="svc-body">
-                <h3><T d={s.title} m={s.mHead} /></h3>
-                <p>{s.text}</p>
-                <a className="svc-go" href="/leistungen" aria-label={`Mehr zu ${s.title}`}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                </a>
-                <ul>{s.tags.map((t) => <li key={t}>{t}</li>)}</ul>
+          {services.map(({ img, href, Icon, term, title, text }) => (
+            <article key={term} className="service">
+              <span className="service-img"><Image src={img} alt="" fill sizes="(max-width: 720px) 100vw, 33vw" quality={70} /></span>
+              <div className="service-body">
+                <span className="service-term"><Icon size={22} /> {term}</span>
+                <h3 className="service-title">{title}</h3>
+                <p className="service-text">{text}</p>
+                <div className="service-btns">
+                  <Link className="btn btn-primary" href={`/kontakt#rueckruf`}>Rückruf anfordern</Link>
+                  <Link className="btn btn-outline" href={href} aria-label={`Mehr erfahren: ${title}`}>Mehr erfahren</Link>
+                </div>
               </div>
             </article>
           ))}
@@ -99,153 +128,116 @@ export function Services() {
   );
 }
 
-const steps = [
-  ["Anrufen oder anfragen", "Telefonisch oder über das kurze Formular."],
-  ["Wir rufen zurück", "Wir klären, welche Pflege gebraucht wird."],
-  ["Gespräch zu Hause", "Wir lernen Sie und Ihre Situation kennen."],
-  ["Kosten klären", "Wir sprechen mit Kranken- und Pflegekasse."],
-  ["Pflege beginnt", "Ihr festes Team kommt zu Ihnen nach Hause."],
+/* ---------- Who we care for ---------- */
+// Internally the focus is Pflegegrad 3–5, but the site must not say so: we qualify by need
+// (prescribed medical care) and politely rule out household-only help instead.
+
+export function ForWhom() {
+  return (
+    <section id="fuer-wen" className="section section-cream">
+      <div className="wrap split">
+        <div className="split-media">
+          <div className="arch"><Image src={photos.fuerWen} alt="Pflegefachkraft im Gespräch mit einer älteren Dame bei ihr zu Hause" fill sizes="(max-width: 720px) 100vw, 40vw" quality={75} style={{ objectPosition: "40% 50%" }} /></div>
+        </div>
+        <div className="split-copy">
+          <p className="eyebrow">Für wen wir da sind</p>
+          <h2>Ist unsere Pflege das Richtige für Sie?</h2>
+          <p className="lead">Wir sind für Menschen da, die zu Hause medizinisch versorgt werden müssen.</p>
+          <CheckList items={[
+            ["Ihr Arzt hat Pflege verordnet", "z. B. Insulin, Verbände, Kompressionsstrümpfe oder Medikamente"],
+            ["Sie brauchen auch Hilfe im Alltag", "z. B. beim Waschen und Anziehen"],
+            ["Sie wohnen in Koblenz oder Umgebung", "Unsere Touren fahren in Koblenz und der näheren Umgebung"],
+          ]} />
+          {/* For sons and daughters: say outright that the medical part is taken off their hands. */}
+          <div className="family-note">
+            <strong>Sie pflegen einen Angehörigen?</strong>
+            <p>Den medizinischen Teil übernehmen wir. Sie müssen das nicht mehr allein machen.</p>
+          </div>
+          <p className="note-muted">Reine Haushaltshilfe oder Betreuung ohne ärztlich verordnete Pflege bieten wir leider nicht an.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Video ---------- */
+
+export function VideoSection() {
+  return (
+    <section id="video" className="section">
+      <div className="wrap video-split">
+        <div className="video-copy">
+          <p className="eyebrow">Lernen Sie uns kennen</p>
+          <h2>Wer kommt zu Ihnen nach Hause?</h2>
+          <p className="lead">In einem kurzen Film stellen wir unser Team vor und zeigen, wie ein Besuch bei Ihnen abläuft.</p>
+          <p className="video-label">{video.caption}</p>
+        </div>
+        <VideoFrame />
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Costs ---------- */
+
+const payers = [
+  { Icon: CareIcon, who: "Krankenkasse", title: "Medizinische Pflege", text: "Was Ihr Arzt verordnet hat (Behandlungspflege), bezahlt in der Regel Ihre Krankenkasse.", needs: "Ärztliche Verordnung" },
+  { Icon: HandIcon, who: "Pflegekasse", title: "Hilfe bei der Körperpflege", text: "Für Hilfe beim Waschen und Anziehen (Grundpflege) zahlt die Pflegekasse dazu, wenn ein Pflegegrad vorliegt.", needs: "Pflegegrad" },
 ];
 
-// Phones show a shorter three-step version.
-const stepsMobile = [
-  ["Sie rufen uns an", "Oder Sie fordern einen Rückruf an."],
-  ["Wir besuchen Sie zu Hause", "Wir lernen Sie kennen und klären die Kosten mit den Kassen."],
+export function Costs() {
+  return (
+    <section id="kosten" className="section">
+      <div className="wrap">
+        <SectionHead eyebrow="Kosten" title="Wer bezahlt die Pflege?" text="Den größten Teil tragen in der Regel die Kassen. Welche Kasse zahlt, hängt von der Art der Pflege ab." />
+        <div className="costs">
+          {payers.map(({ Icon, who, title, text, needs }) => (
+            <div className="cost" key={who}>
+              <div className="cost-top"><span className="promise-ic"><Icon size={26} /></span><span className="cost-who">{who}</span></div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+              <p className="cost-needs"><span>Voraussetzung</span>{needs}</p>
+            </div>
+          ))}
+          <div className="cost cost-help">
+            <h3>Wir klären das für Sie.</h3>
+            <p>Die Beratung ist kostenlos. Wir sprechen mit den Kassen und helfen bei Anträgen.</p>
+            <Link className="btn btn-light" href="/kontakt#rueckruf">Rückruf anfordern</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Steps ---------- */
+
+const steps = [
+  ["Sie melden sich", "Rufen Sie an oder fordern Sie einen Rückruf an."],
+  ["Wir besuchen Sie", "Wir lernen Sie zu Hause kennen und klären die Kosten."],
   ["Die Pflege beginnt", "Ihr festes Team kommt zu Ihnen nach Hause."],
 ];
 
 export function Steps() {
   return (
-    <section id="ablauf" className="section-tight">
-      <div className="wrap steps-split">
-        <div className="steps-photo">
-          <Image src={photos.steps} alt="Pflegekraft im Gespräch mit einer älteren Dame bei ihr zu Hause" fill sizes="(max-width: 1080px) 100vw, 45vw" quality={70} />
-        </div>
-        <div>
-          <span className="label">So läuft es ab</span>
-          <h2><T d="In fünf Schritten zur Pflege zu Hause." m="Wie fängt es an?" /></h2>
-          {[{ list: steps, cls: "only-d-block" }, { list: stepsMobile, cls: "only-m-block" }].map(({ list, cls }) => (
-            <ol className={`steps-list ${cls}`} key={cls}>
-              {list.map(([title, text], i) => (
-                <li key={title}>
-                  <span className="step-num" aria-hidden>{i + 1}</span>
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const reasons = [
-  { icon: <DuoTeamIcon />, title: "Kleines, festes Team", text: "Sie wissen, wer kommt – keine ständig wechselnden Gesichter." },
-  { icon: <DuoNurseIcon />, title: "Examinierte Pflegefachkräfte", text: "Ihre medizinische Pflege liegt in fachkundigen Händen." },
-  { icon: <DuoHomeIcon />, title: "Zu Hause bleiben", text: "Versorgt in den eigenen vier Wänden, im gewohnten Alltag." },
-  { icon: <DuoPaperIcon />, title: "Hilfe beim Papierkram", text: "Wir klären die Kosten und kümmern uns um die Kassen." },
-];
-
-// "Warum Orchidee": content + four open features on the left, tall photo on the right
-// (mirrors "So läuft es ab", where the photo sits on the left).
-export function Why() {
-  return (
-    <section className="section-tight why-section">
-      <div className="wrap why-split">
-        <div>
-          <span className="label">Warum Orchidee</span>
-          <h2>Vertraute Gesichter statt ständig neuer Leute.</h2>
-          <p className="lead">
-            Ihre Familie muss die medizinische Pflege nicht mehr allein stemmen. Wir übernehmen – mit einem kleinen Team, das Sie kennt.
-          </p>
-          <ol className="why-features">
-            {reasons.map((r, i) => (
-              <li className="why-feature" key={r.title}>
-                <div className="why-feature-top">
-                  <span className="ic">{r.icon}</span>
-                  <span className="why-num">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-                <h3>{r.title}</h3>
-                <p>{r.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div className="why-photo">
-          <Image src={photos.why} alt="Pflegekraft und ältere Dame sitzen lachend nebeneinander" fill sizes="(max-width: 1080px) 100vw, 42vw" quality={70} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const payers = [
-  {
-    Icon: DuoPaperIcon,
-    who: "Krankenkasse",
-    title: "Behandlungspflege",
-    mTitle: "Medizinische Pflege",
-    text: "Medizinische Pflege, die Ihr Arzt verordnet hat, übernimmt in der Regel Ihre Krankenkasse.",
-    mText: "Was Ihr Arzt verordnet hat (Behandlungspflege), bezahlt in der Regel Ihre Krankenkasse.",
-    items: ["Insulin & Medikamente", "Wundversorgung", "Kompression", "Katheter & Sonde"],
-    needs: "Ärztliche Verordnung",
-  },
-  {
-    Icon: DuoNurseIcon,
-    who: "Pflegekasse",
-    title: "Grundpflege",
-    mTitle: "Hilfe bei der Körperpflege",
-    text: "Mit einem Pflegegrad beteiligt sich die Pflegekasse an der Hilfe beim Waschen, Anziehen und im Alltag.",
-    mText: "Hilfe beim Waschen und Anziehen (Grundpflege): Mit einem Pflegegrad zahlt die Pflegekasse dazu.",
-    items: ["Waschen & Körperpflege", "An- und Ausziehen", "Mobilität im Alltag"],
-    needs: "Pflegegrad",
-  },
-];
-
-export function Costs() {
-  return (
-    <section id="kosten" className="section-tight">
+    <section id="ablauf" className="section section-cream">
       <div className="wrap">
-        <div className="costs-head">
-          <div>
-            <span className="label">Kosten</span>
-            <h2>Wer bezahlt die Pflege?</h2>
-          </div>
-          <p className="lead">Den größten Teil tragen in der Regel die Kassen. Welche Kasse was übernimmt, hängt von der Art der Pflege ab.</p>
-        </div>
-        <div className="costs">
-          {payers.map(({ Icon, who, title, mTitle, text, mText, items, needs }) => (
-            <div className="cost" key={who}>
-              <div className="cost-top">
-                <span className="fit-ic cost-ic"><Icon /></span>
-                <span className="who">{who}</span>
-              </div>
-              <h3><T d={title} m={mTitle} /></h3>
-              <p><T d={text} m={mText} /></p>
-              <ul className="cost-list">
-                {items.map((i) => <li key={i}>{i}</li>)}
-              </ul>
-              <div className="cost-needs"><span>Voraussetzung</span><strong>{needs}</strong></div>
-            </div>
+        <SectionHead eyebrow="So läuft es ab" title="Drei Schritte bis zur Pflege" />
+        <ol className="timeline">
+          {steps.map(([title, text], i) => (
+            <li key={title}>
+              <span className="tl-num" aria-hidden>{i + 1}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </li>
           ))}
-          <div className="cost-cta">
-            <span className="cost-cta-tag">Kostenlos &amp; unverbindlich</span>
-            <h3>Wir klären das für Sie.</h3>
-            <p>Wir prüfen gemeinsam mit Ihnen, was in Ihrem Fall übernommen wird, und helfen bei Anträgen und Formalitäten.</p>
-            <div className="cost-cta-actions">
-              <a className="btn btn-light" href={site.phoneHref}><PhoneIcon /> {site.phone}</a>
-              <a className="cost-cta-link" href="/kontakt">Rückruf anfordern <ArrowIcon /></a>
-            </div>
-          </div>
-        </div>
+        </ol>
       </div>
     </section>
   );
 }
+
+/* ---------- FAQ ---------- */
 
 // Items marked [TODO] need confirmation from the client.
 const faqs = [
@@ -256,51 +248,73 @@ const faqs = [
   ["Bieten Sie auch Haushaltshilfe an?", "Reine Haushaltshilfe oder Betreuung ohne ärztlich verordnete Pflege bieten wir leider nicht an."],
 ];
 
-// `short` leaves out the questions the home page already answers in its own sections.
-const repeatedOnHome = ["Muss ich etwas bezahlen?", "Bieten Sie auch Haushaltshilfe an?"];
-
-export function Faq({ short = false }: { short?: boolean }) {
-  // On phones only: the home page hides the two questions its own sections already answer.
-  const hideOnPhone = (q: string) => short && repeatedOnHome.includes(q);
+export function Faq() {
   return (
-    <section className="section-tight" id="fragen">
+    <section id="fragen" className="section">
       <div className="wrap faq">
         <div>
-          <span className="label"><T d="Häufige Fragen" m="Gut zu wissen" /></span>
-          <h2><T d="Gut zu wissen." m="Noch Fragen?" /></h2>
+          <p className="eyebrow">Häufige Fragen</p>
+          <h2>Gut zu wissen</h2>
+          <div className="faq-call">
+            <p>Ihre Frage ist nicht dabei?</p>
+            <a href={site.phoneHref}><PhoneIcon size={20} /> {site.phone}</a>
+          </div>
         </div>
-        <div>
-          {faqs.map(([q, a], i) => (
-            <FaqItem key={q} q={q} a={a} defaultOpen={i === 0} className={hideOnPhone(q) ? "m-hide" : undefined} />
-          ))}
+        <div className="faq-list">
+          {faqs.map(([q, a], i) => <FaqItem key={q} q={q} a={a} defaultOpen={i === 0} />)}
         </div>
       </div>
     </section>
   );
 }
 
-export function CareerTeaser() {
+/* ---------- Closing contact block (every page) ---------- */
+
+export function ContactCta() {
   return (
-    <section id="karriere" className="section-tight">
+    <section className="section contact-cta">
       <div className="wrap">
-        <div className="career">
-          <Image className="career-bg" src={photos.career} alt="" fill sizes="(max-width: 1240px) 100vw, 1240px" quality={70} />
-          <div>
-            <span className="label">Karriere</span>
-            <h2>Pflegen Sie mit uns in Koblenz.</h2>
-            <p>Wir suchen examinierte Pflegefachkräfte und eine Pflegedienstleitung. Bewerbung in zwei Minuten – ohne Anschreiben.</p>
+        <div className="cta-card">
+          <div className="cta-copy">
+            <p className="eyebrow">Wir sind für Sie da</p>
+            <h2>Sprechen Sie mit uns.</h2>
+            <p>Am schnellsten geht es am Telefon. Oder Sie hinterlassen Ihre Nummer – wir rufen Sie zurück.</p>
+            <a className="cta-phone" href={site.phoneHref}><PhoneIcon size={26} /> {site.phone}</a>
+            <div className="cta-actions">
+              <Link className="btn btn-light btn-lg" href="/kontakt#rueckruf">Rückruf anfordern</Link>
+            </div>
+            <p className="cta-meta"><ClockIcon size={18} /> Beratung kostenlos und unverbindlich</p>
           </div>
-          <div className="roles">
-            <a className="role" href="/karriere#pdl">
-              <span><strong>Pflegedienstleitung (m/w/d)</strong><small>Vollzeit · PDL-Weiterbildung</small></span>
-              <span className="arrow"><ArrowIcon /></span>
-            </a>
-            <a className="role" href="/karriere#pflegefachkraft">
-              <span><strong>Pflegefachkraft (m/w/d)</strong><small>3-jährige Ausbildung mit Examen · Führerschein B</small></span>
-              <span className="arrow"><ArrowIcon /></span>
-            </a>
-          </div>
+          <div className="cta-media"><div className="arch"><Image src={photos.anfrage} alt="Ältere Dame telefoniert lächelnd zu Hause" fill sizes="(max-width: 720px) 100vw, 36vw" quality={75} style={{ objectPosition: "45% 25%" }} /></div></div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Über uns: what matters to us ---------- */
+
+const values = [
+  { Icon: TeamIcon, title: "Kleines, festes Team", text: "Sie wissen, wer kommt – keine ständig wechselnden Gesichter." },
+  { Icon: CareIcon, title: "Examinierte Fachkräfte", text: "Ihre medizinische Pflege liegt in fachkundigen Händen." },
+  { Icon: HomeIcon, title: "Zu Hause bleiben", text: "Versorgt in den eigenen vier Wänden, im gewohnten Alltag." },
+  { Icon: DocIcon, title: "Hilfe beim Papierkram", text: "Wir klären die Kosten und kümmern uns um die Kassen." },
+];
+
+export function Values() {
+  return (
+    <section className="section section-cream">
+      <div className="wrap">
+        <SectionHead eyebrow="Warum Orchidee" title="Vertraute Gesichter statt ständig neuer Leute" />
+        <ul className="values">
+          {values.map(({ Icon, title, text }) => (
+            <li className="value" key={title}>
+              <span className="promise-ic"><Icon size={26} /></span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -7,12 +7,8 @@ import { usePathname } from "next/navigation";
 // Content is fully visible without JS (the hiding class is only added here),
 // and nothing moves for visitors who ask for reduced motion.
 const TARGETS = [
-  "section:not(.hero) .label",
-  "section:not(.hero) h2",
-  "section:not(.hero) .lead",
-  ".fit-card", ".fit-photo", ".pg-head", ".fit-criteria li", ".fit-not", ".svc", ".step", ".steps-photo", ".why-photo", ".steps-list li", ".why-item", ".why-feature", ".cost", ".cost-cta", ".note",
-  ".faq-item", ".feature-photo", ".feature-grid li", ".feature-rows li", ".mini-steps li", ".job", ".career", ".call-box", ".form",
-  ".page-hero:not(.has-img) .label", ".page-hero:not(.has-img) h1", ".page-hero:not(.has-img) .lead", ".detail-card", ".role-card", ".cta-band", ".prose",
+  ".section-head", ".card", ".split-media", ".split-copy", ".video-frame", ".cost", ".costs-foot", ".step",
+  ".faq-head", ".faq-item", ".value", ".team-card", ".role", ".cta-card", ".trust-list li", ".prose",
 ].join(",");
 
 export default function Reveal() {

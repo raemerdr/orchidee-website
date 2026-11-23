@@ -2,22 +2,19 @@ import type React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { ArrowIcon, PhoneIcon } from "./Icons";
+import { PhoneIcon } from "./Icons";
 
 type Cta = "contact" | "apply" | "none";
 
-// Inner page header. With `image` it is a full-bleed photo hero like the home page
-// (dark overlay, white text, call-to-action); without one it stays a simple light header (legal pages).
+// Inner page hero in Orchidee's own style: text on the warm cream panel, photo in an arched frame.
+// Without `image` it is a plain title band.
 export default function PageHero({
   label,
   title,
   lead,
   image,
-  imageAlt = "",
   imagePosition = "center",
-  imagePositionMobile,
   cta = "contact",
-  tags,
 }: {
   label: string;
   title: string;
@@ -25,43 +22,33 @@ export default function PageHero({
   image?: string;
   imageAlt?: string;
   imagePosition?: string;
-  imagePositionMobile?: string;
   cta?: Cta;
-  tags?: string[];
 }) {
-  if (!image) {
-    return (
-      <section className="page-hero">
-        <div className="wrap">
-          <span className="label">{label}</span>
-          <h1>{title}</h1>
-          {lead && <p className="lead">{lead}</p>}
-        </div>
-      </section>
-    );
-  }
   return (
-    <section className="page-hero has-img">
-      <div className="page-hero-bg" style={{ "--pos": imagePosition, "--pos-m": imagePositionMobile ?? imagePosition } as React.CSSProperties}>
-        <Image src={image} alt={imageAlt} fill priority sizes="100vw" quality={70} />
-      </div>
-      <div className="wrap">
-        <div className="kicker"><b aria-hidden>#</b> {label}</div>
-        <h1>{title}</h1>
-        {lead && <p className="page-hero-lead">{lead}</p>}
-        {cta === "contact" && (
-          <div className="hero-ctas">
-            <Link className="btn btn-primary" href="/kontakt" data-callback>Rückruf anfordern <span className="d-only"><ArrowIcon /></span></Link>
-            <a className="btn btn-ghost" href={site.phoneHref} aria-label={`${site.phone} anrufen`}><PhoneIcon /> <span className="m-only">Jetzt anrufen:&nbsp;</span>{site.phone}</a>
+    <section className={`hero hero-page${image ? "" : " hero-plain"}`}>
+      <div className="wrap hero-grid">
+        <div className="hero-copy">
+          <p className="eyebrow">{label}</p>
+          <h1>{title}</h1>
+          {lead && <p className="hero-lead">{lead}</p>}
+          {cta === "contact" && image && (
+            <div className="hero-ctas">
+              <a className="btn btn-primary btn-lg" href={site.phoneHref}><PhoneIcon /> {site.phone}</a>
+              <Link className="btn btn-outline btn-lg" href="/kontakt#rueckruf">Rückruf anfordern</Link>
+            </div>
+          )}
+          {cta === "apply" && (
+            <div className="hero-ctas">
+              <a className="btn btn-primary btn-lg" href="#bewerbung">Jetzt bewerben</a>
+              <a className="btn btn-outline btn-lg" href="#stellen">Offene Stellen</a>
+            </div>
+          )}
+        </div>
+        {image && (
+          <div className="hero-media">
+            <div className="arch"><Image src={image} alt="" fill priority sizes="(max-width: 720px) 100vw, 40vw" quality={75} style={{ objectPosition: imagePosition }} /></div>
           </div>
         )}
-        {cta === "apply" && (
-          <div className="hero-ctas">
-            <a className="btn btn-primary" href="#bewerbung">Jetzt bewerben <ArrowIcon /></a>
-            <a className="btn btn-ghost" href="#stellen">Offene Stellen</a>
-          </div>
-        )}
-        {tags && <div className="tags">{tags.map((t) => <span key={t}>{t}</span>)}</div>}
       </div>
     </section>
   );

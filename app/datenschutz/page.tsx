@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
-import EnquiryForm from "@/components/EnquiryForm";
-import { photos, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Datenschutz", robots: { index: false } };
 
@@ -10,8 +9,8 @@ export const metadata: Metadata = { title: "Datenschutz", robots: { index: false
 export default function DatenschutzPage() {
   return (
     <>
-      <PageHero label="Rechtliches" title="Datenschutzerklärung" image={photos.beratung} cta="none" />
-      <section className="section-tight">
+      <PageHero label="Rechtliches" title="Datenschutzerklärung" />
+      <section className="section">
         <div className="wrap">
           <div className="prose">
             <h2>Verantwortliche Stelle</h2>
@@ -25,7 +24,6 @@ export default function DatenschutzPage() {
           </div>
         </div>
       </section>
-      <EnquiryForm />
     </>
   );
 }

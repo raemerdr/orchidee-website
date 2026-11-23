@@ -29,6 +29,14 @@ export const photos = {
   career: "/images/karriere.jpg",
 };
 
+// Video on the home page. Put the client's film in /public/video/ and set `src`
+// (e.g. "/video/orchidee.mp4"), or use a YouTube/Vimeo link. Until then the poster shows "Video folgt".
+export const video = {
+  src: "",
+  poster: "/images/leistungen.jpg",
+  caption: "Ein Besuch mit unserem Team",
+};
+
 // Google reviews shown in the hero.
 // TODO: verify on the Google Business profile before launch – these figures come from a
 // third-party directory (pflege-helfer24.de) that mirrors Google, not from Google directly.
