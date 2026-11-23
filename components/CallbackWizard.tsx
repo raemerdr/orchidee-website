@@ -5,8 +5,16 @@ import { useState } from "react";
 // Phone callback form: one question per screen with large option cards
 // and a fixed "Weiter" button, so older visitors only decide one thing at a time.
 // TODO: submit to HubSpot (routing still open – see brief).
-const prescribed = ["Ja", "Nein", "Weiß nicht"];
-const levels = ["Pflegegrad 3", "Pflegegrad 4", "Pflegegrad 5", "Beantragt oder noch keiner"];
+type Option = { value: string; note?: string };
+const prescribed: Option[] = [{ value: "Ja" }, { value: "Nein" }, { value: "Weiß nicht" }];
+// The short notes are plain-word simplifications of the official levels (client to approve).
+const levels: Option[] = [
+  { value: "Pflegegrad 3", note: "Hilfe mehrmals am Tag" },
+  { value: "Pflegegrad 4", note: "Hilfe bei fast allem" },
+  { value: "Pflegegrad 5", note: "Pflege rund um die Uhr" },
+  { value: "Beantragt oder noch keiner" },
+  { value: "Weiß ich nicht", note: "Wir klären das am Telefon." },
+];
 const STEPS = 4;
 
 export default function CallbackWizard({ who, titleId }: { who?: string; titleId: string }) {
@@ -31,12 +39,12 @@ export default function CallbackWizard({ who, titleId }: { who?: string; titleId
   }
 
   const canNext = step === 0 ? !!verordnung : step === 1 ? !!pflegegrad : step === 2 ? true : name.trim() !== "" && phone.trim() !== "";
-  const options = (list: string[], value: string, set: (v: string) => void, group: string) => (
+  const options = (list: Option[], value: string, set: (v: string) => void, group: string) => (
     <div className="wz-options" role="radiogroup" aria-labelledby={titleId}>
       {list.map((o) => (
-        <label key={o} className={`wz-option${value === o ? " is-on" : ""}`}>
-          <input type="radio" name={group} value={o} checked={value === o} onChange={() => set(o)} />
-          <span>{o}</span>
+        <label key={o.value} className={`wz-option${value === o.value ? " is-on" : ""}`}>
+          <input type="radio" name={group} value={o.value} checked={value === o.value} onChange={() => set(o.value)} />
+          <span>{o.value}{o.note && <small>{o.note}</small>}</span>
         </label>
       ))}
     </div>
@@ -65,7 +73,7 @@ export default function CallbackWizard({ who, titleId }: { who?: string; titleId
       {step === 1 && (
         <>
           <h2 id={titleId}>{forRelative ? "Hat Ihr Familienmitglied einen Pflegegrad?" : "Gibt es einen Pflegegrad?"}</h2>
-          <p className="wz-hint">Wählen Sie aus, was am besten passt.</p>
+          <p className="wz-hint">Der Pflegegrad steht in dem Brief der Pflegekasse.</p>
           {options(levels, pflegegrad, setPflegegrad, "pflegegrad")}
         </>
       )}

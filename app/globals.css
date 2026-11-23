@@ -1471,3 +1471,10 @@ main > section#kosten::before { content: ""; position: absolute; z-index: -1; le
 /* Für wen: note for relatives, above the household-help note */
 .fit-not.fit-family { font-weight: 600; }
 .fit-not.fit-family i { background: var(--magenta); color: #fff; }
+
+/* Callback questions: short plain-word line under an option */
+.wz-option small { display: block; margin-top: 2px; font-size: 16px; font-weight: 400; color: var(--ink-2); }
+/* Long question screens: the form keeps its full height and the popup scrolls, instead of options sliding under the buttons */
+.wz { flex: 1 0 auto; }
+.wz-options { gap: 10px; }
+.wz-option { min-height: 64px; padding: 10px 18px; }
