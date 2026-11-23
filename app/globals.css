@@ -1467,3 +1467,7 @@ main > section#kosten::before { content: ""; position: absolute; z-index: -1; le
   .enquiry-hero .call-box { text-align: left; }
 }
 @media (min-width: 1081px) { .menu-btn { display: none; } }
+
+/* Für wen: note for relatives, above the household-help note */
+.fit-not.fit-family { font-weight: 600; }
+.fit-not.fit-family i { background: var(--magenta); color: #fff; }

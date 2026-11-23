@@ -51,6 +51,8 @@ export function ForWhom() {
             ))}
           </ul>
 
+          {/* For sons and daughters: say outright that the medical part is taken off their hands. */}
+          <p className="fit-not fit-family"><i aria-hidden>✓</i>Sie pflegen einen Angehörigen? Den medizinischen Teil übernehmen wir. Sie müssen das nicht mehr allein machen.</p>
           <p className="fit-not"><i aria-hidden>–</i>Reine Haushaltshilfe oder Betreuung ohne ärztlich verordnete Pflege bieten wir leider nicht an.</p>
         </div>
       </div>
