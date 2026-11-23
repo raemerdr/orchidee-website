@@ -354,33 +354,22 @@ h2 { font-size: clamp(34px, 4.4vw, 56px); font-weight: 600; max-width: 16ch; }
    Home: hero (dark photo) → light → dark → light …
    Inner pages: page header (light) → dark → light … */
 main > section.section-tight { padding-top: 112px; }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) {
-  --line: rgba(255, 255, 255, 0.14);
-  background: #141518;
-  color: #fff;
-} }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.lead, .note, .fit-no p, .step p, .steps-list p, .why-item p, .cost p, .cost .who, .faq details p, .detail-card p, .role-card small, .role-card h4, .cta-band p, .call-box small, .prose p) {
-  color: rgba(255, 255, 255, 0.72);
-} }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .label {
-  background: transparent; color: rgba(255, 255, 255, 0.72); border-color: rgba(255, 255, 255, 0.25);
-} }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.fit-card:not(.fit-no), .step, .why-item, .cost, .faq details, .detail-card, .role-card, .call-box, .cta-band, .career) {
-  background: #1f2126; color: #fff;
-} }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .career { border: 1px solid rgba(255, 255, 255, 0.1); } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.fit-yes li i, .check-list li::before, .step-num) { background: #fff; color: var(--ink); } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .fit-no li i { background: rgba(255, 255, 255, 0.14); color: #fff; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .why-item .ic { background: rgba(138, 123, 191, 0.22); color: #c9c0ec; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .faq summary::after { color: rgba(255, 255, 255, 0.72); } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.btn-dark) { background: #fff; color: var(--ink); } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.call-box a.big, .detail-card a) { color: #fff; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .role-not { background: rgba(255, 255, 255, 0.08); color: #fff; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .team-card .avatar { background: rgba(255, 255, 255, 0.1); } }
-@media (min-width: 721px) { /* Forms stay as white cards on dark sections, so they keep their light styling. */
-:is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .form { color: var(--ink); --line: #e4e5e8; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .prose { background: #1f2126; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .prose a { color: #fff; } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 720px) {
   main > section.section-tight { padding-top: 80px; }
@@ -399,8 +388,7 @@ main > section.section-tight { padding-top: 112px; }
 .why-feature h3 { font-size: 24px; font-weight: 600; margin-bottom: 10px; }
 .why-feature p { font-size: 17px; color: var(--ink-2); }
 .why-feature:hover .ic { background: var(--magenta); border-color: var(--magenta); color: #fff; transition: background 0.2s, border-color 0.2s; }
-@media (min-width: 721px) { /* On the dark band */
-:is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.why-num, .why-feature p) { color: rgba(255, 255, 255, 0.6); } }
+
 @media (max-width: 1080px) {
   .why-head { grid-template-columns: 1fr; gap: 24px; }
   .why-features { grid-template-columns: 1fr 1fr; }
@@ -576,11 +564,10 @@ main > section.section-tight { padding-top: 112px; }
 .cost-cta-actions { margin-top: auto; padding-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
 .cost-cta-link { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.35); padding-bottom: 2px; }
 .cost-cta-link:hover { border-color: #fff; }
-@media (min-width: 721px) { /* Dark-section variant (e.g. Leistungen page) */
-:is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.cost .fit-ic, .cost-list li) { background: rgba(255, 255, 255, 0.07); color: #fff; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.cost .who, .cost-needs) { border-color: rgba(255, 255, 255, 0.14); } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .cost-needs span { color: rgba(255, 255, 255, 0.6); } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .cost-cta { background: #26282e; } }
+
+
+
+
 @media (max-width: 1080px) {
   .costs-head { grid-template-columns: 1fr; gap: 16px; }
   .costs-head .lead { justify-self: start; }
@@ -612,9 +599,9 @@ main > section.section-tight { padding-top: 112px; }
 .faq-a p { padding: 0 28px 24px; color: var(--ink-2); opacity: 0; transform: translateY(-6px); transition: opacity 0.3s, transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .faq-item.is-open .faq-a { grid-template-rows: 1fr; }
 .faq-item.is-open .faq-a p { opacity: 1; transform: none; transition-delay: 0.08s; }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .faq-item { background: #1f2126; color: #fff; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .faq-item:hover { background: #25272d; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .faq-a p { color: rgba(255, 255, 255, 0.72); } }
+
+
+
 @media (prefers-reduced-motion: reduce) {
   .faq-a, .faq-a p, .faq-q i::before, .faq-q i::after { transition: none; }
 }
@@ -724,11 +711,10 @@ main > section.enquiry-hero { padding-top: 170px; }
 .btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
 .btn-outline:hover { background: var(--ink); color: #fff; }
 
-@media (min-width: 721px) { /* Feature split inside dark sections */
-:is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.feature-grid li, .mini-steps li, .feature-rows .fit-ic) { background: #1f2126; color: #fff; } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) :is(.feature-grid p, .feature-rows span:not(.fit-ic), .mini-steps span) { color: rgba(255, 255, 255, 0.68); } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .mini-steps b { background: #fff; color: var(--ink); } }
-@media (min-width: 721px) { :is(main > .hero ~ section:nth-of-type(odd), main > .page-hero:not(.has-img) ~ section:nth-of-type(even), main > .page-hero.has-img ~ section:nth-of-type(odd), main > .enquiry-hero ~ section:nth-of-type(odd)) .btn-outline { color: #fff; border-color: rgba(255, 255, 255, 0.6); } }
+
+
+
+
 
 @media (max-width: 1080px) {
   .feature { grid-template-columns: 1fr; gap: 40px; }
@@ -916,150 +902,140 @@ main > section.enquiry-hero { padding-top: 170px; }
    PHONES: simple and easy for older visitors
    Bigger text, fewer decorative extras, no movement, one clear next step.
    ===================================================================== */
-@media (max-width: 720px) {
-  /* Readable text everywhere */
-  body { font-size: 18px; line-height: 1.6; }
-  .lead, .page-hero-lead, .hero .hero-text { font-size: 18px; line-height: 1.6; }
-  h2 { font-size: 32px; line-height: 1.15; }
-  main :is(p, li, small, label, legend, summary, .faq-q) { font-size: max(1em, 16px); }
-  .fit-criteria span, .feature-rows span:not(.fit-ic), .mini-steps span, .feature-grid p, .steps-list p, .why-feature p, .cost p, .job .role-sum { font-size: 17px; line-height: 1.55; }
-  .faq-q { font-size: 18px; }
-  .label { font-size: 13px; }
+/* Readable text everywhere */
+body { font-size: 18px; line-height: 1.6; }
+.lead, .page-hero-lead, .hero .hero-text { font-size: 18px; line-height: 1.6; }
+h2 { font-size: 32px; line-height: 1.15; }
+main :is(p, li, small, label, legend, summary, .faq-q) { font-size: max(1em, 16px); }
+.fit-criteria span, .feature-rows span:not(.fit-ic), .mini-steps span, .feature-grid p, .steps-list p, .why-feature p, .cost p, .job .role-sum { font-size: 17px; line-height: 1.55; }
+.faq-q { font-size: 18px; }
+.label { font-size: 13px; }
 
-  /* No movement: no zooms, draws or rises */
-  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+/* No movement: no zooms, draws or rises */
+@media (max-width: 720px) { *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; } }
 
-  /* Hero: headline, one sentence, two big buttons, the rating. No tag list. */
-  .hero .tags, .page-hero.has-img .tags { display: none !important; }
-  .hero-ctas .btn { min-height: 58px; font-size: 18px; }
+/* Hero: headline, one sentence, two big buttons, the rating. No tag list. */
+.hero .tags, .page-hero.has-img .tags { display: none !important; }
+.hero-ctas .btn { min-height: 58px; font-size: 18px; }
 
-  /* Fewer decorative extras inside sections */
-  .steps-photo, .why-photo { display: none; }
-  .fit-photo { aspect-ratio: auto; min-height: 0; background: none; overflow: visible; }
-  .fit-photo img, .fit-photo::after { display: none; }
-  .fit-photo .fit-call { position: static; width: 100%; box-shadow: none; border: 1px solid var(--line); }
-  .svc { min-height: 300px; }
-  .svc ul, .cost-list, .role-chips, .feature-badge { display: none; }
-  .feature-photo { aspect-ratio: 16 / 10; }
-  main > #karriere { display: none; } /* job teaser stays on the Karriere page, not in the patient flow */
+/* Fewer decorative extras inside sections */
+.steps-photo, .why-photo { display: none; }
+.fit-photo { aspect-ratio: auto; min-height: 0; background: none; overflow: visible; }
+.fit-photo img, .fit-photo::after { display: none; }
+.fit-photo .fit-call { position: static; width: 100%; box-shadow: none; border: 1px solid var(--line); }
+.svc { min-height: 300px; }
+.svc ul, .cost-list, .role-chips, .feature-badge { display: none; }
+.feature-photo { aspect-ratio: 16 / 10; }
+main > #karriere { display: none; } /* job teaser stays on the Karriere page, not in the patient flow */
 
-  /* One clear next step at the bottom */
-  .sticky a { font-size: 17px; padding: 16px 10px; gap: 8px; }
-  .sticky svg { width: 18px; height: 18px; }
-}
+/* One clear next step at the bottom */
+.sticky a { font-size: 17px; padding: 16px 10px; gap: 8px; }
+.sticky svg { width: 18px; height: 18px; }
 
 /* =====================================================================
    PHONES v2 – built from research/senioren-mobile.md
    One calm light look, calling first, big dark text, big targets.
    ===================================================================== */
 .m-only { display: none; }
-@media (max-width: 720px) {
-  .m-only { display: inline; }
-  :root { --ink-2: #33363d; --line: #dcdee2; }
+.m-only { display: inline; }
+:root { --ink-2: #33363d; --line: #dcdee2; }
 
-  /* 1. One calm look: every middle section light, separated by a thin line */
-  main > section.section-tight:not(.enquiry), main > section#fuer-wen { padding: 56px 0; background: var(--bg); color: var(--ink); }
-  main > section.section-tight + section.section-tight, main > section#fuer-wen + section, main > section + section#fuer-wen { border-top: 1px solid var(--line); }
-  main > section.enquiry { border-top: 0; padding: 64px 0; }
-  main > section.enquiry-hero { padding-top: 44svh; }
+/* 1. One calm look: every middle section light, separated by a thin line */
+main > section.section-tight:not(.enquiry), main > section#fuer-wen { padding: 56px 0; background: var(--bg); color: var(--ink); }
+main > section.section-tight + section.section-tight, main > section#fuer-wen + section, main > section + section#fuer-wen { border-top: 1px solid var(--line); }
+main > section.enquiry { border-top: 0; padding: 64px 0; }
+main > section.enquiry-hero { padding-top: 44svh; }
 
-  /* Section titles: plain words instead of small capital pills */
-  .label { background: none; border: 0; padding: 0; text-transform: none; letter-spacing: 0; font-size: 17px; font-weight: 600; color: var(--magenta-dark); }
-  .enquiry .label, .page-hero .label { color: #fff; }
-  h2 { font-size: 30px; line-height: 1.2; margin-top: 6px; }
-  .lead { margin-top: 14px; }
+/* Section titles: plain words instead of small capital pills */
+.label { background: none; border: 0; padding: 0; text-transform: none; letter-spacing: 0; font-size: 17px; font-weight: 600; color: var(--magenta-dark); }
+.enquiry .label, .page-hero .label { color: #fff; }
+h2 { font-size: 30px; line-height: 1.2; margin-top: 6px; }
+.lead { margin-top: 14px; }
 
-  /* 2. Calling first in the hero: big "Jetzt anrufen" button on top */
-  .hero-ctas a[href^="tel:"] { order: -1; background: var(--magenta); border-color: var(--magenta); color: #fff; font-size: 17px; }
-  .hero-ctas a[href^="tel:"] + .btn, .hero-ctas .btn-primary:not([href^="tel:"]) { background: transparent; border: 1.5px solid rgba(255, 255, 255, 0.7); color: #fff; }
-  .hero-ctas .btn { min-height: 58px; }
+/* 2. Calling first in the hero: big "Jetzt anrufen" button on top */
+.hero-ctas a[href^="tel:"] { order: -1; background: var(--magenta); border-color: var(--magenta); color: #fff; font-size: 17px; }
+.hero-ctas a[href^="tel:"] + .btn, .hero-ctas .btn-primary:not([href^="tel:"]) { background: transparent; border: 1.5px solid rgba(255, 255, 255, 0.7); color: #fff; }
+.hero-ctas .btn { min-height: 58px; }
 
-  /* Visible menu button with the word "Menü" */
-  .menu-btn { width: auto; height: 48px; padding: 0 16px 0 14px; border-radius: 99px; display: inline-flex; align-items: center; gap: 10px; }
-  .menu-word { font-size: 16px; font-weight: 600; }
-  .mobile-menu nav a { font-size: 26px; padding: 14px 0; }
+/* Visible menu button with the word "Menü" */
+.menu-btn { width: auto; height: 48px; padding: 0 16px 0 14px; border-radius: 99px; display: inline-flex; align-items: center; gap: 10px; }
+.menu-word { font-size: 16px; font-weight: 600; }
+.mobile-menu nav a { font-size: 26px; padding: 14px 0; }
 
-  /* 3. Big, easy targets; links that look like links */
-  .btn { min-height: 52px; }
-  main p a:not(.btn), .prose a, .detail-card a { text-decoration: underline; text-underline-offset: 3px; }
-  .form input, .form select { min-height: 56px; font-size: 18px; }
-  .form label, .form legend { font-size: 17px; }
-  .choice label { min-height: 52px; font-size: 17px; }
+/* 3. Big, easy targets; links that look like links */
+.btn { min-height: 52px; }
+main p a:not(.btn), .prose a, .detail-card a { text-decoration: underline; text-underline-offset: 3px; }
+.form input, .form select { min-height: 56px; font-size: 18px; }
+.form label, .form legend { font-size: 17px; }
+.choice label { min-height: 52px; font-size: 17px; }
 
-  /* 4. Shorter: fewer extras */
-  .pg-tag, .cost .who, .svc .num, .feature-num { display: none; }
-  .services { gap: 16px; }
-  .svc { min-height: 260px; }
-  .svc h3 { font-size: 26px; }
-  .svc p { font-size: 17px; }
-  /* Leistungen: the six care items as one simple list, not six boxes */
-  .feature-grid { display: block; margin-top: 24px; border-top: 1px solid var(--line); }
-  .feature-grid li { background: none; border-radius: 0; padding: 16px 0; border-bottom: 1px solid var(--line); box-shadow: none; transform: none; }
-  .feature-grid li::after { display: none; }
-  .feature-grid h3 { font-size: 19px; }
-  .feature-photo { display: none; }
-  .mini-steps li { background: var(--card); }
-  .cost, .cost-cta { padding: 24px 20px; }
-  .cost-top { margin-bottom: 14px; }
-  .cost-needs { margin-top: 18px; }
-  .why-features { margin-top: 28px; }
-  .fit-panel { padding: 22px 18px; }
-}
+/* 4. Shorter: fewer extras */
+.pg-tag, .cost .who, .svc .num, .feature-num { display: none; }
+.services { gap: 16px; }
+.svc { min-height: 260px; }
+.svc h3 { font-size: 26px; }
+.svc p { font-size: 17px; }
+/* Leistungen: the six care items as one simple list, not six boxes */
+.feature-grid { display: block; margin-top: 24px; border-top: 1px solid var(--line); }
+.feature-grid li { background: none; border-radius: 0; padding: 16px 0; border-bottom: 1px solid var(--line); box-shadow: none; transform: none; }
+.feature-grid li::after { display: none; }
+.feature-grid h3 { font-size: 19px; }
+.feature-photo { display: none; }
+.mini-steps li { background: var(--card); }
+.cost, .cost-cta { padding: 24px 20px; }
+.cost-top { margin-bottom: 14px; }
+.cost-needs { margin-top: 18px; }
+.why-features { margin-top: 28px; }
+.fit-panel { padding: 22px 18px; }
 
-@media (max-width: 720px) {
-  /* No text under 16px */
-  .why-num, .cost-needs, .cost-needs span, .cost-cta-tag, .role-phone, .fit-call small { font-size: 16px; }
-  .cost .fit-ic { display: none; }
-  .cost-top { margin-bottom: 6px; }
-}
-@media (max-width: 720px) {
-  main section:not(.hero):not(.page-hero) h2 { font-size: 30px; line-height: 1.2; letter-spacing: -0.02em; }
-}
+/* No text under 16px */
+.why-num, .cost-needs, .cost-needs span, .cost-cta-tag, .role-phone, .fit-call small { font-size: 16px; }
+.cost .fit-ic { display: none; }
+.cost-top { margin-bottom: 6px; }
+main section:not(.hero):not(.page-hero) h2 { font-size: 30px; line-height: 1.2; letter-spacing: -0.02em; }
 
 /* =====================================================================
    PHONES v3 – visual design for older eyes (research/senioren-mobile.md, "Design")
    Clear signifiers, no text on photos, solid buttons, one card style.
    ===================================================================== */
-@media (max-width: 720px) {
-  /* Buttons look like buttons: solid fill, firm edge, a slight "pressable" shadow. No outline-only buttons. */
-  .btn { border-width: 2px; box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18); font-weight: 700; }
-  .btn-ghost, .hero-ctas a[href^="tel:"] + .btn, .hero-ctas .btn-primary:not([href^="tel:"]) { background: #fff !important; color: var(--ink) !important; border: 2px solid #fff !important; }
-  .hero-ctas a[href^="tel:"] { background: var(--magenta) !important; color: #fff !important; border-color: var(--magenta) !important; }
-  .btn-outline { background: #fff; border: 2px solid var(--ink); }
-  .btn-light { background: #fff; border: 2px solid var(--ink); }
+/* Buttons look like buttons: solid fill, firm edge, a slight "pressable" shadow. No outline-only buttons. */
+.btn { border-width: 2px; box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18); font-weight: 700; }
+.btn-ghost, .hero-ctas a[href^="tel:"] + .btn, .hero-ctas .btn-primary:not([href^="tel:"]) { background: #fff !important; color: var(--ink) !important; border: 2px solid #fff !important; }
+.hero-ctas a[href^="tel:"] { background: var(--magenta) !important; color: #fff !important; border-color: var(--magenta) !important; }
+.btn-outline { background: #fff; border: 2px solid var(--ink); }
+.btn-light { background: #fff; border: 2px solid var(--ink); }
 
-  /* Phone pill in "Für wen": a clear dark call button */
-  .fit-photo .fit-call { background: var(--ink); color: #fff; border: 0; box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18); }
-  .fit-photo .fit-call small { color: rgba(255, 255, 255, 0.85); }
-  .fit-photo .fit-call-ic { background: var(--magenta); }
+/* Phone pill in "Für wen": a clear dark call button */
+.fit-photo .fit-call { background: var(--ink); color: #fff; border: 0; box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18); }
+.fit-photo .fit-call small { color: rgba(255, 255, 255, 0.85); }
+.fit-photo .fit-call-ic { background: var(--magenta); }
 
-  /* No text on top of photos: service cards become photo on top, text below on white */
-  .svc { min-height: 0; display: block; background: var(--card); color: var(--ink); border: 1px solid var(--line); }
-  .svc::before { display: none; }
-  .svc .svc-img { position: relative !important; display: block; height: 200px !important; width: 100% !important; }
-  .svc-body { padding: 20px; }
-  .svc p { opacity: 1; color: var(--ink-2); }
+/* No text on top of photos: service cards become photo on top, text below on white */
+.svc { min-height: 0; display: block; background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+.svc::before { display: none; }
+.svc .svc-img { position: relative !important; display: block; height: 200px !important; width: 100% !important; }
+.svc-body { padding: 20px; }
+.svc p { opacity: 1; color: var(--ink-2); }
 
-  /* Contact section at the end: calm solid dark, no photo behind the text (photo stays on the Kontakt page top) */
-  .enquiry:not(.enquiry-hero) .enquiry-bg { display: none; }
-  .enquiry:not(.enquiry-hero)::before { background: #141518; }
-  .enquiry .call-box { background: #1f2126; backdrop-filter: none; }
+/* Contact section at the end: calm solid dark, no photo behind the text (photo stays on the Kontakt page top) */
+.enquiry:not(.enquiry-hero) .enquiry-bg { display: none; }
+.enquiry:not(.enquiry-hero)::before { background: #141518; }
+.enquiry .call-box { background: #1f2126; backdrop-filter: none; }
 
-  /* One card style everywhere: white, thin grey edge, same corners */
-  :is(.cost, .fit-panel, .faq-item, .job, .detail-card, .mini-steps li, .team-card, .form) { background: var(--card); border: 1px solid var(--line); border-radius: 20px; box-shadow: none; }
-  .cost-cta { border-radius: 20px; }
-  .cost-cta::before { display: none; }
+/* One card style everywhere: white, thin grey edge, same corners */
+:is(.cost, .fit-panel, .faq-item, .job, .detail-card, .mini-steps li, .team-card, .form) { background: var(--card); border: 1px solid var(--line); border-radius: 20px; box-shadow: none; }
+.cost-cta { border-radius: 20px; }
+.cost-cta::before { display: none; }
 
-  /* Questions look tappable: bordered row with a round +/– button */
-  .faq-q i { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--ink); }
-  .faq-q i::before, .faq-q i::after { left: 8px; top: 14px; width: 14px; opacity: 1; }
+/* Questions look tappable: bordered row with a round +/– button */
+.faq-q i { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--ink); }
+.faq-q i::before, .faq-q i::after { left: 8px; top: 14px; width: 14px; opacity: 1; }
 
-  /* Form fields easy to see: firm borders, bold labels */
-  .form input, .form select { border: 2px solid #8a8f98; }
-  .form label, .form legend { font-weight: 700; color: var(--ink); }
-  .choice label { border: 2px solid #8a8f98; padding: 12px 18px; }
-  .choice label:has(input:checked) { border-color: var(--ink); background: var(--bg); }
-}
+/* Form fields easy to see: firm borders, bold labels */
+.form input, .form select { border: 2px solid #8a8f98; }
+.form label, .form legend { font-weight: 700; color: var(--ink); }
+.choice label { border: 2px solid #8a8f98; padding: 12px 18px; }
+.choice label:has(input:checked) { border-color: var(--ink); background: var(--bg); }
 
 /* =====================================================================
    PHONE HERO v4 – research-based
@@ -1067,46 +1043,40 @@ main > section.enquiry-hero { padding-top: 170px; }
    buttons, "Jetzt anrufen" first, no arrow icons, everything in the first screen.
    ===================================================================== */
 .d-only { display: inline-flex; align-items: center; gap: 10px; }
-@media (max-width: 720px) {
-  .d-only { display: none; }
+.d-only { display: none; }
 
-  /* Header: always the same solid white bar with the real logo colours (same look on every page) */
-  .on-hero .logo-pill { background: #fff; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12); }
-  .on-hero .logo-pill img { filter: none; }
-  .on-hero .menu-btn { background: var(--ink); border: 0; backdrop-filter: none; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12); }
+/* Header: always the same solid white bar with the real logo colours (same look on every page) */
+.on-hero .logo-pill { background: #fff; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12); }
+.on-hero .logo-pill img { filter: none; }
+.on-hero .menu-btn { background: var(--ink); border: 0; backdrop-filter: none; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12); }
 
-  /* Photo a bit shorter so headline, sentence and both buttons fit on the first screen */
-  .hero .hero-bg, .page-hero.has-img .page-hero-bg { height: 42svh; min-height: 280px; }
-  .hero::after, .page-hero.has-img::after { height: calc(42svh + 4px); min-height: 284px; background: linear-gradient(180deg, rgba(14, 12, 18, 0) 0%, rgba(14, 12, 18, 0) 62%, #141518 96%, #141518 100%); }
-  .enquiry-hero .enquiry-bg { height: 42svh; }
-  main > section.enquiry-hero { padding-top: 36svh; }
+/* Photo a bit shorter so headline, sentence and both buttons fit on the first screen */
+.hero .hero-bg, .page-hero.has-img .page-hero-bg { height: 42svh; min-height: 280px; }
+.hero::after, .page-hero.has-img::after { height: calc(42svh + 4px); min-height: 284px; background: linear-gradient(180deg, rgba(14, 12, 18, 0) 0%, rgba(14, 12, 18, 0) 62%, #141518 96%, #141518 100%); }
+.enquiry-hero .enquiry-bg { height: 42svh; }
+main > section.enquiry-hero { padding-top: 36svh; }
 
-  /* Reading order: what it is → one plain sentence → call → callback → rating */
-  .hero .wrap, .page-hero.has-img .wrap { display: flex; flex-direction: column; margin-top: -28px; }
-  .hero .kicker, .page-hero.has-img .kicker { order: 1; font-size: 17px; margin-bottom: 10px; }
-  .hero .kicker b, .page-hero.has-img .kicker b { display: none; }
-  .hero h1, .page-hero.has-img h1 { order: 2; }
-  .hero .hero-text, .page-hero-lead { order: 3; margin: 14px 0 0; font-size: 18px; }
-  .hero-ctas { order: 4; margin: 22px 0 14px; }
-  .hero .hero-bottom { order: 5; }
-  .hero-ctas .btn:not([href^="tel:"]) svg { display: none; }
-  .page-hero.has-img h1 { font-size: 34px; line-height: 1.12; }
-}
-@media (max-width: 720px) {
-  /* Google rating badge: desktop only */
-  .hero .hero-bottom { display: none; }
-  .hero-ctas { margin-bottom: 0; }
-}
+/* Reading order: what it is → one plain sentence → call → callback → rating */
+.hero .wrap, .page-hero.has-img .wrap { display: flex; flex-direction: column; margin-top: -28px; }
+.hero .kicker, .page-hero.has-img .kicker { order: 1; font-size: 17px; margin-bottom: 10px; }
+.hero .kicker b, .page-hero.has-img .kicker b { display: none; }
+.hero h1, .page-hero.has-img h1 { order: 2; }
+.hero .hero-text, .page-hero-lead { order: 3; margin: 14px 0 0; font-size: 18px; }
+.hero-ctas { order: 4; margin: 22px 0 14px; }
+.hero .hero-bottom { order: 5; }
+.hero-ctas .btn:not([href^="tel:"]) svg { display: none; }
+.page-hero.has-img h1 { font-size: 34px; line-height: 1.12; }
+/* Google rating badge: desktop only */
+.hero .hero-bottom { display: none; }
+.hero-ctas { margin-bottom: 0; }
 
 /* Phone fixes from the senior walk-through (A–F) */
 .on-form .sticky { transform: translateY(140%); opacity: 0; pointer-events: none; }
-@media (max-width: 720px) {
-  .row-head > .btn { display: none; }                        /* B: no third button above the bottom bar */
-  .menu-btn, .on-hero .menu-btn { border: 2px solid #fff; }  /* F: visible on dark and light */
-  .choice { gap: 10px; }
-  .choice label { border-radius: 14px; min-height: 52px; padding: 0 18px; }
-  .choice input { width: 22px; height: 22px; }
-}
+.row-head > .btn { display: none; }                        /* B: no third button above the bottom bar */
+.menu-btn, .on-hero .menu-btn { border: 2px solid #fff; }  /* F: visible on dark and light */
+.choice { gap: 10px; }
+.choice label { border-radius: 14px; min-height: 52px; padding: 0 18px; }
+.choice input { width: 22px; height: 22px; }
 
 /* ---------- Callback popup ---------- */
 .cb-modal { position: fixed; inset: 0; z-index: 100; background: rgba(14, 12, 18, 0.72); display: grid; place-items: center; padding: 24px; overflow-y: auto; }
@@ -1126,96 +1096,82 @@ main > section.enquiry-hero { padding-top: 170px; }
   .cb-panel .form { border: 0; }
 }
 
-@media (max-width: 720px) {
 /* Dropdown arrow: own clear chevron with room from the edge (the browser's tiny arrow sat on the border) */
 .form select { appearance: none; -webkit-appearance: none; padding-right: 52px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23121316' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 9 7 7 7-7'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; background-size: 20px 20px; }
-}
-@media (max-width: 720px) {
-  /* Smaller hero photo on phones: headline and "Jetzt anrufen" lead, the photo supports */
-  .hero .hero-bg, .page-hero.has-img .page-hero-bg { height: 30svh; min-height: 220px; }
-  .hero::after, .page-hero.has-img::after { height: calc(30svh + 4px); min-height: 224px; }
-  .enquiry-hero .enquiry-bg { height: 30svh; min-height: 220px; }
-  main > section.enquiry-hero { padding-top: max(26svh, 190px); }
-  .hero-bg img { object-position: 60% 22%; }
-}
-@media (max-width: 720px) { .enquiry-hero .enquiry-bg img { object-position: 45% 6%; } }
-@media (max-width: 720px) {
-  /* Service cards: smaller, calmer photos so the words lead */
-  .svc .svc-img { height: 130px !important; object-position: 50% 30%; }
-}
+/* Smaller hero photo on phones: headline and "Jetzt anrufen" lead, the photo supports */
+.hero .hero-bg, .page-hero.has-img .page-hero-bg { height: 30svh; min-height: 220px; }
+.hero::after, .page-hero.has-img::after { height: calc(30svh + 4px); min-height: 224px; }
+.enquiry-hero .enquiry-bg { height: 30svh; min-height: 220px; }
+main > section.enquiry-hero { padding-top: max(26svh, 190px); }
+.hero-bg img { object-position: 60% 22%; }
+.enquiry-hero .enquiry-bg img { object-position: 45% 6%; }
+/* Service cards: smaller, calmer photos so the words lead */
+.svc .svc-img { height: 130px !important; object-position: 50% 30%; }
 
 /* =====================================================================
    PHONES v5 – simpler sections: one idea per section, no repeats
    ===================================================================== */
-@media (max-width: 720px) {
-  main > section.section-tight:not(.enquiry), main > section#fuer-wen { padding: 44px 0; }
+main > section.section-tight:not(.enquiry), main > section#fuer-wen { padding: 44px 0; }
 
-  /* Für wen: heading, one sentence, three plain points, one note. No extra call pill (the bar has it). */
-  .fit-photo { display: none; }
-  .fit-split { gap: 20px; }
-  .fit-panel .pg-head { display: none; }
-  .fit-panel { padding: 6px 18px 18px; }
-  .fit-criteria { margin-top: 0; border-top: 0; }
-  .fit-criteria li:last-child { border-bottom: 0; }
+/* Für wen: heading, one sentence, three plain points, one note. No extra call pill (the bar has it). */
+.fit-photo { display: none; }
+.fit-split { gap: 20px; }
+.fit-panel .pg-head { display: none; }
+.fit-panel { padding: 6px 18px 18px; }
+.fit-criteria { margin-top: 0; border-top: 0; }
+.fit-criteria li:last-child { border-bottom: 0; }
 
-  /* Leistungen: three plain cards, words only */
-  .svc .svc-img { display: none !important; }
-  .services { gap: 12px; margin-top: 24px; }
-  .svc-body { padding: 18px 20px; }
-  .svc h3 { font-size: 22px; margin-bottom: 6px; }
+/* Leistungen: three plain cards, words only */
+.svc .svc-img { display: none !important; }
+.services { gap: 12px; margin-top: 24px; }
+.svc-body { padding: 18px 20px; }
+.svc h3 { font-size: 22px; margin-bottom: 6px; }
 
-  /* Warum Orchidee repeats the hero and "Für wen" – not shown on phones */
-  main > section.why-section { display: none; }
+/* Warum Orchidee repeats the hero and "Für wen" – not shown on phones */
+main > section.why-section { display: none; }
 
-  /* Kosten: just the two answers; the contact block follows further down anyway */
-  .cost-cta { display: none; }
-  .costs { gap: 12px; margin-top: 24px; }
-  .costs-head .lead { display: none; }
+/* Kosten: just the two answers; the contact block follows further down anyway */
+.cost-cta { display: none; }
+.costs { gap: 12px; margin-top: 24px; }
+.costs-head .lead { display: none; }
 
-  /* Ablauf: compact numbered list */
-  .steps-list { margin-top: 20px; }
-  .steps-list li { padding: 14px 0; gap: 14px; }
-  .steps-list h3 { font-size: 19px; }
-}
-@media (max-width: 720px) {
-  /* Für wen points: icon on top, text below (full width for the words) */
-  .fit-criteria li { display: block; padding: 20px 0; }
-  .fit-criteria .fit-ic { margin: 0 0 12px; }
-}
+/* Ablauf: compact numbered list */
+.steps-list { margin-top: 20px; }
+.steps-list li { padding: 14px 0; gap: 14px; }
+.steps-list h3 { font-size: 19px; }
+/* Für wen points: icon on top, text below (full width for the words) */
+.fit-criteria li { display: block; padding: 20px 0; }
+.fit-criteria .fit-ic { margin: 0 0 12px; }
 
 /* Für wen points: a photo instead of the icon on phones */
 .fit-img { display: none; }
-@media (max-width: 720px) {
-  .fit-criteria .fit-ic { display: none; }
-  .fit-criteria .fit-img { display: block; position: relative; height: 150px; margin: 0 0 14px; border-radius: 14px; overflow: hidden; background: var(--chip); }
-  .fit-criteria .fit-img img { object-fit: cover; object-position: 50% 30%; }
-}
+.fit-criteria .fit-ic { display: none; }
+.fit-criteria .fit-img { display: block; position: relative; height: 150px; margin: 0 0 14px; border-radius: 14px; overflow: hidden; background: var(--chip); }
+.fit-criteria .fit-img img { object-fit: cover; object-position: 50% 30%; }
 
 
 /* =====================================================================
    Desktop stays as designed; phones (≤ 720px) get their own wording and order
    ===================================================================== */
 .only-m, .only-m-block { display: none !important; }
-@media (max-width: 720px) {
-  .only-d, .only-d-block { display: none !important; }
-  .only-m { display: inline !important; }
-  .only-m-block { display: grid !important; }
-  .m-hide { display: none !important; }
+.only-d, .only-d-block { display: none !important; }
+.only-m { display: inline !important; }
+.only-m-block { display: grid !important; }
+.m-hide { display: none !important; }
 
-  /* Home page order on phones: what we do → is it for me → who pays → how it starts → questions → contact */
-  main:has(> .hero) { display: flex; flex-direction: column; }
-  main > .hero ~ #leistungen { order: 1; }
-  main > .hero ~ #fuer-wen { order: 2; }
-  main > .hero ~ #kosten { order: 3; }
-  main > .hero ~ #ablauf { order: 4; }
-  main > .hero ~ #fragen { order: 5; }
-  main > .hero ~ #anfrage { order: 6; }
-  main > .hero ~ section { border-top: 1px solid var(--line); }
-  main > .hero ~ #leistungen, main > .hero ~ #anfrage { border-top: 0; }
-}
+/* Home page order on phones: what we do → is it for me → who pays → how it starts → questions → contact */
+main:has(> .hero) { display: flex; flex-direction: column; }
+main > .hero ~ #leistungen { order: 1; }
+main > .hero ~ #fuer-wen { order: 2; }
+main > .hero ~ #kosten { order: 3; }
+main > .hero ~ #ablauf { order: 4; }
+main > .hero ~ #fragen { order: 5; }
+main > .hero ~ #anfrage { order: 6; }
+main > .hero ~ section { border-top: 1px solid var(--line); }
+main > .hero ~ #leistungen, main > .hero ~ #anfrage { border-top: 0; }
 
 /* Desktop: the phone-only photo in the Für wen points must not take a grid slot */
-@media (min-width: 721px) { .fit-criteria .fit-img { display: none; } }
+
 
 /* =====================================================================
    PHONES v6 – light, friendly look
@@ -1224,98 +1180,94 @@ main > section.enquiry-hero { padding-top: 170px; }
    Desktop is untouched.
    ===================================================================== */
 .mhero { display: none; }
-@media (max-width: 720px) {
-  :root { --bg: #ffffff; --card: #f7f1f4; --line: #eadfe6; --plum: #2a1030; --pink-soft: #fde8f1; }
-  body { background: #fff; }
+:root { --bg: #ffffff; --card: #f7f1f4; --line: #eadfe6; --plum: #2a1030; --pink-soft: #fde8f1; }
+body { background: #fff; }
 
-  /* ---- Home hero ---- */
-  main > .hero { display: none; }
-  .mhero { display: block; padding: 104px 0 40px; text-align: center; background: linear-gradient(180deg, var(--pink-soft) 0%, #fff 46%); color: var(--plum); }
-  .mhero-kicker { font-size: 18px; font-weight: 600; margin: 0 0 14px; }
-  .mhero h1 { font-size: clamp(40px, 12.4vw, 52px); line-height: 1.06; font-weight: 700; letter-spacing: -0.03em; text-wrap: balance; }
-  .mhero-text { font-size: 19px; line-height: 1.55; margin: 22px auto 0; max-width: 32ch; color: var(--ink); }
-  .mhero-choices { list-style: none; padding: 0; margin: 34px 0 0; display: grid; gap: 16px; text-align: left; }
-  .mhero-choices a { display: block; text-decoration: none; color: var(--plum); background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.1); }
-  .mhero-img { display: block; position: relative; height: 150px; background: var(--card); }
-  .mhero-img img { object-fit: cover; object-position: 50% 28%; }
-  .mhero-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 16px 16px 20px; min-height: 84px; }
-  .mhero-label { font: 600 20px/1.3 var(--font-display), var(--font-body), sans-serif; }
-  .mhero-arrow { flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--magenta); color: #fff; display: grid; place-items: center; }
+/* ---- Home hero ---- */
+main > .hero { display: none; }
+.mhero { display: block; padding: 104px 0 40px; text-align: center; background: linear-gradient(180deg, var(--pink-soft) 0%, #fff 46%); color: var(--plum); }
+.mhero-kicker { font-size: 18px; font-weight: 600; margin: 0 0 14px; }
+.mhero h1 { font-size: clamp(40px, 12.4vw, 52px); line-height: 1.06; font-weight: 700; letter-spacing: -0.03em; text-wrap: balance; }
+.mhero-text { font-size: 19px; line-height: 1.55; margin: 22px auto 0; max-width: 32ch; color: var(--ink); }
+.mhero-choices { list-style: none; padding: 0; margin: 34px 0 0; display: grid; gap: 16px; text-align: left; }
+.mhero-choices a { display: block; text-decoration: none; color: var(--plum); background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.1); }
+.mhero-img { display: block; position: relative; height: 150px; background: var(--card); }
+.mhero-img img { object-fit: cover; object-position: 50% 28%; }
+.mhero-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 16px 16px 20px; min-height: 84px; }
+.mhero-label { font: 600 20px/1.3 var(--font-display), var(--font-body), sans-serif; }
+.mhero-arrow { flex: none; width: 48px; height: 48px; border-radius: 50%; background: var(--magenta); color: #fff; display: grid; place-items: center; }
 
-  /* ---- Sections: white page, centred headings ---- */
-  main > section.section-tight:not(.enquiry), main > section#fuer-wen { background: #fff; padding: 48px 0; border-top: 0 !important; }
-  main > .hero ~ section { border-top: 0; }
-  main section:not(.hero):not(.page-hero) :is(.label, h2, .lead) { text-align: center; display: block; margin-left: auto; margin-right: auto; }
-  main section:not(.hero):not(.page-hero) h2 { color: var(--plum); font-size: 32px; line-height: 1.12; letter-spacing: -0.025em; text-wrap: balance; }
-  .label { color: var(--magenta-dark); font-size: 16px; }
-  .row-head { display: block; }
+/* ---- Sections: white page, centred headings ---- */
+main > section.section-tight:not(.enquiry), main > section#fuer-wen { background: #fff; padding: 48px 0; border-top: 0 !important; }
+main > .hero ~ section { border-top: 0; }
+main section:not(.hero):not(.page-hero) :is(.label, h2, .lead) { text-align: center; display: block; margin-left: auto; margin-right: auto; }
+main section:not(.hero):not(.page-hero) h2 { color: var(--plum); font-size: 32px; line-height: 1.12; letter-spacing: -0.025em; text-wrap: balance; }
+.label { color: var(--magenta-dark); font-size: 16px; }
+.row-head { display: block; }
 
-  /* ---- Cards: soft tint, no outline, round ---- */
-  :is(.cost, .faq-item, .job, .detail-card, .mini-steps li, .team-card, .svc) { background: var(--card); border: 0; border-radius: 24px; }
-  .svc h3, .cost h3, .steps-list h3, .fit-criteria strong { color: var(--plum); }
-  .svc .num { display: block; position: static; background: none; padding: 0; margin: 0 0 8px; color: var(--magenta); font: 700 15px/1 var(--font-display), sans-serif; }
-  .svc-body { padding: 22px; }
+/* ---- Cards: soft tint, no outline, round ---- */
+:is(.cost, .faq-item, .job, .detail-card, .mini-steps li, .team-card, .svc) { background: var(--card); border: 0; border-radius: 24px; }
+.svc h3, .cost h3, .steps-list h3, .fit-criteria strong { color: var(--plum); }
+.svc .num { display: block; position: static; background: none; padding: 0; margin: 0 0 8px; color: var(--magenta); font: 700 15px/1 var(--font-display), sans-serif; }
+.svc-body { padding: 22px; }
 
-  /* Für wen: each point is its own photo card */
-  .fit-panel { background: none; border: 0; padding: 0; }
-  .fit-criteria { display: grid; gap: 14px; }
-  .fit-criteria li { background: var(--card); border: 0 !important; border-radius: 24px; padding: 12px 12px 20px; }
-  .fit-criteria .fit-img { height: 150px; border-radius: 16px; margin-bottom: 16px; }
-  .fit-criteria li > div { padding: 0 8px; }
-  .fit-not { background: var(--pink-soft); border-radius: 20px; color: var(--plum); margin-top: 14px; }
-  .fit-not i { background: #fff; }
+/* Für wen: each point is its own photo card */
+.fit-panel { background: none; border: 0; padding: 0; }
+.fit-criteria { display: grid; gap: 14px; }
+.fit-criteria li { background: var(--card); border: 0 !important; border-radius: 24px; padding: 12px 12px 20px; }
+.fit-criteria .fit-img { height: 150px; border-radius: 16px; margin-bottom: 16px; }
+.fit-criteria li > div { padding: 0 8px; }
+.fit-not { background: var(--pink-soft); border-radius: 20px; color: var(--plum); margin-top: 14px; }
+.fit-not i { background: #fff; }
 
-  /* Kosten */
-  .cost { padding: 22px; }
-  .cost-needs { border-top-color: #e2d3dc; }
+/* Kosten */
+.cost { padding: 22px; }
+.cost-needs { border-top-color: #e2d3dc; }
 
-  /* Steps: pink numbered cards */
-  .steps-list { gap: 12px; }
-  .steps-list li, .steps-list li:last-child { display: block; background: var(--pink-soft); border: 0; border-radius: 24px; padding: 20px 22px; }
-  .step-num { display: block; width: auto; height: auto; background: none; border-radius: 0; color: var(--magenta); font: 700 15px/1 var(--font-display), sans-serif; margin-bottom: 10px; }
-  .step-num::before { content: "0"; }
-  .steps-list h3 { font-size: 21px; }
+/* Steps: pink numbered cards */
+.steps-list { gap: 12px; }
+.steps-list li, .steps-list li:last-child { display: block; background: var(--pink-soft); border: 0; border-radius: 24px; padding: 20px 22px; }
+.step-num { display: block; width: auto; height: auto; background: none; border-radius: 0; color: var(--magenta); font: 700 15px/1 var(--font-display), sans-serif; margin-bottom: 10px; }
+.step-num::before { content: "0"; }
+.steps-list h3 { font-size: 21px; }
 
-  /* FAQ */
-  .faq { gap: 24px; }
-  .faq-q i { border-color: var(--magenta); color: var(--magenta); }
+/* FAQ */
+.faq { gap: 24px; }
+.faq-q i { border-color: var(--magenta); color: var(--magenta); }
 
-  /* ---- Closing contact block: soft pink instead of dark ---- */
-  main > section.enquiry { background: var(--pink-soft); color: var(--ink); --line: #e4e5e8; }
-  .enquiry:not(.enquiry-hero)::before { background: none; }
-  .enquiry .label { color: var(--magenta-dark); background: none; border: 0; backdrop-filter: none; }
-  .enquiry .lead { color: var(--ink-2); }
-  .enquiry .call-box { background: #fff; border: 0; border-radius: 24px; color: var(--ink); text-align: center; }
-  .enquiry .call-box small { color: var(--ink-2); }
-  .enquiry .call-box a.big { color: var(--magenta-dark); }
-  .enquiry .form { background: #fff; border: 0; border-radius: 24px; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.08); }
-  main > section.enquiry h1, main > section.enquiry h2:not(.form-title) { color: var(--plum); text-align: center; }
+/* ---- Closing contact block: soft pink instead of dark ---- */
+main > section.enquiry { background: var(--pink-soft); color: var(--ink); --line: #e4e5e8; }
+.enquiry:not(.enquiry-hero)::before { background: none; }
+.enquiry .label { color: var(--magenta-dark); background: none; border: 0; backdrop-filter: none; }
+.enquiry .lead { color: var(--ink-2); }
+.enquiry .call-box { background: #fff; border: 0; border-radius: 24px; color: var(--ink); text-align: center; }
+.enquiry .call-box small { color: var(--ink-2); }
+.enquiry .call-box a.big { color: var(--magenta-dark); }
+.enquiry .form { background: #fff; border: 0; border-radius: 24px; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.08); }
+main > section.enquiry h1, main > section.enquiry h2:not(.form-title) { color: var(--plum); text-align: center; }
 
-  /* Kontakt page: photo as a rounded card above the text */
-  .enquiry-hero::before { display: none; }
-  .enquiry-hero .enquiry-bg { inset: 88px 16px auto 16px; height: 30svh; min-height: 200px; border-radius: 24px; overflow: hidden; }
-  main > section.enquiry-hero { padding-top: calc(88px + max(30svh, 200px) + 28px); }
+/* Kontakt page: photo as a rounded card above the text */
+.enquiry-hero::before { display: none; }
+.enquiry-hero .enquiry-bg { inset: 88px 16px auto 16px; height: 30svh; min-height: 200px; border-radius: 24px; overflow: hidden; }
+main > section.enquiry-hero { padding-top: calc(88px + max(30svh, 200px) + 28px); }
 
-  /* ---- Inner page heroes: light, photo as a rounded card, centred text ---- */
-  .page-hero.has-img { background: linear-gradient(180deg, var(--pink-soft) 0%, #fff 60%); color: var(--plum); padding: 88px 0 36px; text-align: center; }
-  .page-hero.has-img::after { display: none; }
-  .page-hero.has-img .page-hero-bg { margin: 0 16px; height: 30svh; min-height: 200px; border-radius: 24px; }
-  .page-hero.has-img .wrap { margin-top: 26px; }
-  .page-hero.has-img .kicker { justify-content: center; color: var(--magenta-dark); font-weight: 600; opacity: 1; }
-  .page-hero.has-img h1 { color: var(--plum); max-width: none; text-wrap: balance; }
-  .page-hero-lead { color: var(--ink); opacity: 1; margin-left: auto; margin-right: auto; }
-  .page-hero.has-img .hero-ctas .btn:not([href^="tel:"]) { background: var(--plum) !important; color: #fff !important; border-color: var(--plum) !important; }
+/* ---- Inner page heroes: light, photo as a rounded card, centred text ---- */
+.page-hero.has-img { background: linear-gradient(180deg, var(--pink-soft) 0%, #fff 60%); color: var(--plum); padding: 88px 0 36px; text-align: center; }
+.page-hero.has-img::after { display: none; }
+.page-hero.has-img .page-hero-bg { margin: 0 16px; height: 30svh; min-height: 200px; border-radius: 24px; }
+.page-hero.has-img .wrap { margin-top: 26px; }
+.page-hero.has-img .kicker { justify-content: center; color: var(--magenta-dark); font-weight: 600; opacity: 1; }
+.page-hero.has-img h1 { color: var(--plum); max-width: none; text-wrap: balance; }
+.page-hero-lead { color: var(--ink); opacity: 1; margin-left: auto; margin-right: auto; }
+.page-hero.has-img .hero-ctas .btn:not([href^="tel:"]) { background: var(--plum) !important; color: #fff !important; border-color: var(--plum) !important; }
 
-  /* Header and bottom bar on a light page */
-  .menu-btn, .on-hero .menu-btn { background: var(--plum); border-color: var(--plum); }
-  .sticky { box-shadow: 0 8px 32px rgba(42, 16, 48, 0.22); }
-  .btn-light { border-color: var(--plum); color: var(--plum); }
-  .footer { background: var(--card); }
-}
-@media (max-width: 720px) {
-  .svc .num { padding: 22px 22px 0; margin: 0; }
-  .svc .svc-body { padding-top: 8px; }
-}
+/* Header and bottom bar on a light page */
+.menu-btn, .on-hero .menu-btn { background: var(--plum); border-color: var(--plum); }
+.sticky { box-shadow: 0 8px 32px rgba(42, 16, 48, 0.22); }
+.btn-light { border-color: var(--plum); color: var(--plum); }
+.footer { background: var(--card); }
+.svc .num { padding: 22px 22px 0; margin: 0; }
+.svc .svc-body { padding-top: 8px; }
 
 /* ---------- Step-by-step callback form (phones) ---------- */
 .enquiry-cb { display: none; }
@@ -1343,48 +1295,38 @@ main > section.enquiry-hero { padding-top: 170px; }
 .wz-done { align-items: center; justify-content: center; text-align: center; gap: 10px; padding: 40px 8px; }
 .wz-check { width: 72px; height: 72px; border-radius: 50%; background: var(--magenta); color: #fff; display: grid; place-items: center; font-size: 36px; font-weight: 700; margin-bottom: 8px; }
 .wz-done p { font-size: 20px; color: var(--ink-2); }
-@media (max-width: 720px) {
-  /* Page section on phones: phone number plus one button that opens the questions */
-  .enquiry .form { display: none; }
-  .enquiry-cb { display: flex; width: 100%; justify-content: center; min-height: 60px; font-size: 19px; }
-  .contact { gap: 16px; }
-  .cb-panel { min-height: 100dvh; }
-  .cb-call { margin-top: 4px; }
-}
+/* Page section on phones: phone number plus one button that opens the questions */
+.enquiry .form { display: none; }
+.enquiry-cb { display: flex; width: 100%; justify-content: center; min-height: 60px; font-size: 19px; }
+.contact { gap: 16px; }
+@media (max-width: 720px) { .cb-panel { min-height: 100dvh; } }
+.cb-call { margin-top: 4px; }
 .wz, .wz * { box-sizing: border-box; }
 .wz-field input { max-width: 100%; }
 @media (max-width: 720px) {
   .cb-panel { overflow-x: hidden; }
   .cb-call { font-size: 17px; flex-wrap: wrap; text-align: center; }
 }
-@media (max-width: 720px) {
-  /* Subtle photo behind the hero text: very faint, fading out before the cards */
-  .mhero { position: relative; isolation: isolate; overflow: hidden; }
-  .mhero-bg { position: absolute; inset: 0 0 auto 0; height: 620px; z-index: -1; opacity: 0.16; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); }
-  .mhero-bg img { object-fit: cover; object-position: 62% 20%; filter: saturate(0.7); }
-}
+/* Subtle photo behind the hero text: very faint, fading out before the cards */
+.mhero { position: relative; isolation: isolate; overflow: hidden; }
+.mhero-bg { position: absolute; inset: 0 0 auto 0; height: 620px; z-index: -1; opacity: 0.16; -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 100%); }
+.mhero-bg img { object-fit: cover; object-position: 62% 20%; filter: saturate(0.7); }
 
 /* Service cards: two-colour icon (phones only) */
 .svc-ic { display: none; }
-@media (max-width: 720px) {
-  .svc { position: relative; }
-  .svc .svc-ic { display: grid; place-items: center; width: 60px; height: 60px; margin: 20px 22px 0; border-radius: 18px; background: #fff; color: #2a1030; }
-  .svc .svc-ic .duo { width: 38px; height: 38px; }
-  .svc .num { position: absolute; top: 24px; right: 22px; padding: 0; }
-  .svc .svc-body { padding-top: 16px; }
-}
-@media (max-width: 720px) { .svc .num { left: auto; right: 22px; top: 26px; margin: 0; } }
-@media (max-width: 720px) {
-  /* Hero background photo tinted in the hero's own pink instead of its natural colours */
-  .mhero-bg { isolation: isolate; opacity: 0.2; }
-  .mhero-bg img { filter: grayscale(1) contrast(1.05); }
-  .mhero-bg::after { content: ""; position: absolute; inset: 0; background: var(--magenta); mix-blend-mode: color; }
-}
-@media (max-width: 720px) {
-  /* Keep the pink-tinted photo subtle */
-  .mhero-bg { opacity: 0.09; }
-  .mhero-bg img { filter: grayscale(1); }
-}
+.svc { position: relative; }
+.svc .svc-ic { display: grid; place-items: center; width: 60px; height: 60px; margin: 20px 22px 0; border-radius: 18px; background: #fff; color: #2a1030; }
+.svc .svc-ic .duo { width: 38px; height: 38px; }
+.svc .num { position: absolute; top: 24px; right: 22px; padding: 0; }
+.svc .svc-body { padding-top: 16px; }
+.svc .num { left: auto; right: 22px; top: 26px; margin: 0; }
+/* Hero background photo tinted in the hero's own pink instead of its natural colours */
+.mhero-bg { isolation: isolate; opacity: 0.2; }
+.mhero-bg img { filter: grayscale(1) contrast(1.05); }
+.mhero-bg::after { content: ""; position: absolute; inset: 0; background: var(--magenta); mix-blend-mode: color; }
+/* Keep the pink-tinted photo subtle */
+.mhero-bg { opacity: 0.09; }
+.mhero-bg img { filter: grayscale(1); }
 
 /* =====================================================================
    PHONES v7 – closer to the reference look below the hero
@@ -1392,53 +1334,136 @@ main > section.enquiry-hero { padding-top: 170px; }
    a rating card, and the contact block as a rounded pink card.
    ===================================================================== */
 .svc-pill, .svc-go, .mrating { display: none; }
-@media (max-width: 720px) {
-  /* Headings: bold serif, centred, tight */
-  .mhero h1, main section:not(.hero):not(.page-hero) h2, .page-hero.has-img h1, main > section.enquiry h1, .mrating h2, .wz h2 { font-family: var(--font-serif), Georgia, serif; font-weight: 700; letter-spacing: -0.035em; }
-  main section:not(.hero):not(.page-hero) h2 { font-size: 36px; line-height: 1.05; }
-  .mhero h1 { font-size: clamp(42px, 12.6vw, 54px); line-height: 1.02; }
-  main > section.section-tight:not(.enquiry), main > section#fuer-wen { padding: 56px 0; }
+/* Headings: bold serif, centred, tight */
+.mhero h1, main section:not(.hero):not(.page-hero) h2, .page-hero.has-img h1, main > section.enquiry h1, .mrating h2, .wz h2 { font-family: var(--font-serif), Georgia, serif; font-weight: 700; letter-spacing: -0.035em; }
+main section:not(.hero):not(.page-hero) h2 { font-size: 36px; line-height: 1.05; }
+.mhero h1 { font-size: clamp(42px, 12.6vw, 54px); line-height: 1.02; }
+main > section.section-tight:not(.enquiry), main > section#fuer-wen { padding: 56px 0; }
 
-  /* Service cards: inset photo with a pill label, statement heading, text and a round arrow */
-  .svc { padding: 12px; }
-  .svc .svc-img { display: block !important; position: relative !important; height: 170px !important; width: 100% !important; border-radius: 16px; object-position: 50% 30%; }
-  .svc .svc-pill { display: inline-flex; align-items: center; gap: 8px; position: absolute; top: 24px; left: 24px; z-index: 3; padding: 6px 14px 6px 6px; border-radius: 99px; background: #fff; color: var(--plum); font-size: 15px; font-weight: 600; box-shadow: 0 2px 10px rgba(42, 16, 48, 0.12); }
-  .svc .svc-pill .svc-ic { display: grid; place-items: center; width: 30px; height: 30px; margin: 0; border-radius: 50%; background: var(--pink-soft); }
-  .svc .svc-pill .svc-ic .duo { width: 22px; height: 22px; }
-  .svc .num { display: none; }
-  .svc .svc-body { position: relative; padding: 18px 68px 12px 10px; }
-  .svc h3 { font: 700 23px/1.2 var(--font-display), var(--font-body), sans-serif; letter-spacing: -0.02em; }
-  .svc .svc-go { display: grid; place-items: center; position: absolute; right: 6px; bottom: 10px; width: 48px; height: 48px; border-radius: 50%; background: var(--magenta); color: #fff; }
+/* Service cards: inset photo with a pill label, statement heading, text and a round arrow */
+.svc { padding: 12px; }
+.svc .svc-img { display: block !important; position: relative !important; height: 170px !important; width: 100% !important; border-radius: 16px; object-position: 50% 30%; }
+.svc .svc-pill { display: inline-flex; align-items: center; gap: 8px; position: absolute; top: 24px; left: 24px; z-index: 3; padding: 6px 14px 6px 6px; border-radius: 99px; background: #fff; color: var(--plum); font-size: 15px; font-weight: 600; box-shadow: 0 2px 10px rgba(42, 16, 48, 0.12); }
+.svc .svc-pill .svc-ic { display: grid; place-items: center; width: 30px; height: 30px; margin: 0; border-radius: 50%; background: var(--pink-soft); }
+.svc .svc-pill .svc-ic .duo { width: 22px; height: 22px; }
+.svc .num { display: none; }
+.svc .svc-body { position: relative; padding: 18px 68px 12px 10px; }
+.svc h3 { font: 700 23px/1.2 var(--font-display), var(--font-body), sans-serif; letter-spacing: -0.02em; }
+.svc .svc-go { display: grid; place-items: center; position: absolute; right: 6px; bottom: 10px; width: 48px; height: 48px; border-radius: 50%; background: var(--magenta); color: #fff; }
 
-  /* Für wen cards share the same inset-photo look */
-  .fit-criteria li { padding: 12px 12px 18px; }
-  .fit-criteria .fit-img { height: 170px; }
-  .fit-criteria strong { font: 700 21px/1.25 var(--font-display), var(--font-body), sans-serif; letter-spacing: -0.02em; }
+/* Für wen cards share the same inset-photo look */
+.fit-criteria li { padding: 12px 12px 18px; }
+.fit-criteria .fit-img { height: 170px; }
+.fit-criteria strong { font: 700 21px/1.25 var(--font-display), var(--font-body), sans-serif; letter-spacing: -0.02em; }
 
-  /* Rating card */
-  .mrating { display: block; padding: 8px 0 56px; background: #fff; }
-  .mrating-card { background: var(--card); border-radius: 28px; padding: 36px 22px; text-align: center; display: grid; justify-items: center; gap: 20px; }
-  .mrating h2 { font-size: 32px; line-height: 1.08; color: var(--plum); text-wrap: balance; }
-  .mrating .g-reviews { margin: 0; box-shadow: 0 2px 10px rgba(42, 16, 48, 0.1); }
-  main > .hero ~ .mrating { order: 6; }
-  main > .hero ~ #anfrage { order: 7; }
+/* Rating card */
+.mrating { display: block; padding: 8px 0 56px; background: #fff; }
+.mrating-card { background: var(--card); border-radius: 28px; padding: 36px 22px; text-align: center; display: grid; justify-items: center; gap: 20px; }
+.mrating h2 { font-size: 32px; line-height: 1.08; color: var(--plum); text-wrap: balance; }
+.mrating .g-reviews { margin: 0; box-shadow: 0 2px 10px rgba(42, 16, 48, 0.1); }
+main > .hero ~ .mrating { order: 6; }
+main > .hero ~ #anfrage { order: 7; }
 
-  /* Contact block: a rounded pink card on the white page */
-  main > section.enquiry:not(.enquiry-hero) { background: #fff; padding: 0 16px 56px; }
-  main > section.enquiry:not(.enquiry-hero) > .wrap { background: var(--pink-soft); border-radius: 28px; padding: 40px 18px 22px; }
+/* Contact block: a rounded pink card on the white page */
+main > section.enquiry:not(.enquiry-hero) { background: #fff; padding: 0 16px 56px; }
+main > section.enquiry:not(.enquiry-hero) > .wrap { background: var(--pink-soft); border-radius: 28px; padding: 40px 18px 22px; }
+/* Kosten: a soft pink curve behind the cards */
+main > section#kosten { position: relative; isolation: isolate; overflow: hidden; }
+main > section#kosten::before { content: ""; position: absolute; z-index: -1; left: -35%; right: -35%; top: 150px; bottom: -40px; border-radius: 50% 50% 0 0 / 150px 150px 0 0; background: linear-gradient(180deg, var(--pink-soft) 0%, rgba(253, 232, 241, 0.35) 70%, rgba(253, 232, 241, 0) 100%); }
+#kosten .cost { background: #fff; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.07); }
+/* Hero: short sentence, call button, then "or request a callback" with the choices */
+.mhero-text { margin-top: 18px; }
+.mhero-call { display: flex; width: 100%; justify-content: center; min-height: 60px; margin-top: 24px; font-size: 18px; }
+.mhero-call svg { width: 20px; height: 20px; }
+.mhero-or { display: flex; align-items: center; gap: 14px; margin: 26px 0 0; font-size: 18px; font-weight: 600; color: var(--plum); }
+.mhero-or::before, .mhero-or::after { content: ""; flex: 1; height: 1px; background: #dcc9d5; }
+.mhero-choices { margin-top: 18px; }
+
+/* =====================================================================
+   WIDE SCREENS – the same light look as on phones, laid out in columns
+   ===================================================================== */
+@media (min-width: 721px) {
+  /* Header: always on white. From 1081px the full navigation replaces the menu button (see below). */
+  .on-hero .nav-pill { background: #fff; border-color: transparent; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .on-hero .nav-pill nav a, .on-hero .nav-phone { color: var(--ink); }
+  .on-hero .nav-pill nav a:hover { background: var(--card); }
+  .on-hero .nav-phone { border-left-color: var(--line); }
+  .nav-pill .btn-dark, .on-hero .nav-pill .btn-dark { background: var(--plum); color: #fff; }
+
+  /* Home hero */
+  .mhero { padding: 168px 0 72px; }
+  .mhero-kicker { font-size: 20px; }
+  .mhero h1 { font-size: clamp(54px, 6.4vw, 92px); }
+  .mhero-text { font-size: 22px; max-width: 44ch; margin-top: 26px; }
+  .mhero-call { display: inline-flex; width: auto; min-height: 68px; padding: 0 44px; margin-top: 32px; font-size: 21px; }
+  .mhero-or { max-width: 560px; margin: 40px auto 0; font-size: 20px; }
+  .mhero-choices { grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1040px; margin: 26px auto 0; }
+  .mhero-img { height: 260px; }
+  .mhero-row { padding: 22px 22px 22px 28px; min-height: 100px; }
+  .mhero-label { font-size: 23px; }
+  .mhero-arrow { width: 56px; height: 56px; }
+  .mhero-bg { height: 760px; }
+
+  /* Sections */
+  main > section.section-tight:not(.enquiry), main > section#fuer-wen { padding: 88px 0; }
+  main section:not(.hero):not(.page-hero) h2 { font-size: clamp(40px, 4.2vw, 60px); max-width: 20ch; }
+  .label { font-size: 18px; }
+  .lead { font-size: 21px; }
+
+  /* Für wen: three photo cards side by side */
+  .fit-split, .steps-split { display: block; }
+  #fuer-wen .fit-panel { margin-top: 44px; background: none; border: 0; }
+  .fit-criteria { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .fit-criteria .fit-img { height: 230px; }
+  .fit-not { max-width: 760px; margin: 24px auto 0; }
+
+  /* Leistungen */
+  .services { gap: 20px; margin-top: 44px; }
+  .svc .svc-img { height: 230px !important; }
+
+  /* Ablauf: three numbered cards in a row */
+  .steps-list { grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+  .steps-list li, .steps-list li:last-child { padding: 32px; }
+  .steps-list h3 { font-size: 24px; margin-bottom: 6px; }
+  .step-num { font-size: 17px; margin-bottom: 14px; }
+  .svc h3 { font-size: 25px; }
+  .fit-criteria strong { font-size: 23px; }
+  .cost h3 { font-size: 26px; }
+
+  /* Kosten, Fragen, Bewertung, Kontakt: one centred column */
+  .costs-head { display: block; }
+  .costs-head .lead { margin: 18px auto 0; }
+  #kosten .costs, .costs { grid-template-columns: 1fr 1fr; gap: 20px; margin: 44px auto 0; max-width: 1040px; }
+  .cost { padding: 32px; }
+  .faq { display: block; max-width: 860px; }
+  .faq > div + div { margin-top: 36px; }
+  .mrating-card { max-width: 860px; margin: 0 auto; padding: 56px 32px; }
+  .mrating h2 { font-size: 44px; }
+  main > section.enquiry:not(.enquiry-hero) { padding: 0 24px 88px; }
+  main > section.enquiry:not(.enquiry-hero) > .wrap { max-width: 1040px; padding: 72px 32px 56px; }
+  .enquiry .contact { display: block; }
+  .enquiry .contact > div, .enquiry-cb { max-width: 560px; margin-left: auto; margin-right: auto; }
+  .enquiry-cb { margin-top: 16px; }
+
+  /* Inner page heroes: text on the left, the photo as a rounded card on the right */
+  .page-hero.has-img { display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 56px; min-height: 0; text-align: left; padding: 150px max(24px, calc((100vw - var(--max)) / 2 + 24px)) 72px; }
+  .page-hero.has-img .wrap { order: -1; margin: 0; padding: 0; max-width: none; }
+  .page-hero.has-img .page-hero-bg { position: relative; inset: auto; z-index: 0; margin: 0; height: min(60svh, 540px); min-height: 380px; border-radius: 28px; overflow: hidden; }
+  .page-hero.has-img .kicker { justify-content: flex-start; font-size: 19px; margin-bottom: 14px; }
+  .page-hero.has-img h1 { font-size: clamp(44px, 4.8vw, 76px); line-height: 1.04; }
+  .page-hero-lead { margin-left: 0; font-size: 21px; max-width: 44ch; }
+  .page-hero.has-img .hero-ctas { display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; margin: 30px 0 0; }
+
+  /* Text-and-photo sections on the inner pages: photo back in, text left-aligned beside it */
+  .feature-photo { display: block; aspect-ratio: 1 / 1; border-radius: 28px; }
+  main section:not(.hero):not(.page-hero) .feature-text :is(.label, h2, .lead) { text-align: left; margin-left: 0; margin-right: 0; }
+
+  /* Kontakt page top: same split – text and phone number left, photo right */
+  main > section.enquiry-hero { padding: 150px 0 72px; min-height: calc(150px + min(60svh, 540px) + 72px); }
+  .enquiry-hero .enquiry-bg { inset: 150px max(24px, calc((100vw - var(--max)) / 2 + 24px)) auto 53%; height: min(60svh, 540px); min-height: 380px; border-radius: 28px; }
+  .enquiry-hero .enquiry-bg img { object-position: 50% 25%; }
+  .enquiry-hero .contact > div, .enquiry-hero .enquiry-cb { max-width: 46%; margin-left: 0; margin-right: 0; }
+  main > section.enquiry-hero h1, main section.enquiry-hero:not(.hero):not(.page-hero) :is(.label, .lead) { text-align: left; margin-left: 0; }
+  .enquiry-hero .call-box { text-align: left; }
 }
-@media (max-width: 720px) {
-  /* Kosten: a soft pink curve behind the cards */
-  main > section#kosten { position: relative; isolation: isolate; overflow: hidden; }
-  main > section#kosten::before { content: ""; position: absolute; z-index: -1; left: -35%; right: -35%; top: 150px; bottom: -40px; border-radius: 50% 50% 0 0 / 150px 150px 0 0; background: linear-gradient(180deg, var(--pink-soft) 0%, rgba(253, 232, 241, 0.35) 70%, rgba(253, 232, 241, 0) 100%); }
-  #kosten .cost { background: #fff; box-shadow: 0 6px 24px rgba(42, 16, 48, 0.07); }
-}
-@media (max-width: 720px) {
-  /* Hero: short sentence, call button, then "or request a callback" with the choices */
-  .mhero-text { margin-top: 18px; }
-  .mhero-call { display: flex; width: 100%; justify-content: center; min-height: 60px; margin-top: 24px; font-size: 18px; }
-  .mhero-call svg { width: 20px; height: 20px; }
-  .mhero-or { display: flex; align-items: center; gap: 14px; margin: 26px 0 0; font-size: 18px; font-weight: 600; color: var(--plum); }
-  .mhero-or::before, .mhero-or::after { content: ""; flex: 1; height: 1px; background: #dcc9d5; }
-  .mhero-choices { margin-top: 18px; }
-}
+@media (min-width: 1081px) { .menu-btn { display: none; } }

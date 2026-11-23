@@ -20,8 +20,8 @@ export default function CallbackModal() {
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const el = (e.target as HTMLElement | null)?.closest<HTMLElement>("[data-callback]");
-      // Phones only: on desktop these links keep their normal behaviour.
-      if (!el || e.metaKey || e.ctrlKey || !window.matchMedia("(max-width: 720px)").matches) return;
+      // Callback links open the popup instead of navigating.
+      if (!el || e.metaKey || e.ctrlKey) return;
       e.preventDefault();
       opener.current = el;
       setWho(el.dataset.callback || undefined);
